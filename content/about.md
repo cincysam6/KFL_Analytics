@@ -1,6 +1,6 @@
 ---
-date: "2016-05-05T21:48:51-07:00"
+date: "2020-10-05T21:48:51-07:00"
 title: About
 ---
 
-This is a "hello world" example website for the [**blogdown**](https://github.com/rstudio/blogdown) package. The theme was forked from [@jrutheiser/hugo-lithium-theme](https://github.com/jrutheiser/hugo-lithium-theme) and modified by [Yihui Xie](https://github.com/yihui/hugo-lithium).
+This website is an analytics blog dedicated to the Kirschner Fantasy Football League (KFL). After 25 years of existence, the Moneyball era is finally coming to the KFL. This blog will tackle a variety of fantasy football related topics and look at the historic matchups and rivalries within the KFL. 

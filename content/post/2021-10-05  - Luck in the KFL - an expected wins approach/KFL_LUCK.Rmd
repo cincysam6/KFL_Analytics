@@ -1,0 +1,347 @@
+---
+title: "Good or Lucky? An Expected Wins Analysis of KFL results"
+author: "Samuel Kirschner"
+date: 2020-10-05T13:09:13-06:00
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggridges)
+library(dplyr)
+library(ggplot2)
+library(DBI)
+library(RJDBC)
+library(sqldf)
+library(ggthemes)
+library(tidyr)
+library(gt)
+library(kableExtra)
+library(tidymodels)
+library(DT)
+library(plotly)
+library(ghibli)
+
+```
+
+
+```{r data ingestion, include=FALSE}
+
+
+kfl_db <-"kfl_ff_data" 
+host_db <- "localhost"
+db_port <- "5432"
+db_user <- "postgres"  
+db_password <- "Cincinnati1"
+kfl_con <- dbConnect(RPostgres::Postgres(), dbname = kfl_db, host=host_db, port=db_port, user=db_user, password=db_password)   
+
+kfl_draft<-dbReadTable(kfl_con,"kfl_draft")
+kfl_franchises<-dbReadTable(kfl_con,"kfl_franchises")
+kfl_playerscores<-dbReadTable(kfl_con,"kfl_playerscores")
+kfl_rosters<-dbReadTable(kfl_con,"kfl_rosters")
+kfl_schedule<-dbReadTable(kfl_con,"kfl_schedule")
+kfl_starter_positions<-dbReadTable(kfl_con,"kfl_starter_positions")
+kfl_starters<-dbReadTable(kfl_con,"kfl_starters")
+kfl_summary<-dbReadTable(kfl_con,"kfl_summary")
+kfl_transactions<-dbReadTable(kfl_con,"kfl_transactions")
+
+```
+
+## The Role of Luck in KFL results: 2018 - 2020
+
+While we all like to think we are fantasy maestros conducting impeccable drafts followed by brilliant pick-ups weeks ahead of the competition, the role of luck certainly must be accounted for even among the most arrogant fantasy owners. There are elements of the game that we can control (draft, lineups, waivers) and those that we have no control over. The two biggest uncontrollable factors that determine your fantasy fate in a head-to-head league are injuries and your opponent for that given week. 
+
+This is not to say offensive production doesn't have a component of luck. That late 14th round backup running back for the Cowboys that becomes a stud due to an Ezekiel Elliot season ending injury certainly has an element of luck to it, but it also potentially takes a certain amount of insight and skill to evaluate the backup running backs that have the potential to be productive IF lady luck leads to a more prominent role for that player. 
+
+However, fantasy owners have absolutely no control whatsoever on schedule they face. Namely, the week they play a certain opponent. Fantasy has no concept of "defense" against a points explosion by the other team. You have no control over the fact that the week you face Robert Tonyan's owner he happens to et 4 of his 6 TD's for the season in one game.We have all had those weeks where we know our players are lighting up the score board and look to see our team, with the second most points for the week, losing to the team with the most points that week This is the element of luck I want to focus on this article. Who benefited from lady luck propping up their otherwise weak squad to playoff success and which teams were felled by the cruel injustice of watching inferior teams march to the playoffs while they sat home?
+
+This analysis will take a wins over expected approach. We will derive the probability of winning based on points each team scored and then compare that to the outcome. This analysis will look at some of the luckiest wins and unluckiest losses of the last 3 years as well as re-visit each season and see the impact expected wins had on those seasons
+
+
+## Win Probability - A better approach
+
+A very simplistic method would be to compare each teams score to say the average for the week. If you would have beat the average, but lost that week - That is an unlucky loss. However, this type of analysis lacks a lot of nuance. For instance, a team that lost while barely beating the average weekly score certainly isn't as unlucky as the guy who put up the second highest point total in the week and still lost.A more accurate way to define degrees of luckiness is to generate a win probability for each team and compare that to actual outcomes.
+
+The conditional probability we are looking for is what is the probability of a team winning their match-up given the amount of points that team scored. So we have a relatively easy estimation problem. We aren't trying to predict a winner prior to the NFL weekend; we simply want to know how often a team would win given they scored say 90 fantasy points that week. 
+
+To generate a win probability, I used tidymodels to fit a logistic regression to three years of KFL results. I simply used the team's score for to predict whether a team won or not. Since each team has no control over fantasy defense (how many points the opponent scores) we only care about the scoring that each team can control. I would have preferred using more data, but at this time data is available back to 2018. I also can't go back too far as roster composition has changed in the KFL and older scoring data likely no longer holds up.
+
+It should not be a surprise that there is quite a strong relationship between scoring points and winning. With the model, I computed the win probability for scoring anywhere from 40 to 130 points. The curve below shows the change in win probability as one scores more points.
+
+If you want above a 90% chance of winning your weekly match-up in the KFL, target 113 points or more. Put up a puny 50 points and you only have a 6% probability to win the week. 85 points looks to be the magic number that puts you above a 50/50 shot at winning your week. 
+
+
+```{r pressure, echo=FALSE,message=FALSE}
+score_distribution_data<-sqldf(
+"select a.franchise_id,b.user_name,a.Years,a.week,franchise_score as score_for, opponent_score as score_against
+ from kfl_schedule a
+ left outer join kfl_franchises b 
+ on a.franchise_id = b.franchise_id and a.Years = b.Years
+ where week < 15"
+)
+
+score_distribution_data<-score_distribution_data%>%unite(YR_WK, c("Years","week"),remove = FALSE)
+
+score_distribution_data<-score_distribution_data%>%group_by(YR_WK)%>%mutate(avg_weekly_score=mean(score_for),win = case_when(score_for > score_against ~ 1,score_for < score_against ~ 0))
+
+
+
+score_distribution_data_per_team<-score_distribution_data%>%mutate(score_for_diff = score_for - avg_weekly_score, 
+                                                                   score_against_diff = score_against - avg_weekly_score)%>%filter(franchise_id == 9)
+
+score_distribution_data$win<-as.factor(score_distribution_data$win)
+
+fitted_logistic_model<- logistic_reg() %>%
+        # Set the engine
+        set_engine("glm") %>%
+        # Set the mode
+        set_mode("classification") %>%
+        # Fit the model
+        fit(win~score_for, data = score_distribution_data)
+tidy(fitted_logistic_model)
+
+
+
+score_vector<-40:130
+score_vector<-as.data.frame(score_vector)
+colnames(score_vector)<-"score_for"
+
+pred_prob_vector <- predict(fitted_logistic_model,
+                      new_data = score_vector,
+                      type = "prob")
+
+
+
+win_prob_by_score<-cbind(pred_prob_vector,score_vector)
+colnames(win_prob_by_score)<-c("loss_prob","win_prob","score")
+#DT::datatable(win_prob_by_score,class = 'cell-border stripe')%>%formatRound(columns=c("loss_prob","win_prob"), digits = 3)
+
+win_prob_plot<-ggplot(win_prob_by_score,aes(x=score,y=win_prob)) + geom_point() + ggtitle("Win probability based on team weekly score ") +xlab("score") + ylab("win probability")
+
+ggplotly(win_prob_plot)
+
+```
+
+
+## Wins over expected as a measure of luck
+With this model, we can now compare the probability of winning to actual wins to better understand who has had success thanks to luck in the KFL over the past three years. One caveat before we begin dissecting the data. This in no way factors in a team's ability to optimize line-ups, injuries, etc. Those components of luck and/or skill aren't captured here. This is merely helping us understand, given the points a team scores, how often should they expect to win given the distribution of scores in the KFL.
+
+The table below is a searchable database of all results over the last three years for each franchise. You can get an idea of the win probability for any given week given the teams score. 
+
+
+```{r test, echo=FALSE,message=FALSE}
+luck_score_data<-score_distribution_data%>%select(franchise_id,user_name,YR_WK,Years,score_for,win)%>%arrange(franchise_id,YR_WK,Years)
+
+pred_proba <- predict(fitted_logistic_model,
+                      new_data = luck_score_data,
+                      type = "prob")
+
+colnames(pred_proba)<-c("loss_prob", "win_prob")
+
+luck_score_data<-cbind(luck_score_data,pred_proba)
+
+
+
+luck_score_data%>%datatable(filter="top",options = list(pageLength = 12))%>%formatRound(columns=c("loss_prob","win_prob"), digits = 3)
+
+
+
+
+
+#pred_class <- predict(fitted_logistic_model,
+#                      new_data = luck_score_data,
+#                      type = "class")
+
+#pred_class$win<-luck_score_data$win
+
+#conf_mat(pred_class, truth = win,
+#         estimate = .pred_class)
+
+
+```
+## The luckiest wins over the last 3 years
+Over the course of the last three years there were 38 wins where a team had less than a 34% chance of winning based on the amount of points they scored. 
+
+Nick's Fighting Ducks and Jeff's Slugs share the luckiest win putting up 47 points but still grinding out a W despite a win probability of just 4.8%. 
+
+The Indiana division ranks 1 through 4 in the number of lucky wins over the last three season with Alex's Kraken far exceeding the rest. Michael and Will on the other hand, have only recorded one lucky win.
+
+
+
+```{r lucky wins, echo=FALSE,message=FALSE}
+luck_score_data%>%filter(win_prob <.34 & win == 1)%>%datatable(filter="top",options = list(pageLength = 10))%>%formatRound(columns=c("loss_prob","win_prob"), digits = 3)
+
+p_lucky_data<-luck_score_data%>%filter(win_prob <.34 & win == 1)%>%group_by(user_name)%>%count()%>%arrange()
+
+ggplot(p_lucky_data,aes(x=reorder(user_name,n),y=n)) + geom_bar(stat ="identity") +coord_flip() + ggtitle("Number of wins with less than 34% win probability: 2018-2020") + ylab("number of wins") + xlab("franchise owner")
+
+```
+
+## The unluckiest losses over the last three years
+On the other side of the spectrum, we have 36 unlucky losses where a team had a greater than 66% chance of winning, but still lost. Michael has something to be glum about given his 8 unlucky losses over the span of 3 years. He had a particularly brutal streak in 2018 where in weeks 5,6, and 7 he put up 97, 104, and 97 and still found a way to lose all three match-ups.
+
+Kurt has the honor of the unluckiest loss, putting up 127 points and still losing despite a 96.7% win probability. We also see that lady luck giveth and lady luck taketh away since Nick's Fighting Ducks lost a game with a 95% probability of winning after putting up 121 points.
+
+
+```{r unlucky losses, echo=FALSE,message=FALSE}
+luck_score_data%>%filter(win_prob >.66 & win == 0)%>%datatable(filter="top",options = list(pageLength = 10))%>%formatRound(columns=c("loss_prob","win_prob"), digits = 3)
+
+p_unlucky_data<-luck_score_data%>%filter(win_prob >.66 & win == 0)%>%group_by(user_name)%>%count()%>%arrange()
+
+ggplot(p_unlucky_data,aes(x=reorder(user_name,n),y=n),color=user_name) + geom_bar(stat ="identity") +coord_flip() + ggtitle("Number of losses with less than 66% win probability: 2018-2020") + ylab("number of losses") + xlab("franchise owner") 
+
+
+```
+
+
+
+## Wins over expected by team - 2018 to 2020
+
+Alex's Krakens are significantly ahead of any other team with 6.4 wins over expected over this three year time period. This isn't to say they aren't a good team, ranking 3rd in expected wins just 0.4 back from the leader, but the dominance their 29 wins over three season suggest doesn't quite hold up when considering the amount of luck this involved.
+
+Sam's Bluecats leads in expected wins thanks to three straight solid seasons of "not quite good enough" play to make the highly competitive 4 team playoffs in this 12 team league. They will need to find a way to get over the hump in 2021 and luck may need to propel them over the hump.
+
+On the other end of the spectrum, Elliot's Warriors have a history of being the bumbling franchise of the league. However, Max actually trails with only 17.3 expected wins, matching his 17 win record over the last three years.
+
+```{r wins over expected, echo=FALSE, message=FALSE, warning=FALSE,results='hide'}
+expected_wins<-luck_score_data%>%
+  group_by(franchise_id,user_name)%>%
+  summarise(expected_wins = sum(win_prob))%>%
+  arrange(expected_wins)
+
+overall_standings<-sqldf("select a.franchise_id,B.user_name as franchise_owner,count(*) as Num_of_games,
+SUM (case WHEN result = 'W' THEN 1
+                ELSE 0
+        END) AS Wins
+        from kfl_schedule a
+        left outer join kfl_franchises b 
+        on a.franchise_id = b.franchise_id and a.Years = b.Years
+        where week < 15
+        group by a.franchise_id,b.user_name
+        ")
+
+overall_standings<-overall_standings%>%mutate(Win_Pct = Wins/Num_of_games)
+
+joined_data<-inner_join(overall_standings,expected_wins, by="franchise_id")%>%mutate(wins_over_expected = Wins - expected_wins)
+
+
+
+```
+
+```{r wins over expected2, echo=FALSE, message=FALSE, warning=FALSE}
+joined_data%>%select(user_name,Wins,expected_wins,wins_over_expected)%>%arrange(wins_over_expected)%>%rename("Team Owner" = user_name)%>%datatable(,options = list(pageLength = 12, dom = 'tip'))%>%formatRound(columns=c("expected_wins","wins_over_expected"), digits = 1)
+
+
+                                                                                  
+ggplot(joined_data,aes(x=reorder(franchise_owner,wins_over_expected),y=wins_over_expected,fill=wins_over_expected>0))+geom_bar(stat="identity")+coord_flip() +ggtitle("Wins over Expected 2018-2020") + xlab("franchise owner") + ylab("wins over expected") +theme(legend.position = "none") +geom_text(aes(label=round(wins_over_expected,1)))
+
+
+```
+
+```{r expected wins by year, echo=FALSE,message=FALSE, warning=FALSE}
+
+#kfl_schedule%>%filter(result =='T')
+
+# note: Week 12 2020 michael beat Joe Ruwe
+# week 14 2020 elliot beat michael
+# week 7 2020 kurt beat will
+# week 10 2018 michael beat max
+expected_wins_by_year<-luck_score_data%>%
+  group_by(franchise_id,user_name,Years)%>%
+  summarise(expected_wins = sum(win_prob))%>%
+  arrange(user_name,Years)
+
+
+
+overall_standings_by_year<-sqldf("select a.franchise_id,B.user_name as franchise_owner,a.Years,count(*) as Num_of_games,
+SUM (case WHEN result = 'W' THEN 1
+                ELSE 0
+        END) AS Wins
+        from kfl_schedule a
+        left outer join kfl_franchises b 
+        on a.franchise_id = b.franchise_id and a.Years = b.Years
+        where week < 15
+        group by a.franchise_id,b.user_name,a.Years
+        ")
+
+joined_data_by_year<-inner_join(overall_standings_by_year,expected_wins_by_year, by="franchise_id","Years")
+
+wins_over_expected_by_year<-sqldf("SELECT A.Franchise_ID,A.franchise_owner,A.Years as Year,A.Wins,B.expected_wins,A.Wins - B.expected_wins as wins_over_expected
+      from overall_standings_by_year A
+      inner join expected_wins_by_year B
+      ON A.franchise_id = B.franchise_id and A.Years = B.Years
+      order by wins_over_expected desc")
+
+wins_over_expected_by_year%>%datatable(,options = list(pageLength = 12))%>%formatRound(columns=c("expected_wins","wins_over_expected"), digits = 1)
+
+
+
+```
+## The luck of the Kraken?
+No team has had lady luck on their side more than Alex's Kraken. As we saw, Alex had a league leading 8 lucky wins over three seasons and smashes everyone else in the league with a whooping 6.4 wins over expected, which is almost 4 more than his brother who sits at 2.6. The curve below shows the Kraken's scoring over the last three years and color codes it based on the outcome. We see a lot of wins below that 50% mark including 2 wins with a win probability of well below 25%. 
+
+```{r team plot, echo=FALSE,message=FALSE}
+team_data<-luck_score_data%>%filter(franchise_id == 9)
+ggplot(team_data,aes(x=score_for,y=win_prob)) + geom_point(aes(colour = win)) + ggtitle("Alex's Kraken 3 Year Wins vs Expected ") +xlab("score") + ylab("win probability") + scale_color_hue(labels = c("Loss", "Win"))
+```
+
+
+```{r division, echo=FALSE}
+franchise_id<-1:12
+division_name<-c("Ohio","Glum","Ohio","Indiana","Glum","Ohio","Ohio","Indiana","Indiana","Glum","Glum","Indiana")
+kfl_division<-as.data.frame(cbind(franchise_id,division_name))
+kfl_division$franchise_id<-as.numeric(kfl_division$franchise_id)
+
+
+kfl_division_data<- sqldf("Select A.*,B.division_name
+      from wins_over_expected_by_year A
+      left outer join kfl_division B
+      on A.Franchise_ID = B.Franchise_ID
+      order by Year,division_name,expected_wins desc")
+
+
+
+
+```
+
+## 2018 Season in Review
+
+The 2018 season was a year of particularly poor winning percentage in the Glum division. Division champion Michael Glum won the division with a losing record (6-8), but looking at our expected wins metric, it makes sense how the KFL had their first losing record team win the KFL championship. Michael came out 6th with an expected wins metric of 7.6.
+
+Even though Nick had 1.9 win over expected, he had a dominate season with the highest expected wins in three years (9.1). After Nick, the next 4 highest expected wins team all came from the Ohio division where it was a brutal slugfest of top talent with 3 of the 4 teams tying for 9 wins on the season
+
+No surprise, but Alex led the league with 2.5 wins over expected. All that luck couldn't pull him into the playoffs, though as he failed to clinch the wild card on a tie breaker. Finally, Elliot can take some solace in his pathetic 3 win season by recognizing that he was the unluckiest team that year and finished ahead of Max in expected wins. 
+
+
+```{r division 2018, echo=FALSE}
+kfl_division_data%>%filter(Year == 2018)%>%datatable(options = list(pageLength = 12,dom='tip'))%>%formatRound(columns=c("expected_wins","wins_over_expected"), digits = 1)
+
+```
+
+## 2019 Season in Review
+
+The 2019 season saw Elliot's Warriors luck reverse in dramatic fashion. He posted a 10 win season with 2 wins over expected. Luck or no, Elliot's Warriors finished third in expected wins and earned the wildcard berth that lead them to a championship (Though drafting the Patriots defense and riding their historic defensive season does count as a form of luck)
+
+2019 saw some historical bad teams with Michael posting only 2 wins and a record low 4.3 expected wins. Nick's fighting ducks weren't too far behind with 4.4 expected wins. 
+
+The Glum division flipped the script and took hold as the best division that year with 3 of the top 5 teams in expected wins. Alex's Kraken took advantage of a off year from the Indiana Kirschner's which had 3 of the 4 teams post sub 7 expected wins. 
+
+```{r division 2019, echo=FALSE}
+kfl_division_data%>%filter(Year == 2019)%>%datatable(options = list(pageLength = 12,dom='tip'))%>%formatRound(columns=c("expected_wins","wins_over_expected"), digits = 1)
+
+```
+
+## 2020 Season in Review
+
+The 2020 season saw Elliot's Warriors return to their familiar realm in the dungeon of the KFL with the lowest expected wins (5.1) and a league lowest 4 wins. Alex's Krakens appeared to be the powerhouse, but their expected wins show just how much luck was involved in their league best 11 wins. At only 7.7 expected wins, it should not be a shock that they weren't able to clinch the title. Instead, Scott's Titans pulled off an impressive 9.0 expected wins which lead the league. This matched their record and Scott's Titans showed their quality by pulling off a championship win to take the KFL crown.
+
+Michael should feel hard done by his 6-8 record considering his 8.6 expected wins was tied for second in the league. Sadly, 
+```{r division 2020, echo=FALSE}
+kfl_division_data%>%filter(Year == 2020)%>%datatable(options = list(pageLength = 12,dom='tip'))%>%formatRound(columns=c("expected_wins","wins_over_expected"), digits = 1)
+
+```
+
+## Summary
+
+Expected wins is a good way to capture a team's performance and help us not only identify those teams that have been influenced heavily by luck, but it seems to help explain how a 6-8 team can bring home the championship and how a 9 win Titan's can topple the 11 win Kraken's who rode good fortune throughout an exceptionally lucky season. As the 2021 season progress, I will be tracking expected wins to try and get an early idea of title contenders. Sadly, Joe's Sunday Winners is already on their way to one of the unluckiest seasons in KFL history and will need quite a bit of fortune reversal to not end up as the unluckiest season in KFL history. 
+

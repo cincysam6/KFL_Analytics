@@ -1,0 +1,510 @@
+---
+title: "Week 4 Update"
+author: "Samuel Kirschner"
+date: "10/6/2021"
+output: html_document
+---
+
+
+
+<div id="week-4-recap--" class="section level2">
+<h2>Week 4 Recap -</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<pre class="r"><code>score_distribution_data&lt;-sqldf(
+&quot;select a.franchise_id,b.user_name,a.Years,a.week,franchise_score as score_for, opponent_score as score_against
+ from kfl_schedule a
+ left outer join kfl_franchises b 
+ on a.franchise_id = b.franchise_id and a.Years = b.Years
+ where week &lt; 15&quot;
+)
+
+score_distribution_data&lt;-score_distribution_data%&gt;%unite(YR_WK, c(&quot;Years&quot;,&quot;week&quot;),remove = FALSE)
+
+score_distribution_data&lt;-score_distribution_data%&gt;%group_by(YR_WK)%&gt;%mutate(avg_weekly_score=mean(score_for),win = case_when(score_for &gt; score_against ~ 1,score_for &lt; score_against ~ 0))
+
+
+
+score_distribution_data_per_team&lt;-score_distribution_data%&gt;%mutate(score_for_diff = score_for - avg_weekly_score, 
+                                                                   score_against_diff = score_against - avg_weekly_score)%&gt;%filter(franchise_id == 9)
+
+score_distribution_data$win&lt;-as.factor(score_distribution_data$win)
+
+fitted_logistic_model&lt;- logistic_reg() %&gt;%
+        # Set the engine
+        set_engine(&quot;glm&quot;) %&gt;%
+        # Set the mode
+        set_mode(&quot;classification&quot;) %&gt;%
+        # Fit the model
+        fit(win~score_for, data = score_distribution_data)</code></pre>
+<pre class="r"><code>## 2021 win probs
+
+kfl_2021_win_prob_data&lt;-kfl_schedule_2021%&gt;%rename( score_for = franchise_score)%&gt;%filter(week&lt;5)
+
+pred_prob_2021 &lt;- predict(fitted_logistic_model,
+                          new_data = kfl_2021_win_prob_data,
+                          type = &quot;prob&quot;)
+
+colnames(pred_prob_2021)&lt;-c(&quot;loss_prob&quot;, &quot;win_prob&quot;)
+
+kfl_2021_win_prob_data&lt;-cbind(kfl_2021_win_prob_data,pred_prob_2021)
+
+kfl_2021_win_prob_data&lt;-kfl_2021_win_prob_data%&gt;%mutate(win = case_when(score_for &gt; opponent_score ~ 1,score_for &lt; opponent_score ~ 0))
+
+kfl_2021_win_prob_data[37,9]&lt;-1
+kfl_2021_win_prob_data[40,9]&lt;-0
+kfl_2021_win_prob_data[39,9]&lt;-1
+kfl_2021_win_prob_data[44,9]&lt;-0
+
+
+kfl_2021_weekly_data&lt;-sqldf(&quot;SELECT A.*,B.franchise_name,B.franchise_abbrev,B.logo,C.franchise_name as opponent_franchise,C.franchise_abbrev as opponent_abbrev,C.logo as opponent_logo
+      FROM kfl_2021_win_prob_data A
+      LEFT OUTER JOIN kfl_franchises_2021 B
+      on a.franchise_id = b.franchise_id
+      LEFT OUTER JOIN kfl_franchises_2021 C
+      on a.opponent_id = c.franchise_id&quot;)</code></pre>
+</div>
+<div id="expected-wins-power-rankings-through-week-4" class="section level2">
+<h2>Expected Wins power rankings through week 4</h2>
+<p>You can also embed plots, for example:</p>
+<pre><code>## `summarise()` has grouped output by &#39;franchise_name&#39;. You can override using the `.groups` argument.</code></pre>
+<div id="mksgynjngl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mksgynjngl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mksgynjngl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mksgynjngl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mksgynjngl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mksgynjngl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mksgynjngl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mksgynjngl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mksgynjngl .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mksgynjngl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mksgynjngl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mksgynjngl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mksgynjngl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mksgynjngl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#mksgynjngl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mksgynjngl .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mksgynjngl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mksgynjngl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mksgynjngl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mksgynjngl .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mksgynjngl .gt_left {
+  text-align: left;
+}
+
+#mksgynjngl .gt_center {
+  text-align: center;
+}
+
+#mksgynjngl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mksgynjngl .gt_font_normal {
+  font-weight: normal;
+}
+
+#mksgynjngl .gt_font_bold {
+  font-weight: bold;
+}
+
+#mksgynjngl .gt_font_italic {
+  font-style: italic;
+}
+
+#mksgynjngl .gt_super {
+  font-size: 65%;
+}
+
+#mksgynjngl .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">logo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">expected_wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">wins_over_expected</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Elliot's Warriors</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">1.1</td>
+<td class="gt_row gt_right">0.1</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Sam’s Bluecats</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">1.9</td>
+<td class="gt_row gt_right">-0.1</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Cincinnati SWAB</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/StarWarsTheRiseOfSkywalker/rise-skywalker-chewy.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">2.0</td>
+<td class="gt_row gt_right">-1.0</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Nick's Fightin' Ducks</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://i.pinimg.com/originals/0f/1c/91/0f1c91c4bda94e07d52b189bfac10701.png" style="height:30px;"></td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">2.0</td>
+<td class="gt_row gt_right">2.0</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Jeffs Slugs</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">2.0</td>
+<td class="gt_row gt_right">-1.0</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Michael's GMOs</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">2.2</td>
+<td class="gt_row gt_right">0.2</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Kurt's The Tenderloins</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">2.3</td>
+<td class="gt_row gt_right">0.3</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Scott's TITANS</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">2.4</td>
+<td class="gt_row gt_right">0.4</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Ruwes Onionheads</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">2.6</td>
+<td class="gt_row gt_right">-0.4</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Supermarket Studs</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/FrozenTundra-ToddDetwiler/TundraPack_12_01.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">2.7</td>
+<td class="gt_row gt_right">0.7</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Alex's Kraken</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">2.8</td>
+<td class="gt_row gt_right">-0.2</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading">Joe Sunderman's Sunday Winners</td>
+    </tr>
+    <tr><td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">2.9</td>
+<td class="gt_row gt_right">1.9</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+</div>

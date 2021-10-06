@@ -21,6 +21,8 @@ library(tidymodels)
 library(DT)
 library(plotly)
 library(ghibli)
+library(yaml)
+library(tidypredict)
 
 ```
 
@@ -100,6 +102,8 @@ fitted_logistic_model<- logistic_reg() %>%
         fit(win~score_for, data = score_distribution_data)
 tidy(fitted_logistic_model)
 
+parsed<-parse_model(fitted_logistic_model)
+write_yaml(parsed, "expected_points.yml")
 
 
 score_vector<-40:130

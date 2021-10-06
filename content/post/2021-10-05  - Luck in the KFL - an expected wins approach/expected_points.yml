@@ -1,0 +1,27 @@
+general:
+  model: glm
+  version: 2.0
+  type: regression
+  residual: 494
+  family: binomial
+  link: logit
+  is_glm: 1.0
+terms:
+- label: (Intercept)
+  coef: -6.7223022
+  is_intercept: 1.0
+  fields:
+  - type: ordinary
+    col: (Intercept)
+  qr:
+    qr_1: -0.1079337
+    qr_2: -0.6431389
+- label: score_for
+  coef: 0.0795899
+  is_intercept: 0.0
+  fields:
+  - type: ordinary
+    col: score_for
+  qr:
+    qr_1: 0.0
+    qr_2: 0.0076782

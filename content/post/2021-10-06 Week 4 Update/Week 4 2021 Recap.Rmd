@@ -213,22 +213,22 @@ Elliott's Warriors find themselves in a familiar place at the basement of KFL wi
 
 
 
-```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 8,fig.height=6,message=FALSE}
-kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo)%>%group_by(franchise_id,franchise_name,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = expected_wins - wins)%>%arrange(expected_wins)
+```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo,franchise_abbrev)%>%group_by(franchise_id,franchise_name,franchise_abbrev,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = expected_wins - wins)%>%arrange(expected_wins)
 
-week_4_table<-kfl_wins_over_expected%>%select(franchise_id,franchise_name,logo,wins,expected_wins,wins_over_expected)%>%mutate(expected_wins = round(expected_wins,1), wins_over_expected = round(wins_over_expected,1))%>%arrange(desc(expected_wins))
+week_4_table<-kfl_wins_over_expected%>%select(franchise_id,franchise_name,franchise_abbrev,logo,wins,expected_wins,wins_over_expected)%>%mutate(expected_wins = round(expected_wins,1), wins_over_expected = round(wins_over_expected,1))%>%arrange(desc(expected_wins))
 
-week_4_table<-as.data.frame(week_4_table[,c(2:6)])
+week_4_table<-as.data.frame(week_4_table[,c(2:7)])
 
 asp_ratio <- 1.618 
 
-week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_name,expected_wins),y=expected_wins))+geom_bar(stat="identity")+geom_image(aes(x=franchise_name,y=expected_wins,image=logo), size = 0.05, by = "width", asp = asp_ratio
+week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,expected_wins),y=expected_wins))+geom_bar(stat="identity")+geom_image(aes(x=franchise_abbrev,y=expected_wins,image=logo), size = 0.05, by = "width", asp = asp_ratio
 )+coord_flip()+ggtitle("Expected Wins through Week 4") + xlab("franchise") + ylab("expected wins")+theme(axis.title.x = element_text(size=14),axis.title.y=element_text(size=14),axis.text = element_text(size = 12),plot.title = element_text(size = 18))
 
 week4_exp_wins
 
 
-week_4_table%>%gt()%>%gt_img_rows(logo) %>%tab_header(title ="Expected Wins through Week 4")%>%
+week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt()%>%gt_img_rows(logo) %>%tab_header(title ="Expected Wins through Week 4")%>%
   cols_label(franchise_name="Team Name",logo="",expected_wins="Expected Wins",wins_over_expected="Wins Over Expected")
 
 

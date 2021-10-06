@@ -1,7 +1,7 @@
 ---
 title: "Week 4 Update"
 author: "Samuel Kirschner"
-date: "10/6/2021"
+date: 2020-10-06T13:09:13-06:00
 output: html_document
 ---
 

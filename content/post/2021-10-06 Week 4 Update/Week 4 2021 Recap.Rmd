@@ -213,7 +213,7 @@ Elliott's Warriors find themselves in a familiar place at the basement of KFL wi
 
 
 
-```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 8,fig.height=6,message=FALSE}
 kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo)%>%group_by(franchise_id,franchise_name,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = expected_wins - wins)%>%arrange(expected_wins)
 
 week_4_table<-kfl_wins_over_expected%>%select(franchise_id,franchise_name,logo,wins,expected_wins,wins_over_expected)%>%mutate(expected_wins = round(expected_wins,1), wins_over_expected = round(wins_over_expected,1))%>%arrange(desc(expected_wins))

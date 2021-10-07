@@ -1,0 +1,2289 @@
+---
+title: "Drafting Defenses Early"
+author: "Nick Kirschner"
+date: 2020-10-07T13:09:13-06:00
+output: html_document
+---
+
+
+
+<div id="drafting-defenses-early-an-analysis" class="section level1">
+<h1>Drafting Defenses Early: An Analysis</h1>
+<div id="nick-kirschner-ownergm-nicks-fightin-ducks" class="section level2">
+<h2>Nick Kirschner Owner/GM Nick’s Fightin’ Ducks</h2>
+
+<img src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2018/10/untitled-14.jpg" width="600" height="400" class="center">
+
+<style> .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}</style>
+
+
+<br>
+<br>
+<p>In this year’s KFL draft, the room was shocked as Elliot’s Warriors announced a defense as their selection with the first pick of the 7th round. As the gathering finished it’s laughter and joking at the 2019 Champion’s expense, Elliot defended himself by pulling on that very title; the 2019 New England Patriots Defense has carried Elliot to his impressive win, before the Warriors collapsed again into last place the following year. His strategy was to replicate that year’s title, and to gain an advantage in a position many players would punt until the last few rounds. The logic appeared to have some merit, but would the numbers back it up? To fully investigate data we must find data on a few key variables, namely how likely is it that picking the 1st(or even second or third) defense would result in a season scoring advantage, is that advantage large enough to offset the potential a team leaves by not drafting a position player in the 7th round.
+To start, we are going to assess what potential we are giving up by drafting a non positional player at the beginning of the second round. Using ADP(Average Draft Position) for the past 3 years, we are going to look at players drafted +/- five picks from the 7.01, or first pick of the seventh round. In 2020, Antonio Gibson(12th scoring rb), JK Dobbins(17th scoring rb), Stefon Diggs(3rd scoring WR), and Brandin Cooks(12th scoring WR) were all selected within our given parameters. In 2019, Austin Ekeler (7th scoring RB), Kenyan Drake (17th rb scoring), Allen Robinson (12th scoring WR), and Jarvis Landry (14th scoring WR), and in 2018 Chris Carson (11th scoring RB), Adrian Peterson (13th RB), Tevin Coleman (14th RB), and Alshon Jeffrey (23rd WR) were all in this same draft range. Missing from this list are quarterbacks, such as Pat Mahomes (2018, 1st scoring QB) who were also in this range. Obviously this list hand picks the best values from each year’s draft, and is not meant to show the overall value you will receive from the seventh round, but to show the potential of the pick you are giving up to do so. Statistically, the hit rate, defined here as a player finishing in the top 24 RBs, or top 36 WRS, (Starting players on most teams) is over 100 percent higher in the 7th round, compared to where many teams take their defenses in the 14th round. To reiterate, it is entirely possible to pick a player in the 7th round that will bust, but the rate to hit is far higher than the round in which most defenses are selected.
+Now that we have at least a passable understanding of the potential and value we are giving up by drafting a defense so early, we should assess if there is a significant positional advantage of the first(and second) ranked defenses over the field. In 2020, the scoring went as follows:</p>
+<br>
+<br>
+<div id="lnwqkgwtzi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#lnwqkgwtzi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lnwqkgwtzi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lnwqkgwtzi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lnwqkgwtzi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lnwqkgwtzi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lnwqkgwtzi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lnwqkgwtzi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lnwqkgwtzi .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lnwqkgwtzi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lnwqkgwtzi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lnwqkgwtzi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lnwqkgwtzi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lnwqkgwtzi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#lnwqkgwtzi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lnwqkgwtzi .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lnwqkgwtzi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lnwqkgwtzi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lnwqkgwtzi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lnwqkgwtzi .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lnwqkgwtzi .gt_left {
+  text-align: left;
+}
+
+#lnwqkgwtzi .gt_center {
+  text-align: center;
+}
+
+#lnwqkgwtzi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lnwqkgwtzi .gt_font_normal {
+  font-weight: normal;
+}
+
+#lnwqkgwtzi .gt_font_bold {
+  font-weight: bold;
+}
+
+#lnwqkgwtzi .gt_font_italic {
+  font-style: italic;
+}
+
+#lnwqkgwtzi .gt_super {
+  font-size: 65%;
+}
+
+#lnwqkgwtzi .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">scoring</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">1st</td>
+<td class="gt_row gt_left">139</td></tr>
+    <tr><td class="gt_row gt_left">2nd</td>
+<td class="gt_row gt_left">137</td></tr>
+    <tr><td class="gt_row gt_left">5th</td>
+<td class="gt_row gt_left">121</td></tr>
+    <tr><td class="gt_row gt_left">10th</td>
+<td class="gt_row gt_left">91</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<br>
+<br>
+<p>In what was a low scoring season for the top defenses, the number one defense had only a two point scoring advantage over the second, and an 18 point difference over the 5th. In 2019, the same table looks like this:</p>
+<br>
+<br>
+<br>
+<div id="uheslssmwm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uheslssmwm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uheslssmwm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uheslssmwm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uheslssmwm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uheslssmwm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uheslssmwm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uheslssmwm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uheslssmwm .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uheslssmwm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uheslssmwm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uheslssmwm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uheslssmwm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uheslssmwm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#uheslssmwm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uheslssmwm .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uheslssmwm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uheslssmwm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uheslssmwm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uheslssmwm .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uheslssmwm .gt_left {
+  text-align: left;
+}
+
+#uheslssmwm .gt_center {
+  text-align: center;
+}
+
+#uheslssmwm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uheslssmwm .gt_font_normal {
+  font-weight: normal;
+}
+
+#uheslssmwm .gt_font_bold {
+  font-weight: bold;
+}
+
+#uheslssmwm .gt_font_italic {
+  font-style: italic;
+}
+
+#uheslssmwm .gt_super {
+  font-size: 65%;
+}
+
+#uheslssmwm .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">scoring</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">1st</td>
+<td class="gt_row gt_left">225</td></tr>
+    <tr><td class="gt_row gt_left">2nd</td>
+<td class="gt_row gt_left">172</td></tr>
+    <tr><td class="gt_row gt_left">5th</td>
+<td class="gt_row gt_left">133</td></tr>
+    <tr><td class="gt_row gt_left">10th</td>
+<td class="gt_row gt_left">118</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<br>
+<br>
+<br>
+<p>This was the year that Elliot had talked about during the draft, the year the NE Patriots defense had carried him to a KFL Championship. This season, they were the highest scoring defense in KFL history, and it was not particularly close. As we can see, the difference between them and 2nd is 53 points, and almost 100 points between first and fifth, obviously a huge margin and a league winning one. In 2018, we the table looks as follows:</p>
+<br>
+<br>
+<br>
+<div id="fakrydsvtq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#fakrydsvtq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fakrydsvtq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fakrydsvtq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fakrydsvtq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fakrydsvtq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fakrydsvtq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fakrydsvtq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fakrydsvtq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fakrydsvtq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fakrydsvtq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fakrydsvtq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fakrydsvtq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fakrydsvtq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#fakrydsvtq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fakrydsvtq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fakrydsvtq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fakrydsvtq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#fakrydsvtq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fakrydsvtq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#fakrydsvtq .gt_left {
+  text-align: left;
+}
+
+#fakrydsvtq .gt_center {
+  text-align: center;
+}
+
+#fakrydsvtq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fakrydsvtq .gt_font_normal {
+  font-weight: normal;
+}
+
+#fakrydsvtq .gt_font_bold {
+  font-weight: bold;
+}
+
+#fakrydsvtq .gt_font_italic {
+  font-style: italic;
+}
+
+#fakrydsvtq .gt_super {
+  font-size: 65%;
+}
+
+#fakrydsvtq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">rank</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">scoring</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">1st</td>
+<td class="gt_row gt_left">177</td></tr>
+    <tr><td class="gt_row gt_left">2nd</td>
+<td class="gt_row gt_left">136</td></tr>
+    <tr><td class="gt_row gt_left">5th</td>
+<td class="gt_row gt_left">121</td></tr>
+    <tr><td class="gt_row gt_left">10th</td>
+<td class="gt_row gt_left">103</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<br>
+<br>
+<br>
+<p>A larger margin than in 2020, but not nearly as large as in 2019. First and second were separated by 41 points, but only 56 between first and fifth. Undoubtedly, the number one scoring defense here was an advantage, but not quite so large as the one in the historic 2019 season. In the limited data we have, we can potentially draw the conclusion that having the number one defense is a distinct positional advantage, and may be worth pursuing. It should be noted, that from the data this applies specifically to the first ranked defense and not the second or third, excepting 2019. There is also always the chance that 2019 and 2018 had outlier defenses to be 40-50 points higher than second place, and that must be taken into consideration with such a small sample size. Unfortunately, scoring data 2018 and prior was unavailable unless hand researching every teams ending scoring total, and beyond doing so for 2018, that was beyond the scope of this analysis.
+At this point in our analysis we have found that a 7th round pick is a relatively high price to pay to try and find a defense, but also that the first scoring defense, depending on season, may be worth doing so because of the distinct positional advantage it gives. The last piece of the analysis is the expected rate that the first defense preseason ends that way, and if it does not, what end of season ranking you can expect. We have three tables for the Top Ten defenses in preseason rankings, and where they ended up for end of season rankings. The tables are as follows:</p>
+<br>
+<br>
+<br>
+<div id="joluyyagvq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#joluyyagvq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#joluyyagvq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#joluyyagvq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#joluyyagvq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#joluyyagvq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#joluyyagvq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#joluyyagvq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#joluyyagvq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#joluyyagvq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#joluyyagvq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#joluyyagvq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#joluyyagvq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#joluyyagvq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#joluyyagvq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#joluyyagvq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#joluyyagvq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#joluyyagvq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#joluyyagvq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#joluyyagvq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#joluyyagvq .gt_left {
+  text-align: left;
+}
+
+#joluyyagvq .gt_center {
+  text-align: center;
+}
+
+#joluyyagvq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#joluyyagvq .gt_font_normal {
+  font-weight: normal;
+}
+
+#joluyyagvq .gt_font_bold {
+  font-weight: bold;
+}
+
+#joluyyagvq .gt_font_italic {
+  font-style: italic;
+}
+
+#joluyyagvq .gt_super {
+  font-size: 65%;
+}
+
+#joluyyagvq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">2020 Preseason</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Team Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Final Finish</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">1st</td>
+<td class="gt_row gt_left">Steelers</td>
+<td class="gt_row gt_left">2nd</td></tr>
+    <tr><td class="gt_row gt_left">2nd</td>
+<td class="gt_row gt_left">Bills</td>
+<td class="gt_row gt_left">9th</td></tr>
+    <tr><td class="gt_row gt_left">3th</td>
+<td class="gt_row gt_left">49ers</td>
+<td class="gt_row gt_left">18th</td></tr>
+    <tr><td class="gt_row gt_left">4th</td>
+<td class="gt_row gt_left">Ravens</td>
+<td class="gt_row gt_left">4th</td></tr>
+    <tr><td class="gt_row gt_left">5th</td>
+<td class="gt_row gt_left">Patriots</td>
+<td class="gt_row gt_left">10th</td></tr>
+    <tr><td class="gt_row gt_left">6th</td>
+<td class="gt_row gt_left">Colts</td>
+<td class="gt_row gt_left">3rd</td></tr>
+    <tr><td class="gt_row gt_left">7th</td>
+<td class="gt_row gt_left">Bears</td>
+<td class="gt_row gt_left">16th</td></tr>
+    <tr><td class="gt_row gt_left">8th</td>
+<td class="gt_row gt_left">Vikings</td>
+<td class="gt_row gt_left">27th</td></tr>
+    <tr><td class="gt_row gt_left">9th</td>
+<td class="gt_row gt_left">Saints</td>
+<td class="gt_row gt_left">7th</td></tr>
+    <tr><td class="gt_row gt_left">10th</td>
+<td class="gt_row gt_left">Buccaneers</td>
+<td class="gt_row gt_left">8th</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="tsuaidcicw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tsuaidcicw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tsuaidcicw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tsuaidcicw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tsuaidcicw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tsuaidcicw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tsuaidcicw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tsuaidcicw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tsuaidcicw .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tsuaidcicw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tsuaidcicw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tsuaidcicw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tsuaidcicw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tsuaidcicw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tsuaidcicw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsuaidcicw .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsuaidcicw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tsuaidcicw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tsuaidcicw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tsuaidcicw .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tsuaidcicw .gt_left {
+  text-align: left;
+}
+
+#tsuaidcicw .gt_center {
+  text-align: center;
+}
+
+#tsuaidcicw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tsuaidcicw .gt_font_normal {
+  font-weight: normal;
+}
+
+#tsuaidcicw .gt_font_bold {
+  font-weight: bold;
+}
+
+#tsuaidcicw .gt_font_italic {
+  font-style: italic;
+}
+
+#tsuaidcicw .gt_super {
+  font-size: 65%;
+}
+
+#tsuaidcicw .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">2019 Preseason</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Team Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Final Finish</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">1st</td>
+<td class="gt_row gt_left">Bears</td>
+<td class="gt_row gt_left">17th</td></tr>
+    <tr><td class="gt_row gt_left">2nd</td>
+<td class="gt_row gt_left">Jags</td>
+<td class="gt_row gt_left">20th</td></tr>
+    <tr><td class="gt_row gt_left">3th</td>
+<td class="gt_row gt_left">Bills</td>
+<td class="gt_row gt_left">7th</td></tr>
+    <tr><td class="gt_row gt_left">4th</td>
+<td class="gt_row gt_left">Rams</td>
+<td class="gt_row gt_left">8th</td></tr>
+    <tr><td class="gt_row gt_left">5th</td>
+<td class="gt_row gt_left">Vikings</td>
+<td class="gt_row gt_left">5th</td></tr>
+    <tr><td class="gt_row gt_left">6th</td>
+<td class="gt_row gt_left">Saints</td>
+<td class="gt_row gt_left">9th</td></tr>
+    <tr><td class="gt_row gt_left">7th</td>
+<td class="gt_row gt_left">Eagles</td>
+<td class="gt_row gt_left">14th</td></tr>
+    <tr><td class="gt_row gt_left">8th</td>
+<td class="gt_row gt_left">Chargers</td>
+<td class="gt_row gt_left">24th</td></tr>
+    <tr><td class="gt_row gt_left">9th</td>
+<td class="gt_row gt_left">Patriots</td>
+<td class="gt_row gt_left">1st</td></tr>
+    <tr><td class="gt_row gt_left">10th</td>
+<td class="gt_row gt_left">Titans</td>
+<td class="gt_row gt_left">10th</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="muciadlaul" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#muciadlaul .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#muciadlaul .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#muciadlaul .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#muciadlaul .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#muciadlaul .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#muciadlaul .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#muciadlaul .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#muciadlaul .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#muciadlaul .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#muciadlaul .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#muciadlaul .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#muciadlaul .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#muciadlaul .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#muciadlaul .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#muciadlaul .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#muciadlaul .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#muciadlaul .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#muciadlaul .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#muciadlaul .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#muciadlaul .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#muciadlaul .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#muciadlaul .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#muciadlaul .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#muciadlaul .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#muciadlaul .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#muciadlaul .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#muciadlaul .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#muciadlaul .gt_left {
+  text-align: left;
+}
+
+#muciadlaul .gt_center {
+  text-align: center;
+}
+
+#muciadlaul .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#muciadlaul .gt_font_normal {
+  font-weight: normal;
+}
+
+#muciadlaul .gt_font_bold {
+  font-weight: bold;
+}
+
+#muciadlaul .gt_font_italic {
+  font-style: italic;
+}
+
+#muciadlaul .gt_super {
+  font-size: 65%;
+}
+
+#muciadlaul .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">2018 Preseason</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Team Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Final Finish</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">1st</td>
+<td class="gt_row gt_left">Jags</td>
+<td class="gt_row gt_left">17th</td></tr>
+    <tr><td class="gt_row gt_left">2nd</td>
+<td class="gt_row gt_left">Eagles</td>
+<td class="gt_row gt_left">20th</td></tr>
+    <tr><td class="gt_row gt_left">3th</td>
+<td class="gt_row gt_left">Rams</td>
+<td class="gt_row gt_left">7th</td></tr>
+    <tr><td class="gt_row gt_left">4th</td>
+<td class="gt_row gt_left">Vikings</td>
+<td class="gt_row gt_left">8th</td></tr>
+    <tr><td class="gt_row gt_left">5th</td>
+<td class="gt_row gt_left">Texans</td>
+<td class="gt_row gt_left">5th</td></tr>
+    <tr><td class="gt_row gt_left">6th</td>
+<td class="gt_row gt_left">Ravens</td>
+<td class="gt_row gt_left">9th</td></tr>
+    <tr><td class="gt_row gt_left">7th</td>
+<td class="gt_row gt_left">Patriots</td>
+<td class="gt_row gt_left">14th</td></tr>
+    <tr><td class="gt_row gt_left">8th</td>
+<td class="gt_row gt_left">Chargers</td>
+<td class="gt_row gt_left">24th</td></tr>
+    <tr><td class="gt_row gt_left">9th</td>
+<td class="gt_row gt_left">Broncos</td>
+<td class="gt_row gt_left">1st</td></tr>
+    <tr><td class="gt_row gt_left">10th</td>
+<td class="gt_row gt_left">Saints</td>
+<td class="gt_row gt_left">10th</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<br>
+<br>
+<br>
+<p>The data on the tables here show that in two of three years, the defense that ended the year first in scoring was not even in the Top Ten on preseason ranking. In no year did more than six of the defenses in the Top Ten rankings end there, and only once did the top defense appear, and at 9th place. In multiple years, the number one ranked defense ended outside the top ten. Out of the top two defenses for the three years, 3 ended outside the top 15, one ended at ninth, one at 13th, and only once did a defense ranked top two return close to value of where they are being picked.
+In our analysis, we showed that the value and potential of a seventh round pick was high enough that it would be very hard to give up. On the other hard, we discovered that having the number one scoring defense can definitely give a positional advantage, and if it can be predicted with a reasonable degree of certainty it is worth pursuing, potentially even into the seventh round. Finally, however, we found that predicting defenses preseason is potentially the hardest out of any position on a fantasy football team, and that it is almost impossible to forecast the top scoring defense in any given year. Combining these facts, it can be reasonably stated that spending a seventh round pick on a defense is demonstrably a horrible choice in constructing a team, and even farther than that, it is likely the best practice wait until one of the final two rounds to draft your defense, given the unpredictable nature of the end of season rankings of defenses.</p>
+<p>Editor’s Note: At time of writing after the fourth week of the season, the Tampa Bay Buccaneers, or the first pick of seventh round of the 2021 KFL Draft, were ranked 10th in scoring for defenses*</p>
+</div>
+</div>

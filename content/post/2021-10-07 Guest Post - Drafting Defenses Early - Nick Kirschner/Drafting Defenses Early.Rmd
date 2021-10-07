@@ -1,0 +1,120 @@
+---
+title: "Drafting Defenses Early"
+author: "Nick Kirschner"
+date: 2020-10-07T13:09:13-06:00
+output: html_document
+---
+
+
+# Drafting Defenses Early: An Analysis
+## Nick Kirschner Owner/GM Nick's Fightin' Ducks
+
+
+
+In this year’s KFL draft, the room was shocked as Elliot’s Warriors announced a defense as their selection with the first pick of the 7th round. As the gathering finished it’s laughter and joking at the 2019 Champion’s expense, Elliot defended himself by pulling on that very title; the 2019 New England Patriots Defense has carried Elliot to his impressive win, before the Warriors collapsed again into last place the following year. His strategy was to replicate that year's title, and to gain an advantage in a position many players would punt until the last few rounds. The logic appeared to have some merit, but would the numbers back it up? To fully investigate data we must find data on a few key variables, namely how likely is it that picking the 1st(or even second or third) defense would result in a season scoring advantage, is that advantage large enough to offset the potential a team leaves by not drafting a position player in the 7th round.
+	To start, we are going to assess what potential we are giving up by drafting a non positional player at the beginning of the second round. Using ADP(Average Draft Position) for the past 3 years, we are going to look at players drafted +/- five picks from the 7.01, or first pick of the seventh round. In 2020, Antonio Gibson(12th scoring rb), JK Dobbins(17th scoring rb), Stefon Diggs(3rd scoring WR), and Brandin Cooks(12th scoring WR) were all selected within our given parameters. In 2019, Austin Ekeler (7th scoring RB), Kenyan Drake (17th rb scoring), Allen Robinson (12th scoring WR), and Jarvis Landry (14th scoring WR), and in 2018  Chris Carson (11th scoring RB), Adrian Peterson (13th RB), Tevin Coleman (14th RB), and Alshon Jeffrey (23rd WR) were all in this same draft range. Missing from this list are quarterbacks, such as Pat Mahomes (2018, 1st scoring QB) who were also in this range. Obviously this list hand picks the best values from each year's draft, and is not meant to show the overall value you will receive from the seventh round, but to show the potential of the pick you are giving up to do so. Statistically, the hit rate, defined here as a player finishing in the top 24 RBs, or top 36 WRS, (Starting players on most teams) is over 100 percent higher in the 7th round, compared to where many teams take their defenses in the 14th round. To reiterate, it is entirely possible to pick a player in the 7th round that will bust, but the rate to hit is far higher than the round in which most defenses are selected.
+	Now that we have at least a passable understanding of the potential and value we are giving up by drafting a defense so early, we should assess if there is a significant positional advantage of the first(and second) ranked defenses over the field. In 2020, the scoring went as follows: 
+
+
+
+```{r table1, echo=FALSE,warning=FALSE,,message=FALSE}
+library(gt)
+library(dplyr)
+
+rank<-c("1st",
+      "2nd",
+      "5th",
+      "10th")
+
+scoring<-(c(139,137,121,91))
+
+table1<-as.data.frame(cbind(rank,scoring))
+
+table1%>%gt()
+
+```
+In what was a low scoring season for the top defenses, the number one defense had only a two point scoring advantage over the second, and an 18 point difference over the 5th. In 2019, the same table looks like this:
+
+```{r table2, echo=FALSE,warning=FALSE,,message=FALSE}
+
+
+rank<-c("1st",
+      "2nd",
+      "5th",
+      "10th")
+
+scoring<-(c(225,172,133,118))
+
+table2<-as.data.frame(cbind(rank,scoring))
+
+table2%>%gt()
+
+```
+
+
+This was the year that Elliot had talked about during the draft, the year the NE Patriots defense had carried him to a KFL Championship. This season, they were the highest scoring defense in KFL history, and it was not particularly close. As we can see, the difference between them and 2nd is 53 points, and almost 100 points between first and fifth, obviously a huge margin and a league winning one. In 2018, we the table looks as follows:
+
+```{r table 3, echo=FALSE,warning=FALSE,,message=FALSE}
+
+
+rank<-c("1st",
+      "2nd",
+      "5th",
+      "10th")
+
+scoring<-(c(177,136,121,103))
+
+table3<-as.data.frame(cbind(rank,scoring))
+
+table3%>%gt()
+
+```
+
+
+A larger margin than in 2020, but not nearly as large as in 2019. First and second were separated by 41 points, but only 56 between first and fifth. Undoubtedly, the number one scoring defense here was an advantage, but not quite so large as the one in the historic 2019 season. In the limited data we have, we can potentially draw the conclusion that having the number one defense is a distinct positional advantage, and may be worth pursuing. It should be noted, that from the data this applies specifically to the first ranked defense and not the second or third, excepting 2019. There is also always the chance that 2019 and 2018 had outlier defenses to be 40-50 points higher than second place, and that must be taken into consideration with such a small sample size. Unfortunately, scoring data 2018 and prior was unavailable unless hand researching every teams ending scoring total, and beyond doing so for 2018, that was beyond the scope of this analysis. 
+	At this point in our analysis we have found that a 7th round pick is a relatively high price to pay to try and find a defense, but also that the first scoring defense, depending on season, may be worth doing so because of the distinct positional advantage it gives. The last piece of the analysis is the expected rate that the first defense preseason ends that way, and if it does not, what end of season ranking you can expect. We have three tables for the Top Ten defenses in preseason rankings, and where they ended up for end of season rankings. The tables are as follows:
+	
+```{r table 4, echo=FALSE,warning=FALSE,,message=FALSE}
+
+
+rank<-c("1st",
+      "2nd",
+      "3th",
+      "4th",
+      "5th",
+      "6th",
+      "7th",
+      "8th",
+      "9th",
+      "10th")
+
+team2020<-(c("Steelers","Bills","49ers","Ravens","Patriots","Colts","Bears","Vikings","Saints","Buccaneers"))
+
+final_rank<-c("2nd","9th","18th","4th","10th","3rd","16th","27th","7th","8th")
+
+table3<-as.data.frame(cbind(rank,team2020,final_rank))
+
+table3%>%gt()%>%cols_label(rank="2020 Preseason",team2020 = "Team Name",final_rank="Final Finish")
+
+
+team2019<-c("Bears","Jags","Bills","Rams","Vikings","Saints","Eagles","Chargers","Patriots","Titans")
+final_rank<-c("17th","20th","7th","8th","5th","9th","14th","24th","1st","10th")
+
+table4<-as.data.frame(cbind(rank,team2019,final_rank))
+table4%>%gt()%>%cols_label(rank="2019 Preseason",team2019 = "Team Name",final_rank="Final Finish")
+
+
+team2018<-c("Jags","Eagles","Rams","Vikings","Texans","Ravens","Patriots","Chargers","Broncos","Saints")
+fainl_rank<-c("13th","19th","3rd","7th","2nd","4th","5th","16th","5th","15th")
+
+table5<-as.data.frame(cbind(rank,team2018,final_rank))
+table5%>%gt()%>%cols_label(rank="2018 Preseason",team2018 = "Team Name",final_rank="Final Finish")
+
+
+```	
+
+The data on the tables here show that in two of three years, the defense that ended the year first in scoring was not even in the Top Ten on preseason ranking. In no year did more than six of the defenses in the Top Ten rankings end there, and only once did the top defense appear, and at 9th place. In multiple years, the number one ranked defense ended outside the top ten. Out of the top two defenses for the three years, 3 ended outside the top 15, one ended at ninth, one at 13th, and only once did a defense ranked top two return close to value of where they are being picked.
+	In our analysis, we showed that the value and potential of a seventh round pick was  high enough that it would be very hard to give up. On the other hard, we discovered that having the number one scoring defense can definitely give a positional advantage, and if it can be predicted with a reasonable degree of certainty it is worth pursuing, potentially even into the seventh round. Finally, however, we found that predicting defenses preseason is potentially the hardest out of any position on a fantasy football team, and that it is almost impossible to forecast the top scoring defense in any given year. Combining these facts, it can be reasonably stated that spending a seventh round pick on a defense is demonstrably a horrible choice in constructing a team, and even farther than that, it is likely the best practice wait until one of the final two rounds to draft your defense, given the unpredictable nature of the end of season rankings of defenses.
+
+
+Editor’s Note: At time of writing after the fourth week of the season, the Tampa Bay Buccaneers, or the first pick of seventh round of the 2021 KFL Draft, were ranked 10th in scoring for defenses*

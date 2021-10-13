@@ -1,7 +1,7 @@
 ---
 title: "Good or Lucky? An Expected Wins Analysis of KFL results"
 author: "Samuel Kirschner"
-date: 2020-10-05T13:09:13-06:00
+date: 2021-10-05T13:09:13-06:00
 output: html_document
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Drafting Defenses Early"
 author: "Nick Kirschner"
-date: 2020-10-07T13:09:13-06:00
+date: 2021-10-07T13:09:13-06:00
 output: html_document
 ---
 

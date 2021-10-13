@@ -1,10 +1,9 @@
 ---
-title: "Weekly Update Template"
-author: "Samuel Kirschner"
-date: "10/7/2021"
+title: "Week 5 2021 Recap"
+author: "Sam Kirschner"
+date: "2021-10-06T13:09:13-06:00"
 output: html_document
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -54,8 +53,13 @@ kfl_franchises<-dbReadTable(kfl_con,"kfl_franchises")
 
 ```
 
+## Week 5 Recap: Monday Night Miracle for the Unlucky Ducks
 
+A massive performance from Lamar Jackson and Mark Andrews helped the once Fightin' Ducks slide past the Slugs in a 148-120 slug fest. The Slug's certainly can count themselves unlucky after putting up 120, but losing out thanks to Lamar Jackson's masterclass second half performance. 
 
+Speaking of luck, the Bluecat's faced a different type of luck or lack thereof, losing Russell Wilson on Thursday night football mid game. This handicap the team and thanks to Dawson Knox's 17 point game compared to Darren Waller's pitiful performance, the Titans squeaked by in a 79-77 game. 
+
+The Sunday Winner's are back on track with a 2-3 season defeating the Kraken who fall to 3-2. The Sunday Winner's are trying to do it the hard way getting no points from their running backs and still pulling out a W. There is a reason Brady is the GOAT. The Tenderloins and SWAB trounced their respective opponents who both have a lot to be GLUM about putting up poor point totals and both at the bottom of the expected wins table.
 ```{r wins over expected model run, echo=FALSE}
 
 
@@ -198,7 +202,11 @@ wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob
 ```
 
 ## Expected Wins power rankings through week 5
+The Sunday Winner's continue to lead the league in expected wins, but they now have a few contenders hot on their tail. The Indiana division takes the next three spots with the Tenderloins, Kraken, and Supermarket Studs all vying for division supremacy. 
 
+Jeff's Slugs unlucky loss this week balances out a lucky win earlier in the season and puts them right at 3 wins which is exactly as expected. Nick's unlucky Ducks(1-4) however, still trail their expected wins significantly. The 4-1 SWAB can count their lucky stars to be sitting with a league leading record even though they sit at 8th in expected wins. Expect a regression at some point for the SWAB
+
+The rest of the table is relatively close, except for the Warriors who own a measly 1.6 expected wins to match their 1-4 record.
 
 
 ```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
@@ -222,14 +230,14 @@ week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt
   cols_label(franchise_name="Team Name",logo="",expected_wins="Expected Wins",wins_over_expected="Wins Over Expected")
 
 
-#theme(aspect.ratio = 1/asp_ratio)
+theme(aspect.ratio = 1/asp_ratio)
 
 # include aspect ratio in ggsave
-#ggsave(
-#  "week4_exp_wins.png", week4_exp_wins, 
-#  # make the width equivalent to the aspect.ratio
-#  height = 20, width = 20 * asp_ratio, dpi = "retina"
-#)
+ggsave(
+  "week5_exp_wins.png", week4_exp_wins, 
+  # make the width equivalent to the aspect.ratio
+  height = 20, width = 20 * asp_ratio, dpi = "retina"
+)
 
 
 
@@ -239,7 +247,7 @@ week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt
 ```
 ## Standings through Week 5
 
-
+The SWAB will look to stay hot on their 4 game winning streak and douse the newly found hopes of the unlucky ducks, while the Bluecats will look to break their 3 game losing streak against the 3-2 Supermarket Studs.The Kraken get a chance to stop the skid against the basement dwelling Warriors. The Tenderloins and Titans face off as well as the Onionheads vs the Slugs in a battle of 3-2 teams to create some separation in the standings. Finally, to round out the weekend, the GMO's hope to cool off the Sunday Winner's and put them further from playoff contention
 
 ```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 
@@ -273,4 +281,3 @@ standings_df<-joined_df%>%select(franchise_name,logo,division_name,Wins,Losses,o
 standings_df
 
 ```
-

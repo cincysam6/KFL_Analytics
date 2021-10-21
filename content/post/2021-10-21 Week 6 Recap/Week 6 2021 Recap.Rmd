@@ -234,14 +234,13 @@ week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt
   cols_label(franchise_name="Team Name",logo="",expected_wins="Expected Wins",wins_over_expected="Wins Over Expected")
 
 
-#theme(aspect.ratio = 1/asp_ratio)
+theme(aspect.ratio = 1/asp_ratio)
 
-# include aspect ratio in ggsave
-#ggsave(
-#  "week4_exp_wins.png", week4_exp_wins, 
-#  # make the width equivalent to the aspect.ratio
-#  height = 20, width = 20 * asp_ratio, dpi = "retina"
-#)
+ #include aspect ratio in ggsave
+ggsave(
+  "week6_exp_wins.png", week4_exp_wins, 
+  # make the width equivalent to the aspect.ratio
+  height = 20, width = 20 * asp_ratio, dpi = "retina")
 
 
 

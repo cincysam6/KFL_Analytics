@@ -5,6 +5,7 @@ date: "2021-10-21T13:09:13-06:00"
 output: html_document
 ---
  
+## Week 6 Recap: SWAB roll to 5 game winning streak
  
 This week didn't see much in the way of any unlucky losses, with the highest probability of win for a loser being Elliot's Warriors at 0.53. The Slugs and SWAB put in a dominating performance overall, while Titan's, Kraken, and the Sunday Winners all topped 90 points to bring home the win.
 

@@ -1,0 +1,290 @@
+---
+title: "Week 7 2021 Recap"
+author: "Sam Kirschner"
+date: 2021-10-25T13:09:13-06:00
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ffscrapr)
+library(dplyr)
+library(ggplot2)
+library(gt)
+library(sqldf)
+library(gtExtras)
+library(tidymodels)
+library(tidyr)
+library(DBI)
+library(ggimage)
+
+
+
+#### INPUT WHAT WEEK IT IS HERE ####
+week_num<-7
+
+swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
+
+ESPN_S2<-"AECkrDCmS9dG4sssE55%2BNQRasW7jwjJVFyEUw6mR2wLFylIkvGy89sVJxc8GMvORMKJaBksVZfGnYB4BXKiM80pkw352zpsk%2BEbMg2ILadghIeMp2iz1Etpke3FMM2pyVdNg23edB2DoYIHMoUT72KS3Ho9bKNLPkkJ761JMh4o4ikTDTeL1uBJYNiahAMg1uvT4mHvszAP1UoDHQGLUPuOLchpl8Os8BsibtvBOTn778ksyx6gU513HRQGrpge7iQ9G04xOeWwYAjXfwcxa%2FCQr3Gx9kECPmidN9%2F7PrHImFQ%3D%3D"
+
+espn_conn_2021 <- espn_connect(
+  season = 2021,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)
+
+kfl_schedule_2021<-ff_schedule(espn_conn_2021)
+
+
+kfl_franchises_2021<-ff_franchises(espn_conn_2021)
+kfl_franchises_2021$logo[10]<-"https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg"
+kfl_franchises_2021$logo[3]<-"https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png"
+
+kfl_db <-"kfl_ff_data" 
+host_db <- "localhost"
+db_port <- "5432"
+db_user <- "postgres"  
+db_password <- "Cincinnati1"
+kfl_con <- dbConnect(RPostgres::Postgres(), dbname = kfl_db, host=host_db, port=db_port, user=db_user, password=db_password)   
+
+kfl_schedule<-dbReadTable(kfl_con,"kfl_schedule")
+kfl_franchises<-dbReadTable(kfl_con,"kfl_franchises")
+
+```
+
+## Week 7 Recap: Lady Luck spurns the Ducks, while SWAB march on
+
+After a week that saw a flurry of questionable trades, the KFL returned to action with an interesting slate of games. The snake bitten Ducks met the injury bitten Bluecats in the most exciting battle of the week. Once again, the Ducks fell despite putting up 104 points and having an 83% probability to win thanks to Alvin Karama's big Monday night. The Ducks fall to 1-6 and look to play the role of playoff spoiler from here on out.
+
+SWAB pulled off another impressive victory over the Tenderloins and move to 6-1 thanks to another breakout rookies Jamaar Chase and Kyle Pitts. The Warriors got their second win on the season after having a full on fire sale of their team. They might also want to thank the NFL schedulers as the Sunday Winners were hard hit during bye-maggedon and will look to get back on track next week.The Sunday Winners have a dominant team, but at this point it will be interesting to see if they can overcome their slow start
+
+The Supermarket Studs were one of the big winners of the trade bonanza, but didn't need the help as the Titans put up a measly 49 points. Meanwhile, the Onionheads beat the Kraken to make the Glum division a tight race. To wrap the week up, The Slugs enjoyed an easy match up against the GMO's who are sputtering at the bottom of their division with the Warriors.
+
+
+```{r wins over expected model run, echo=FALSE}
+
+
+
+score_distribution_data<-sqldf(
+"select a.franchise_id,b.user_name,a.Years,a.week,franchise_score as score_for, opponent_score as score_against
+ from kfl_schedule a
+ left outer join kfl_franchises b 
+ on a.franchise_id = b.franchise_id and a.Years = b.Years
+ where week < 15"
+)
+
+score_distribution_data<-score_distribution_data%>%unite(YR_WK, c("Years","week"),remove = FALSE)
+
+score_distribution_data<-score_distribution_data%>%group_by(YR_WK)%>%mutate(avg_weekly_score=mean(score_for),win = case_when(score_for > score_against ~ 1,score_for < score_against ~ 0))
+
+score_distribution_data$win<-as.factor(score_distribution_data$win)
+
+fitted_logistic_model<- logistic_reg() %>%
+        # Set the engine
+        set_engine("glm") %>%
+        # Set the mode
+        set_mode("classification") %>%
+        # Fit the model
+        fit(win~score_for, data = score_distribution_data)
+
+```
+
+```{r wins over expected model, echo=FALSE,warning=FALSE}
+## 2021 win probs
+
+kfl_2021_win_prob_data<-kfl_schedule_2021%>%rename( score_for = franchise_score)%>%filter(week<=week_num)
+
+pred_prob_2021 <- predict(fitted_logistic_model,
+                          new_data = kfl_2021_win_prob_data,
+                          type = "prob")
+
+colnames(pred_prob_2021)<-c("loss_prob", "win_prob")
+
+kfl_2021_win_prob_data<-cbind(kfl_2021_win_prob_data,pred_prob_2021)
+
+kfl_2021_win_prob_data<-kfl_2021_win_prob_data%>%mutate(win = case_when(score_for > opponent_score ~ 1,score_for < opponent_score ~ 0))
+
+kfl_2021_win_prob_data[37,9]<-1
+kfl_2021_win_prob_data[40,9]<-0
+kfl_2021_win_prob_data[39,9]<-1
+kfl_2021_win_prob_data[44,9]<-0
+
+
+kfl_2021_weekly_data<-sqldf("SELECT A.*,B.franchise_name,B.franchise_abbrev,B.logo,C.franchise_name as opponent_franchise,C.franchise_abbrev as opponent_abbrev,C.logo as opponent_logo
+      FROM kfl_2021_win_prob_data A
+      LEFT OUTER JOIN kfl_franchises_2021 B
+      on a.franchise_id = b.franchise_id
+      LEFT OUTER JOIN kfl_franchises_2021 C
+      on a.opponent_id = c.franchise_id")
+```
+
+```{r wk4 review, echo=FALSE,warning=FALSE,,message=FALSE}
+
+wk4_matchups<-kfl_2021_weekly_data%>%filter(week==week_num &win==1)
+
+
+############################## UPDATE THE WEEK #####################################################
+wk4_matchups<-sqldf("select A.*,B.win_prob as opp_win_prob
+                    FROM wk4_matchups A
+                    LEFT OUTER JOIN kfl_2021_weekly_data B
+                    ON A.opponent_id=B.franchise_id
+                    WHERE B.week = 7")
+
+wk4_matchups<-wk4_matchups%>%select(franchise_name,logo,win_prob,score_for,opponent_score,opp_win_prob,opponent_logo,opponent_franchise)
+
+
+########################## UPDATE THE TITLE OF THE TAB HEADER #######################################
+wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob,2))%>%gt()%>%gt_img_rows(logo)%>%gt_img_rows(opponent_logo)%>%
+  tab_header(title ="Week 7 matchups")%>%
+  cols_label(franchise_name="Winning Team",logo="",win_prob= "Win Probability",score_for="Score",opponent_score="Score",opp_win_prob="Win Probability",opponent_logo="",opponent_franchise="Losing Team")%>%
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "left",
+        color = "black",
+        weight = px(3)
+      )
+    ),
+    locations = list(
+      cells_body(
+        columns = vars(opponent_score)
+      )
+    )
+  ) %>%
+  # We use tab_style() to change style of cells
+  # cell_borders() provides the formatting
+  # locations tells it where
+  # Add black borders to the bottom of all the column labels
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "bottom",
+        color = "black",
+        weight = px(3)
+      )
+    ),
+    locations = list(
+      cells_column_labels(
+        columns = gt::everything()
+      )
+    )
+  )%>%
+   data_color(
+    columns = vars(score_for),
+    colors = scales::col_numeric(
+      palette = c("#c9ecb4"),
+      domain = NULL
+    ))%>%
+   data_color(
+    columns = vars(win_prob),
+    colors = scales::col_numeric(
+      palette = c("#ffffff", "#f2fbd2", "#c9ecb4", "#93d3ab", "#35b0ab"),
+      domain = NULL
+    ))%>%
+   data_color(
+    columns = vars(opponent_score),
+    colors = scales::col_numeric(
+      palette = c("#EF9A9AFF"),
+      domain = NULL
+    ))%>%
+   data_color(
+    columns = vars(opp_win_prob),
+    colors = scales::col_numeric(
+      # Using a function from paletteer to generate a vector of colors
+      # Note that you need to wrap paletteer_d outputs in as.character()
+      palette = as.character(paletteer::paletteer_d("ggsci::red_material", n = 5)),
+      # Domain is from scales::col_numeric
+      # Domain = The possible values that can be mapped
+      # We don't HAVE to set a range for this since
+      # we're using it inside data_color()
+      domain = NULL
+    ))
+
+```
+
+## Expected Wins power rankings through week 7
+
+We have a new expected wins leader in the SWAB at 4.8. The Kraken, Supermarket Studs, and Sunday Winners are hot on SWAB's tail at 4.5 expected wins and these four franchises look to be seperating themselves from the pack at the mid-season mark. Below them, the Tenderloins and Slugs sit at 4.3 expected wins fighting to keep relevance in their highly competitive divisions. 
+
+The Unlucky Ducks are living up to their names with only 1 win despite 4.2 expected wins on the season. The -3.2 wins over expected is the largest gap we've seen since 2018 and they are well on pace to smash the previous record of -2.6 expected wins on a season. 
+
+Ruwe's Onionheads have opened up a gap on the Titans at the top of the Glum division (4.1 vs 3.5 expected wins) while the GMO's and Warriors battle at the bottom with 2.8 expected wins in joint ownership of worst in the league. To round us out, the Bluecats sit where they can expect to be at 3 wins, just a shade under the 3.3 expected wins and certainly viewing every week from here on out as a must win scenario.
+
+```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo,franchise_abbrev)%>%group_by(franchise_id,franchise_name,franchise_abbrev,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = wins - expected_wins)%>%arrange(expected_wins)
+
+week_4_table<-kfl_wins_over_expected%>%select(franchise_id,franchise_name,franchise_abbrev,logo,wins,expected_wins,wins_over_expected)%>%mutate(expected_wins = round(expected_wins,1), wins_over_expected = round(wins_over_expected,1))%>%arrange(desc(expected_wins))
+
+week_4_table<-as.data.frame(week_4_table[,c(2:7)])
+
+asp_ratio <- 1.618 
+
+
+################### UPDATE PLOT TITLE ##############################
+week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,expected_wins),y=expected_wins))+geom_bar(stat="identity")+geom_image(aes(x=franchise_abbrev,y=expected_wins,image=logo), size = 0.05, by = "width", asp = asp_ratio
+)+coord_flip()+ggtitle("Expected Wins through Week 7") + xlab("franchise") + ylab("expected wins")+theme(axis.title.x = element_text(size=14),axis.title.y=element_text(size=14),axis.text = element_text(size = 12),plot.title = element_text(size = 18))
+
+week4_exp_wins
+
+################### UPDATE TABLE TITLE ##############################
+week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt()%>%gt_img_rows(logo) %>%tab_header(title ="Expected Wins through Week 7")%>%
+  cols_label(franchise_name="Team Name",logo="",expected_wins="Expected Wins",wins_over_expected="Wins Over Expected")
+
+
+#theme(aspect.ratio = 1/asp_ratio)
+
+# include aspect ratio in ggsave
+#ggsave(
+#  "week4_exp_wins.png", week4_exp_wins, 
+#  # make the width equivalent to the aspect.ratio
+#  height = 20, width = 20 * asp_ratio, dpi = "retina"
+#)
+
+
+
+
+
+
+```
+## Standings through Week 7
+
+The standings through week 7 show a dominate SWAB team lead by JaMarr Chase, Pitts, and a pair of Packers at the top of the table with a 6-1 record. The Slugs continue to keep pace in the Ohio division at 5-2 and open a gap between the 3-4 Bluecats and Sunday Winners. The Sunday Winners have a dominant roster, but also a tough hill to climb for what will likely be a highly competitive wild card again this year. 
+
+The Supermarket Studs roll on with a continuation of their 4 game winning streak as this historically bad franchise is looking to make a new name for themselves in the KFL. The Unlucky Ducks sit at the bottom of the table with a 1-6 record and given their tough division will likely be dreaming of next year. The Kraken's stranglehold on the Indiana Division has slipped as they now fall to second place and will look to right the ship next week. 
+
+In the Glum Division, the GMO's are sputtering having lost 5 of their last 6 while the Warriors get the win and the brothers are tied at 2-5. At the top of the division we have a pair of unconvincing 4-3 teams in the Titans and Onionheads. Are we heading for another 4 way tie of 7-7 teams in the Glum division?
+
+
+```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+
+kfl_standings_wk4<-kfl_2021_weekly_data%>%filter(week<=week_num)
+
+franchise_id<-1:12
+division_name<-c("Ohio","Glum","Ohio","Indiana","Glum","Ohio","Ohio","Indiana","Indiana","Glum","Glum","Indiana")
+kfl_division<-as.data.frame(cbind(franchise_id,division_name))
+kfl_division$franchise_id<-as.numeric(kfl_division$franchise_id)
+
+
+kfl_division_data<- sqldf("Select A.*,B.division_name
+      from kfl_standings_wk4 A
+      left outer join kfl_division B
+      on A.Franchise_ID = B.Franchise_ID
+      ")
+
+team_df<-kfl_division_data%>%filter(week == 1)%>%select(franchise_id,franchise_name,logo,division_name)
+
+joined_df<-kfl_division_data%>%select(franchise_id,franchise_name,logo,division_name,win)%>%group_by(franchise_name,franchise_id)%>%summarise(
+         Wins = length(win[win==1]),
+         Losses = length(win[win==0]),
+         outcomes = list(win), .groups = "drop") %>% 
+     left_join(team_df, by = c("franchise_id" = "franchise_id","franchise_name"="franchise_name")) %>% 
+     select(logo,franchise_name, division_name, Wins:outcomes)
+ 
+
+###################### NEED TO UPDATE THE TITLE HEADER FOR WEEK  ##########################
+standings_df<-joined_df%>%select(franchise_name,logo,division_name,Wins,Losses,outcomes)%>%gt(groupname_col="division_name")%>%gt_plt_winloss(outcomes,max_wins = 14)%>%gt_img_rows(logo)%>%tab_header(title ="Standings Through Week 7")%>%cols_label(franchise_name="Team",logo="",outcomes="Win-Loss Streak")
+
+standings_df
+
+```
+

@@ -1,0 +1,1263 @@
+---
+title: "Week 12 2021 Recap"
+author: "Sam Kirschner"
+date: 2022-02-13T13:09:13-06:00
+output: html_document
+---
+
+
+
+<div id="bwmrlcksbd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#bwmrlcksbd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bwmrlcksbd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bwmrlcksbd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bwmrlcksbd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bwmrlcksbd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bwmrlcksbd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bwmrlcksbd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bwmrlcksbd .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bwmrlcksbd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bwmrlcksbd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bwmrlcksbd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bwmrlcksbd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bwmrlcksbd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#bwmrlcksbd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwmrlcksbd .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwmrlcksbd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bwmrlcksbd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bwmrlcksbd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bwmrlcksbd .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bwmrlcksbd .gt_left {
+  text-align: left;
+}
+
+#bwmrlcksbd .gt_center {
+  text-align: center;
+}
+
+#bwmrlcksbd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bwmrlcksbd .gt_font_normal {
+  font-weight: normal;
+}
+
+#bwmrlcksbd .gt_font_bold {
+  font-weight: bold;
+}
+
+#bwmrlcksbd .gt_font_italic {
+  font-style: italic;
+}
+
+#bwmrlcksbd .gt_super {
+  font-size: 65%;
+}
+
+#bwmrlcksbd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Week 12 matchups</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;">Winning Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;">Win Probability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;">Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;">Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;">Win Probability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;">Losing Team</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Elliot's Warriors</td>
+<td class="gt_row gt_left"><img src="https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #EDF9CF; color: #000000;">0.43</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">81</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">77</td>
+<td class="gt_row gt_right" style="background-color: #EF5350; color: #000000;">0.36</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_left">Ruwes Onionheads</td></tr>
+    <tr><td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #35B0AB; color: #000000;">0.95</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">121</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">68</td>
+<td class="gt_row gt_right" style="background-color: #EF9A9A; color: #000000;">0.21</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td></tr>
+    <tr><td class="gt_row gt_left">Alex's Kraken</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">0.23</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">69</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">59</td>
+<td class="gt_row gt_right" style="background-color: #FFD3D8; color: #000000;">0.12</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_left">Kurt's The Tenderloins</td></tr>
+    <tr><td class="gt_row gt_left">Sam’s Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #AFDFB0; color: #000000;">0.68</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">94</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">66</td>
+<td class="gt_row gt_right" style="background-color: #F4A8A9; color: #000000;">0.19</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/StarWarsTheRiseOfSkywalker/rise-skywalker-chewy.svg" style="height:30px;"></td>
+<td class="gt_row gt_left">Cincinnati Anti-SWAB</td></tr>
+    <tr><td class="gt_row gt_left">Supermarket Studs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/FrozenTundra-ToddDetwiler/TundraPack_12_01.svg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #F4FBD7; color: #000000;">0.39</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">79</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">50</td>
+<td class="gt_row gt_right" style="background-color: #FFEBEE; color: #000000;">0.06</td>
+<td class="gt_row gt_left"><img src="https://pbs.twimg.com/profile_images/1203309062106091521/PnljwHfF_400x400.jpg" style="height:30px;"></td>
+<td class="gt_row gt_left">Nick's Unlucky Ducks</td></tr>
+    <tr><td class="gt_row gt_left">Scott's TITANS</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #CEEEB7; color: #000000;">0.57</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">88</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">69</td>
+<td class="gt_row gt_right" style="background-color: #ED908F; color: #000000;">0.23</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_left">Michael's GMOs</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="expected-wins-power-rankings-through-week-12" class="section level2">
+<h2>Expected Wins power rankings through week 12</h2>
+<p><img src="/post/2022-02-14 Week 12 Recap/Week%2012%202021%20Recap_files/figure-html/expected_wins-1.png" width="960" /></p>
+<div id="pfuwpwrhma" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pfuwpwrhma .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pfuwpwrhma .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pfuwpwrhma .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pfuwpwrhma .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pfuwpwrhma .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pfuwpwrhma .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pfuwpwrhma .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pfuwpwrhma .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pfuwpwrhma .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pfuwpwrhma .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pfuwpwrhma .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pfuwpwrhma .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pfuwpwrhma .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#pfuwpwrhma .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pfuwpwrhma .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pfuwpwrhma .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pfuwpwrhma .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pfuwpwrhma .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pfuwpwrhma .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pfuwpwrhma .gt_left {
+  text-align: left;
+}
+
+#pfuwpwrhma .gt_center {
+  text-align: center;
+}
+
+#pfuwpwrhma .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pfuwpwrhma .gt_font_normal {
+  font-weight: normal;
+}
+
+#pfuwpwrhma .gt_font_bold {
+  font-weight: bold;
+}
+
+#pfuwpwrhma .gt_font_italic {
+  font-style: italic;
+}
+
+#pfuwpwrhma .gt_super {
+  font-size: 65%;
+}
+
+#pfuwpwrhma .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Expected Wins through Week 12</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Team Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Expected Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Wins Over Expected</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Supermarket Studs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/FrozenTundra-ToddDetwiler/TundraPack_12_01.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">7.5</td>
+<td class="gt_row gt_right">1.5</td></tr>
+    <tr><td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">7.1</td>
+<td class="gt_row gt_right">1.9</td></tr>
+    <tr><td class="gt_row gt_left">Alex's Kraken</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">6.8</td>
+<td class="gt_row gt_right">0.2</td></tr>
+    <tr><td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_right">6.5</td>
+<td class="gt_row gt_right">-1.5</td></tr>
+    <tr><td class="gt_row gt_left">Cincinnati Anti-SWAB</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/StarWarsTheRiseOfSkywalker/rise-skywalker-chewy.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">6.4</td>
+<td class="gt_row gt_right">0.6</td></tr>
+    <tr><td class="gt_row gt_left">Scott's TITANS</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_right">6.0</td>
+<td class="gt_row gt_right">3.0</td></tr>
+    <tr><td class="gt_row gt_left">Sam’s Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">5.9</td>
+<td class="gt_row gt_right">0.1</td></tr>
+    <tr><td class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td class="gt_row gt_left"><img src="https://pbs.twimg.com/profile_images/1203309062106091521/PnljwHfF_400x400.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">5.4</td>
+<td class="gt_row gt_right">-2.4</td></tr>
+    <tr><td class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">5.1</td>
+<td class="gt_row gt_right">0.9</td></tr>
+    <tr><td class="gt_row gt_left">Michael's GMOs</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">4.7</td>
+<td class="gt_row gt_right">-0.7</td></tr>
+    <tr><td class="gt_row gt_left">Ruwes Onionheads</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_right">4.7</td>
+<td class="gt_row gt_right">-0.7</td></tr>
+    <tr><td class="gt_row gt_left">Elliot's Warriors</td>
+<td class="gt_row gt_left"><img src="https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">3.8</td>
+<td class="gt_row gt_right">-0.8</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="standings-through-week-12" class="section level2">
+<h2>Standings through Week 12</h2>
+<div id="nvhtvdgenz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nvhtvdgenz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nvhtvdgenz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nvhtvdgenz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nvhtvdgenz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nvhtvdgenz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nvhtvdgenz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nvhtvdgenz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nvhtvdgenz .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nvhtvdgenz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nvhtvdgenz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nvhtvdgenz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nvhtvdgenz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nvhtvdgenz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#nvhtvdgenz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nvhtvdgenz .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nvhtvdgenz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nvhtvdgenz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nvhtvdgenz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nvhtvdgenz .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nvhtvdgenz .gt_left {
+  text-align: left;
+}
+
+#nvhtvdgenz .gt_center {
+  text-align: center;
+}
+
+#nvhtvdgenz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nvhtvdgenz .gt_font_normal {
+  font-weight: normal;
+}
+
+#nvhtvdgenz .gt_font_bold {
+  font-weight: bold;
+}
+
+#nvhtvdgenz .gt_font_italic {
+  font-style: italic;
+}
+
+#nvhtvdgenz .gt_super {
+  font-size: 65%;
+}
+
+#nvhtvdgenz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Standings Through Week 12</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Losses</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Win-Loss Streak</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Ohio</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='1.89' x2='5.05' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.26' y1='8.91' x2='9.26' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.46' y1='1.89' x2='13.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='17.67' y1='1.89' x2='17.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='21.88' y1='8.91' x2='21.88' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='26.09' y1='1.89' x2='26.09' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='30.30' y1='1.89' x2='30.30' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.50' y1='1.89' x2='34.50' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='38.71' y1='1.89' x2='38.71' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='42.92' y1='1.89' x2='42.92' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='47.13' y1='8.91' x2='47.13' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='51.34' y1='1.89' x2='51.34' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Cincinnati Anti-SWAB</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/StarWarsTheRiseOfSkywalker/rise-skywalker-chewy.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='8.91' x2='5.05' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.26' y1='1.89' x2='9.26' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.46' y1='1.89' x2='13.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='17.67' y1='1.89' x2='17.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='21.88' y1='1.89' x2='21.88' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='26.09' y1='1.89' x2='26.09' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='30.30' y1='1.89' x2='30.30' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.50' y1='8.91' x2='34.50' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='38.71' y1='8.91' x2='38.71' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='42.92' y1='1.89' x2='42.92' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='47.13' y1='8.91' x2='47.13' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='51.34' y1='8.91' x2='51.34' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Sam’s Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='1.89' x2='5.05' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.26' y1='1.89' x2='9.26' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.46' y1='8.91' x2='13.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='17.67' y1='8.91' x2='17.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='21.88' y1='8.91' x2='21.88' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='26.09' y1='8.91' x2='26.09' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='30.30' y1='1.89' x2='30.30' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.50' y1='1.89' x2='34.50' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='38.71' y1='8.91' x2='38.71' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='42.92' y1='8.91' x2='42.92' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='47.13' y1='1.89' x2='47.13' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='51.34' y1='1.89' x2='51.34' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='8.91' x2='5.05' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.26' y1='8.91' x2='9.26' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.46' y1='8.91' x2='13.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='17.67' y1='1.89' x2='17.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='21.88' y1='1.89' x2='21.88' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='26.09' y1='1.89' x2='26.09' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='30.30' y1='8.91' x2='30.30' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.50' y1='8.91' x2='34.50' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='38.71' y1='8.91' x2='38.71' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='42.92' y1='1.89' x2='42.92' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='47.13' y1='1.89' x2='47.13' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='51.34' y1='8.91' x2='51.34' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Glum</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Scott's TITANS</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='8.91' x2='5.05' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.26' y1='8.91' x2='9.26' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.46' y1='1.89' x2='13.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='17.67' y1='1.89' x2='17.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='21.88' y1='1.89' x2='21.88' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='26.09' y1='1.89' x2='26.09' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='30.30' y1='8.91' x2='30.30' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.50' y1='1.89' x2='34.50' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='38.71' y1='1.89' x2='38.71' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='42.92' y1='1.89' x2='42.92' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='47.13' y1='1.89' x2='47.13' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='51.34' y1='1.89' x2='51.34' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Michael's GMOs</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">8</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='1.89' x2='5.05' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.26' y1='8.91' x2='9.26' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.46' y1='8.91' x2='13.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='17.67' y1='1.89' x2='17.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='21.88' y1='8.91' x2='21.88' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='26.09' y1='8.91' x2='26.09' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='30.30' y1='8.91' x2='30.30' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.50' y1='1.89' x2='34.50' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='38.71' y1='1.89' x2='38.71' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='42.92' y1='8.91' x2='42.92' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='47.13' y1='8.91' x2='47.13' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='51.34' y1='8.91' x2='51.34' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Ruwes Onionheads</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">8</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='1.89' x2='5.05' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.26' y1='1.89' x2='9.26' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.46' y1='1.89' x2='13.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='17.67' y1='8.91' x2='17.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='21.88' y1='8.91' x2='21.88' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='26.09' y1='8.91' x2='26.09' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='30.30' y1='1.89' x2='30.30' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.50' y1='8.91' x2='34.50' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='38.71' y1='8.91' x2='38.71' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='42.92' y1='8.91' x2='42.92' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='47.13' y1='8.91' x2='47.13' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='51.34' y1='8.91' x2='51.34' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Elliot's Warriors</td>
+<td class="gt_row gt_left"><img src="https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">9</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='8.91' x2='5.05' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.26' y1='1.89' x2='9.26' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.46' y1='8.91' x2='13.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='17.67' y1='8.91' x2='17.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='21.88' y1='8.91' x2='21.88' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='26.09' y1='8.91' x2='26.09' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='30.30' y1='1.89' x2='30.30' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.50' y1='8.91' x2='34.50' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='38.71' y1='8.91' x2='38.71' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='42.92' y1='8.91' x2='42.92' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='47.13' y1='8.91' x2='47.13' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='51.34' y1='1.89' x2='51.34' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Indiana</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Supermarket Studs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/FrozenTundra-ToddDetwiler/TundraPack_12_01.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='1.89' x2='5.05' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.26' y1='8.91' x2='9.26' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.46' y1='8.91' x2='13.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='17.67' y1='1.89' x2='17.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='21.88' y1='1.89' x2='21.88' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='26.09' y1='1.89' x2='26.09' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='30.30' y1='1.89' x2='30.30' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.50' y1='1.89' x2='34.50' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='38.71' y1='8.91' x2='38.71' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='42.92' y1='1.89' x2='42.92' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='47.13' y1='1.89' x2='47.13' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='51.34' y1='1.89' x2='51.34' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Alex's Kraken</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='1.89' x2='5.05' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.26' y1='1.89' x2='9.26' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.46' y1='1.89' x2='13.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='17.67' y1='8.91' x2='17.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='21.88' y1='8.91' x2='21.88' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='26.09' y1='1.89' x2='26.09' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='30.30' y1='8.91' x2='30.30' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.50' y1='8.91' x2='34.50' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='38.71' y1='1.89' x2='38.71' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='42.92' y1='8.91' x2='42.92' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='47.13' y1='1.89' x2='47.13' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='51.34' y1='1.89' x2='51.34' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='8.91' x2='5.05' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.26' y1='1.89' x2='9.26' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.46' y1='1.89' x2='13.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='17.67' y1='8.91' x2='17.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='21.88' y1='1.89' x2='21.88' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='26.09' y1='8.91' x2='26.09' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='30.30' y1='8.91' x2='30.30' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.50' y1='1.89' x2='34.50' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='38.71' y1='1.89' x2='38.71' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='42.92' y1='1.89' x2='42.92' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='47.13' y1='8.91' x2='47.13' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='51.34' y1='8.91' x2='51.34' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td class="gt_row gt_left"><img src="https://pbs.twimg.com/profile_images/1203309062106091521/PnljwHfF_400x400.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">9</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='64.80pt' height='10.80pt' viewBox='0 0 64.80 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw2NC44MHwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='64.80' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw2NC44MHwwLjAwfDEwLjgw)'><line x1='5.05' y1='8.91' x2='5.05' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.26' y1='8.91' x2='9.26' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.46' y1='8.91' x2='13.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='17.67' y1='8.91' x2='17.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='21.88' y1='1.89' x2='21.88' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='26.09' y1='8.91' x2='26.09' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='30.30' y1='8.91' x2='30.30' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.50' y1='8.91' x2='34.50' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='38.71' y1='1.89' x2='38.71' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='42.92' y1='8.91' x2='42.92' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='47.13' y1='1.89' x2='47.13' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='51.34' y1='8.91' x2='51.34' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>

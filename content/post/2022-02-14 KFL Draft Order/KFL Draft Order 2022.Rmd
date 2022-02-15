@@ -1,0 +1,30 @@
+---
+title: "KFL 2022 Draft Order"
+author: "Sam Kirschner"
+date: "2/14/2022"
+output: html_document
+---
+
+
+## KFL 2022 Draft Standings
+
+After another exciting KFL season it is time to start looking forward to the 2022 KFL draft. Below is the 2022 KFL Draft order. As a reminder to how the order is determined the rules are as follows
+
+1) Your record determines your draft order unless you made the playoffs. The 4 playoff teams have their draft order determined by playoff performance
+2) In the case of a tie record for non-playoff teams, your performance in the consolation round determines seeding. So if two teams tie in record, the team that wins their consolation round game(s) will get the higher draft position. 
+  - If the teams with a tie record both win their first round consolation game, it moves on to the second round. If teams with tie records win both conosolation games then the tiebreaker is points for. 
+
+
+2022 KFL DRAFT ORDER
+1) Elliot's Warriors (4-10; Round 1 Tiebreaker Winner)
+2) Nick's Unlucky Ducks (4-10; Round 1 Tiebreaker Loser)
+3) Michael's GMO's (5-9)
+4) Kurt's Tenderloins (6-8; Round 1 Tiebreaker Winner)
+5) Ruwe's Onionheads (6-8; Round 1 Tiebreaker Loser)
+6) Joe Sunerman's Sunday Winners (7-7; Round 1 Tiebreaker Winner)
+7) Sam's Bluecats (7-7; Round 1 Tiebreaker Loser)
+8) Cincinnati SWAB (8-6)
+9) Alex's Kraken
+10) Scott's Titans (3rd Place Winner)
+11) Supermarket Studs (2nd Place Winner)
+12) Jeff's Slugs (1st Place Winner)

@@ -1,0 +1,543 @@
+---
+title: "KFL-NFL Franchise Similarity: Which NFL Franchise Are You?"
+author: "Sam Kirschner"
+date: 2021-12-01T13:09:13-06:00
+output: html_document
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(DBI)
+library(sqldf)
+library(dplyr)
+library(gt)
+library(gtExtras)
+library(ggplot2)
+library(tidyverse)
+library(ffscrapr)
+week_num<-6
+
+swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
+
+ESPN_S2<-"AECkrDCmS9dG4sssE55%2BNQRasW7jwjJVFyEUw6mR2wLFylIkvGy89sVJxc8GMvORMKJaBksVZfGnYB4BXKiM80pkw352zpsk%2BEbMg2ILadghIeMp2iz1Etpke3FMM2pyVdNg23edB2DoYIHMoUT72KS3Ho9bKNLPkkJ761JMh4o4ikTDTeL1uBJYNiahAMg1uvT4mHvszAP1UoDHQGLUPuOLchpl8Os8BsibtvBOTn778ksyx6gU513HRQGrpge7iQ9G04xOeWwYAjXfwcxa%2FCQr3Gx9kECPmidN9%2F7PrHImFQ%3D%3D"
+
+espn_conn_2021 <- espn_connect(
+  season = 2021,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)
+
+kfl_schedule_2021<-ff_schedule(espn_conn_2021)
+
+
+kfl_franchises_2021<-ff_franchises(espn_conn_2021)
+kfl_franchises_2021$logo[10]<-"https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg"
+kfl_franchises_2021$logo[3]<-"https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png"
+
+team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
+```
+
+
+```{r pullindata, echo=FALSE}
+kfl_db <-"kfl_ff_data" 
+host_db <- "localhost"
+db_port <- "5432"
+db_user <- "postgres"  
+db_password <- "Cincinnati1"
+kfl_con <- dbConnect(RPostgres::Postgres(), dbname = kfl_db, host=host_db, port=db_port, user=db_user, password=db_password)
+
+kfl_h2h<-dbReadTable(kfl_con,"kfl_head_to_head_results")
+
+### CLEAN THE TIES ####
+kfl_h2h<-kfl_h2h%>%unite(game_id,c("Years","week","franchise_id","opponent_id"),remove=FALSE)
+tie_games<-kfl_h2h%>%filter(result=="T")
+tie_games$win<-c(1,0,1,0,0,1,1,0,1,0,1,0,0,1,0,1,0,1,1,0,0,1,1,0,1,0,0,1,0,1,0,1,1,0,1,0,1,0,0,1,1,0,0,1)
+tie_game_update<-sqldf("Select A.*,B.win as tie_win
+      From kfl_h2h A
+      Left outer Join tie_games B
+      on A.game_id = B.game_id")
+
+tie_game_update<-tie_game_update%>%mutate(wins = ifelse(is.na(tie_win),win,tie_win))
+kfl_h2h$win<-tie_game_update$wins
+
+### GENERATE PRE AND POST EXPANSION ###
+post_expansion_h2h<-kfl_h2h%>%filter(week<15 & Years>2012)%>%select(week,Years,franchise_id,franchise_name,franchise_score,opponent_id,opponent_score,opp_franchise_name,win)
+pre_expansion_h2h<-kfl_h2h%>%filter(week<16 & Years<2013)%>%select(week,Years,franchise_id,franchise_name,franchise_score,opponent_id,opponent_score,opp_franchise_name,win)
+
+h2h_data<-as.data.frame(rbind(post_expansion_h2h,pre_expansion_h2h))
+
+reg_season_all_time<-h2h_data%>%group_by(franchise_id)%>%summarise(n=n(),
+                                              wins=sum(win),
+                                              win_pct = wins/n)
+
+reg_season_all_time<-left_join(reg_season_all_time,kfl_franchises_2021,by="franchise_id")
+
+post_expansion_h2h_plyfs<-kfl_h2h%>%filter(week>15 & Years>2012)%>%select(week,Years,franchise_id,franchise_name,franchise_score,opponent_id,opponent_score,opp_franchise_name,win)
+pre_expansion_h2h<-kfl_h2h%>%filter(week>16 & Years<2013)%>%select(week,Years,franchise_id,franchise_name,franchise_score,opponent_id,opponent_score,opp_franchise_name,win)
+
+h2h_data<-as.data.frame(rbind(post_expansion_h2h,pre_expansion_h2h))
+
+
+
+team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.rds"))
+
+
+
+
+```
+
+# Methodology
+## The Data
+The KFL data used for this analysis went back to 2007. All data prior to the ESPN era of the KFL has been lost to time so sadly, winning percentages and titles are now simply oral history and aren't included in this analysis. For the NFL data, I used data on pro football reference about each franchise. All time winning percentage, playoff appearances and division titles go back to the founding of each franchise which sometimes was pre-NFL era and sometimes post-NFL era. Titles, however was limited to Superbowls. So the Chicago Bears 9 titles don't count in this analysis, but instead they have 1 super bowl win.  
+
+The variables we used to calculate the similarity score are:
+1) All Time Winning Percentage
+2) The percent of division titles (in the KFL this is determined by best record in the division. Ties lead to co-champions)
+3) Percentage of seasons making the playoffs
+4) Playoff Winning Percentage
+5) Number of titles
+
+These variables are what we are using to determine which KFL franchise is most similar to which NFL franchise
+
+## Calculating a Similarity Score
+
+To help you understand the calculation of the similarity score, I will start with an intuitive, less math-y explanation and then follow with a more mathematical explanation of the process. 
+
+The way the similarity score is calculated is by taking each of the variables and finding the "distance" between the KFL team's variable and each of the NFL team's variables. For example, Scott's Titans have a 0.5198 winning percentage. The Cleveland Browns at a 0.5120 winning percentage are "more similar" to Scott's Titans than the Cincinnati Bengals at a 0.447 winning percentage because the distance to the Browns (0.5198-0.5120 = 0.0078) is closer than to the Bengals (0.5198-0.447 = 0.0728). We do this across all teams and all 5 variables used in the similarity score. I give a bit more value to winning titles and all time win percentage than the other variables. Once I compute the similarity to each NFL franchise, I subset to the 3 closest franchises which are the 3 franchises with the smallest similarity score compared to the KFL franchise we are looking at. 
+
+
+The more technical explanation is that I used an euclidean distance calculation across the five variables after using a min-max normalization on all 5 variables to confine the distances between 0 and 1 and thus treat KFL titles, which is an integer variable, the same as winning percentage which maxes out at 1. Had I not done this, variables with larger values would drown out the other variables with smaller values. I used weights which were somewhat arbitarily selected to get better matching on the title variable. I wanted overall winning percentage, titles, and percentage of seasons in  the playoffs to outweigh the other two variables. Particularly overall winning percentage and titles seem the two best defining features of a franchise. It is what truly distinguishes the Green Bay Packers from the Arizona Cardinals. 
+
+
+```{r pressure, echo=FALSE}
+kfl_data<-read.csv("kfl_alltime.csv")
+nfl_data<-read.csv("nfl_alltime.csv")
+
+kfl_data<-sqldf("Select A.*,B.logo
+                from kfl_data A
+                left outer join kfl_franchises_2021 B
+                ON A.franchise_id = B.franchise_id")
+
+
+ ##the normalization function is created
+ nor <-function(x) { (x -min(x))/(max(x)-min(x))   }
+ 
+ ##Run nomalization on first 4 coulumns of dataset because they are the predictors
+ nfl_norm <- as.data.frame(lapply(nfl_data[,c(2:5,8)], nor))
+ 
+ kfl_norm<-as.data.frame(lapply(kfl_data[,c(5,9,19:21)], nor))
+ 
+
+rs_win_pct_wt<-.21
+p_win_pct_wt<-.1
+div_pct_wt<-.15
+title_wt<-.225
+p_pct_wt<-.2
+
+kfl_norm$franchise_id<-kfl_data$franchise_id
+
+for(i in 1:12){
+kfl_fran<-kfl_norm%>%filter(franchise_id==i)
+
+nfl_norm[ , paste0("fran_", i)]<-sqrt((rs_win_pct_wt*(kfl_fran$win_pct-nfl_norm$Reg_Seas_W_L_PCT)^2)+
+(title_wt*(kfl_fran$championships - nfl_norm$SBwl)^2)+
+(div_pct_wt*(kfl_fran$division_pct - nfl_norm$div_champ_pct)^2)+
+(p_pct_wt*(kfl_fran$playoff_pct - nfl_norm$plyf_pct)^2)+
+(p_win_pct_wt*(kfl_fran$playoff_win_pct - nfl_norm$Plyoff_W_L_PCT)^2))
+}
+
+nfl_norm$Team<-nfl_data$Tm
+
+#nfl_norm%>%arrange(fran_1)%>%select(fran_1,Team)%>%head(3)
+# nfl_norm%>%arrange(fran_2)%>%select(fran_2,Team)%>%head(3)
+# nfl_norm%>%arrange(fran_3)%>%select(fran_3,Team)%>%head(3)
+ #nfl_norm%>%arrange(fran_4)%>%select(fran_4,Team)%>%head(3)
+ #nfl_norm%>%arrange(fran_5)%>%select(fran_5,Team)%>%head(3)
+ #nfl_norm%>%arrange(fran_6)%>%select(fran_6,Team)%>%head(3)
+ #nfl_norm%>%arrange(fran_7)%>%select(fran_7,Team)%>%head(3)
+ #nfl_norm%>%arrange(fran_8)%>%select(fran_8,Team)%>%head(3)
+#  nfl_norm%>%arrange(fran_9)%>%select(fran_9,Team)%>%head(3)
+#   nfl_norm%>%arrange(fran_10)%>%select(fran_10,Team)%>%head(3)
+#    nfl_norm%>%arrange(fran_11)%>%select(fran_11,Team)%>%head(4)
+#     nfl_norm%>%arrange(fran_12)%>%select(fran_12,Team)%>%head(3)
+     
+ 
+```
+# Results
+## Jeffs Slugs
+
+The Slugs are our first KFL franchise to evaluate and they are most similar to the Tampa Bay Buccaneers. Historically, both franchises have low all time winning percentages relative to the rest of the league. Both the Bucs and Slugs have known some truly miserable years. However, both teams have earned titles and have a fairly good winning percentage when they do find their way into the playoffs. The Saints also appear quite comparable, with a more similar all-time winning percentage, but a much lower playoff winning percentage than the Slugs. The one area both teams differ is in percent of division titles. The Slugs have won their divsion 28% of the time, but the Bucs are half that at about 14%. 
+
+```{r Franchise 1 Jeffs Slugs, echo=FALSE}
+kfl_data%>%filter(franchise_id==1)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+fr1<-nfl_norm%>%arrange(fran_1)%>%select(fran_1,Team)%>%head(3)
+fr1_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr1 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+sqldf("Select A.*,B.team_wordmark
+      from fr1_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_1=round(fran_1,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_1 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Joe Ruwe's Onionheads
+
+The Onionhead's most comparable team turns out to be the Carolina Panthers. They both have 48% all time winning percentages and both teams make the playoffs in a similar percentage of their seasons. The Onionheads, though can boast a KFL title and have a really high playoff winning percentage at 62%. That said, the Panthers 53% winning percentage is very good for the NFL which might be why these two franchises are so similar. 
+
+
+
+```{r Franchise 2 Joe Ruwe Onionheads, echo=FALSE}
+kfl_data%>%filter(franchise_id==2)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+ fr2<-nfl_norm%>%arrange(fran_2)%>%select(fran_2,Team)%>%head(3)
+fr2_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr2 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+sqldf("Select A.*,B.team_wordmark
+      from fr2_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_2=round(fran_2,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_2 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Joe Sunderman's Sunday Winners
+
+Joe Sunderman's Sunday Winners have the strongest comparison score yet (0.149) with the Los Angeles Rams. They both have 1 title which is probably what puts the Rams above the Raiders or Broncos in this comparison. 
+
+```{r Franchise 3 Joe S Sunday Winners, echo=FALSE}
+kfl_data%>%filter(franchise_id==3)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+fr3<-nfl_norm%>%arrange(fran_3)%>%select(fran_3,Team)%>%head(4)
+fr3<-fr3[c(2:4),]
+
+
+fr3_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr3 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+fr3_tbl<-sqldf("Select A.*,B.team_wordmark
+      from fr3_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")
+
+fr3_tbl[c(2:4),]%>%mutate(fran_3=round(fran_3,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_3 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+
+
+```
+## Kurt's Tenderloins
+
+Kurt's Tenderloins sit atop the KFL in the modern area with three championships and have a dominant playoff winning percentage that only makes the NFL elite an apt comparison. While the Tenderloin's regular season success doesn't tread near their nearest comparables, the playoff success exhibited by the Tenderloin's leads them to be most similar to the Pittsburgh Steelers. 
+
+
+```{r Franchise 4 Kurts Tenderloins, echo=FALSE}
+kfl_data%>%filter(franchise_id==4)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+ fr4<-nfl_norm%>%arrange(fran_4)%>%select(fran_4,Team)%>%head(3)
+fr4_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr4 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+
+sqldf("Select A.*,B.team_wordmark
+      from fr4_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_4=round(fran_4,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_4 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Scott's Titans
+
+Speaking of title towns, the Titan's haven't done too poorly at winning championships either. Based on very similar winning percentages, playoff appearance percentage and number of titles, the Titan's are most similar to the New York Giants. While this may pain a Jets fan, the Titan's can at least take solace in their two KFL titles and being compared to a historically winning franchise. The other comparables for the Titans were the 49ers and Raiders, so while the Titan's comparables aren't truly the elite of the NFL, they can still consider themselves among some of the historically better franchises of the NFL.
+
+```{r Franchise 5 Scotts Titans, echo=FALSE}
+kfl_data%>%filter(franchise_id==5)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+fr5<-nfl_norm%>%arrange(fran_5)%>%select(fran_5,Team)%>%head(3)
+fr5_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr5 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+
+sqldf("Select A.*,B.team_wordmark
+      from fr5_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_5=round(fran_5,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_5 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Sam's Bluecats
+The younger set may not recall a time when the Browns were even semi-respectable, but in their long and storied history the Cleveland Browns did have some winning success, with a high percentage of division titles and frequent playoff appearances. When it came to winning in the playoffs however, the Browns showed a level of ineptitude that make them a perfect comparison to the Bluecat's. The Bluecat's have not had much success in the post-season in the modern KFL era.
+
+Despite a second best all time KFL record, a bevy of division titles and making the playoffs over a third of the time, the Bluecats abysmal 20% win percentage in the playoffs and no KFL titles in the modern era make the Browns the most similar NFL franchise by quite some distance. The other similar NFL franchises (Chargers and Vikings) also exhibit the type of winning regular season culture and poor playoff performance that the Bluecat's have come to be known for. 
+
+```{r Franchise 6 Sams Bluecats, echo=FALSE}
+kfl_data%>%filter(franchise_id==6)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+ fr6<-nfl_norm%>%arrange(fran_6)%>%select(fran_6,Team)%>%head(3)
+fr6_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr6 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+sqldf("Select A.*,B.team_wordmark
+      from fr6_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_6=round(fran_6,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_6 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Wills SWAB
+
+Will's SWAB spent quite a bit of time living in Indiana so it is only apt that they end up with the Indianapolis Colts as their NFL franchise. Both the SWAB and Colts have had modest success in their respective leagues. Both franchises hover slightly above .500 winning percentage in the regular season, they have both enjoyed 30%+ division championships and make the playoffs roughly every other year. Neither franchise is great in the playoffs with sub .500 winning percentage in the playoffs. However, even though they don't often win in the playoffs, they both have titles in the trophy cabinet. 
+
+
+```{r Franchise 7 Wills SWAB, echo=FALSE}
+kfl_data%>%filter(franchise_id==7)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+
+ fr7<-nfl_norm%>%arrange(fran_7)%>%select(fran_7,Team)%>%head(3)
+fr7_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr7 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+fr7_tbl<-sqldf("Select A.*,B.team_wordmark
+      from fr7_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")
+
+
+fr7_tbl[c(1:3),]%>%mutate(fran_7=round(fran_7,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_7 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Nick's Unlucky Ducks
+
+Nick's Unlucky Ducks would love the Bronco's comparison and while that is the second most similar franchise, they are actually more similar to the division rivals Las Vegas Raiders. Both franchises are quite successful when it comes to titles, 3 for the Raiders and 2 for the Ducks. They both do quite well in the playoffs and they both have a respectable 53% All-Time Winning percentage.  The slightly higher division championship percent and playoff winning percent for the Raiders is what made them most comparable to the Ducks instead of the Broncos. 
+
+```{r Franchise 8 Nicks Unlucky DUcks, echo=FALSE}
+kfl_data%>%filter(franchise_id==8)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+ fr8<-nfl_norm%>%arrange(fran_8)%>%select(fran_8,Team)%>%head(3)
+fr8_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr8 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+sqldf("Select A.*,B.team_wordmark
+      from fr8_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_8=round(fran_8,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_8 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+
+## Alex Kraken
+
+Has there been a more successful franchise that can't get it done in the playoffs than the Vikings? That would be Alex's Krakens. This is one of the more similar KFL - NLF franchises with a similarity score of 0.108. Both Franchises are top tier in the regular season. 58% leads the league for the Kraken and the Vikings 54.5% is exceptionally high for the NFL. They also make the playoffs more than half the time and win their division frequently. Both teams however, don't get it done in the playoffs. No titles, and abysmal playoff winning percentages.  The other two comparables, the Browns and Colts, aren't really that close. The Kraken can't shake the Vikings Curse. 
+
+```{r Franchise 9 Alex Kraken, echo=FALSE}
+kfl_data%>%filter(franchise_id==9)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+  fr9<-nfl_norm%>%arrange(fran_9)%>%select(fran_9,Team)%>%head(3)
+  fr9_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr9 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+  
+  
+  sqldf("Select A.*,B.team_wordmark
+      from fr9_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_9=round(fran_9,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_9 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Elliot's Warriors
+
+Similarity Analysis and Clustering always has a bit of art and judgement involved. Sometimes, you look for things you just know to be true to validate your formula. In this case, the Warriors and the Jets are like peanut butter and jelly and when I saw this I knew I was on to something. Both of these are franchises that are absolute dumpster fires that are questionably managed in the best of times. The Warriors have had about as many headscratching drafts as the Jets and are prone to wild decisions like trading the entire team.
+
+Even with that said,both franchises can somehow claim one title to their name. Across all our metrics the comparison is apt. 44% Win percentage for the Jets compared to a measly 42.5% for the warriors. Both teams rarely win their division -  Both teams sit at just 7%. They also aren't likely to show up in the playoffs with both teams making the playoffs less than 25% of the time. The only divergence is the Warriors have a stellar playoff winning percentage because when the occasionally make it they seem to make it to the title. I guess even a broken clock can be right twice a day.
+
+The Cardinals and Jaguars are also very apt comparisons to Elliot's Warriors, but we all knew it had to be the one the only NEW YORK JETS!
+
+```{r Franchise 10 Elliots Warriors, echo=FALSE}
+kfl_data%>%filter(franchise_id==10)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+   el<-nfl_norm%>%arrange(fran_10)%>%select(fran_10,Team)
+   el<-el[c(2:4),]%>%select(fran_10,Team)
+    fr10_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM el A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+    
+    
+    sqldf("Select A.*,B.team_wordmark
+      from fr10_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_10=round(fran_10,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_10 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+
+## Michael's GMOS
+
+This comparison was a weird one, but it makes sense that such a fraught, complex, confusing franchise like the Washington Football Team would be compared to Michael's GMOs. This is a franchise that has historically struggled in the regular season, but has found incredible playoff success. Both franchises have less than 50% win percentage in the regular season and actually make it to the playoffs only about a quarter of the time, but when they make it to the playoffs they have exceptional success. The GMO's have 2 titles and the WFT have 3 and both teams have high playoff winning percentage relative to their respective leagues. To be fair, the Buccaneers are exceptionally close in similarity score as well, but the mercurial Washington Football Team are the GMO's NFL franchise.  
+
+
+```{r Franchise 11 Michaels GMOS, echo=FALSE}
+
+kfl_data%>%filter(franchise_id==11)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+  fr11<- nfl_norm%>%arrange(fran_11)%>%select(fran_11,Team)%>%head(3)
+fr11_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr11 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+
+sqldf("Select A.*,B.team_wordmark
+      from fr11_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_11=round(fran_11,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_11 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```
+## Max's Supermarket Studs
+
+We can't have an NFL comparison of the KFL without having one team at least be associated with the Bengals. That sad honor falls on Max's Supermarket Studs. This historically bad KFL franchise has league lowest winning percentage of .428 compared to the Bengals equally sad .447. They find themselves in the playoffs just 1 in every 4 years and are absymal when they get there. In fact, Max has never won a playoff game in the KFL and the Bengals have a sad .263 playoff winning percentage. The nail in the coffin is both franchises have never reached the glory land. In fact, all the comparables for Max have never won a title. What made the Bengals stick out over the Titans or Falcons was the exceptionally poor playoff winning percentage. No one should have to deal with the pain of being a Bengals fan and running a fantasy team that can be compared to the Bengals. 
+
+
+
+```{r Franchise 12 Maxs Supermarket Studs, echo=FALSE}
+kfl_data%>%filter(franchise_id==12)%>%select(franchise_name,win_pct,championships,division_pct,playoff_pct,playoff_win_pct,logo)%>%gt()%>%fmt_percent(columns=win_pct,decimals=2)%>%fmt_percent(columns=division_pct,decimals=2)%>%fmt_percent(columns=playoff_pct,decimals=2)%>%fmt_percent(columns=playoff_win_pct,decimals=2)%>%cols_label(win_pct = "All Time Winning Percentage",
+                                            championships = "Titles",
+                                            division_pct = "Division Championship Percentage",
+                                            playoff_pct = "Percent of Seasons in Playoffs",
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+
+
+fr12<-nfl_norm%>%arrange(fran_12)%>%select(fran_12,Team)%>%head(3)
+fr12_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
+         FROM fr12 A
+         LEFT OUTER JOIN nfl_data B
+         ON A.Team=B.Tm")
+
+
+sqldf("Select A.*,B.team_wordmark
+      from fr12_nfl A
+      left outer join team_df B
+      on A.Team=B.team_name")%>%mutate(fran_12=round(fran_12,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_12 = "Similarity Score",
+                                              Reg_Seas_W_L_PCT = "All Time Winning Percentage",
+                                              SBwl = "Titles",
+                                              div_champ_pct="Division Championship Percentage",
+                                              plyf_pct="Percent of Seasons in Playoffs",
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+```

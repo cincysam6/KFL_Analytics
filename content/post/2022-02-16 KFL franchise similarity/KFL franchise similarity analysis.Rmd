@@ -177,7 +177,7 @@ kfl_data%>%filter(franchise_id==1)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 fr1<-nfl_norm%>%arrange(fran_1)%>%select(fran_1,Team)%>%head(3)
 fr1_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
@@ -189,7 +189,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr1_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_1=round(fran_1,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_1 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_1 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -207,7 +207,7 @@ kfl_data%>%filter(franchise_id==2)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
  fr2<-nfl_norm%>%arrange(fran_2)%>%select(fran_2,Team)%>%head(3)
@@ -220,7 +220,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr2_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_2=round(fran_2,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_2 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_2 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -236,7 +236,7 @@ kfl_data%>%filter(franchise_id==3)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 fr3<-nfl_norm%>%arrange(fran_3)%>%select(fran_3,Team)%>%head(4)
 fr3<-fr3[c(2:4),]
@@ -253,7 +253,7 @@ fr3_tbl<-sqldf("Select A.*,B.team_wordmark
       on A.Team=B.team_name")
 
 fr3_tbl[c(2:4),]%>%mutate(fran_3=round(fran_3,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_3 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_3 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -272,7 +272,7 @@ kfl_data%>%filter(franchise_id==4)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
  fr4<-nfl_norm%>%arrange(fran_4)%>%select(fran_4,Team)%>%head(3)
 fr4_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
@@ -285,7 +285,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr4_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_4=round(fran_4,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_4 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_4 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -301,7 +301,7 @@ kfl_data%>%filter(franchise_id==5)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 fr5<-nfl_norm%>%arrange(fran_5)%>%select(fran_5,Team)%>%head(3)
 fr5_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
@@ -314,7 +314,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr5_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_5=round(fran_5,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_5 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_5 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -331,7 +331,7 @@ kfl_data%>%filter(franchise_id==6)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
  fr6<-nfl_norm%>%arrange(fran_6)%>%select(fran_6,Team)%>%head(3)
@@ -344,7 +344,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr6_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_6=round(fran_6,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_6 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_6 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -361,7 +361,7 @@ kfl_data%>%filter(franchise_id==7)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
 
@@ -378,7 +378,7 @@ fr7_tbl<-sqldf("Select A.*,B.team_wordmark
 
 
 fr7_tbl[c(1:3),]%>%mutate(fran_7=round(fran_7,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_7 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_7 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -394,7 +394,7 @@ kfl_data%>%filter(franchise_id==8)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
  fr8<-nfl_norm%>%arrange(fran_8)%>%select(fran_8,Team)%>%head(3)
@@ -407,7 +407,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr8_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_8=round(fran_8,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_8 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_8 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -424,7 +424,7 @@ kfl_data%>%filter(franchise_id==9)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
   fr9<-nfl_norm%>%arrange(fran_9)%>%select(fran_9,Team)%>%head(3)
@@ -438,7 +438,7 @@ kfl_data%>%filter(franchise_id==9)%>%select(franchise_name,win_pct,championships
       from fr9_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_9=round(fran_9,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_9 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_9 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -458,7 +458,7 @@ kfl_data%>%filter(franchise_id==10)%>%select(franchise_name,win_pct,championship
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
    el<-nfl_norm%>%arrange(fran_10)%>%select(fran_10,Team)
@@ -473,7 +473,7 @@ kfl_data%>%filter(franchise_id==10)%>%select(franchise_name,win_pct,championship
       from fr10_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_10=round(fran_10,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_10 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_10 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -492,7 +492,7 @@ kfl_data%>%filter(franchise_id==11)%>%select(franchise_name,win_pct,championship
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
   fr11<- nfl_norm%>%arrange(fran_11)%>%select(fran_11,Team)%>%head(3)
@@ -506,7 +506,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr11_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_11=round(fran_11,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_11 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_11 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
@@ -524,7 +524,7 @@ kfl_data%>%filter(franchise_id==12)%>%select(franchise_name,win_pct,championship
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)%>%cols_width(logo~px(100))
 
 
 fr12<-nfl_norm%>%arrange(fran_12)%>%select(fran_12,Team)%>%head(3)
@@ -538,7 +538,7 @@ sqldf("Select A.*,B.team_wordmark
       from fr12_nfl A
       left outer join team_df B
       on A.Team=B.team_name")%>%mutate(fran_12=round(fran_12,3))%>%gt()%>%cols_move(columns=team_wordmark,after=Team)%>%fmt_percent(
-  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_label(fran_12 = "Similarity Score",
+  columns=Reg_Seas_W_L_PCT,decimals=2)%>%fmt_percent(columns=div_champ_pct,decimals=2 )%>%fmt_percent(plyf_pct,decimals=2)%>%fmt_percent(Plyoff_W_L_PCT,decimals=2)%>%cols_width(team_wordmark ~px(100))%>%cols_label(fran_12 = "Similarity Score",
                                               Reg_Seas_W_L_PCT = "All Time Winning Percentage",
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",

@@ -86,13 +86,13 @@ team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/tea
 
 ```
 # Introduction
-Note: This analysis was conducted before the end of the 2021 KFL Season
+Note: This analysis was conducted before the end of the 2021 KFL AND NFL Season. The Slugs and Rams titles do not play into these figures. 
 
-Have you ever wondered which NFL franchise best embodies your KFL team? Which team you should have an emotional connection to because like them, you are a perennial KFL powerhouse with multiple titles. Or maybe you are successful franchise that has been snakebitten in the playoff. Or quite possibly you can't manage to climb out of the KFL basement. Question no more! This is your definitive guide to identifying your NFL franchise based on franchise attributes.
+Have you ever wondered which NFL franchise best embodies your KFL team? Which team you should have an emotional connection to because you share the fact that you are a perennial KFL powerhouse with multiple titles. Or maybe you are a successful franchise that has been snakebitten in the playoff. Or quite possibly you can't manage to climb out of the KFL basement. Question no more! This is your definitive guide to identifying your NFL franchise based on franchise attributes.
 
 # Methodology
 ## The Data
-The KFL data used for this analysis went back to 2007. All data prior to the ESPN era of the KFL has been lost to time so sadly, winning percentages and titles are now simply oral history and aren't included in this analysis. For the NFL data, I used data on pro football reference about each franchise. All time winning percentage, playoff appearances and division titles go back to the founding of each franchise which sometimes was pre-NFL era and sometimes post-NFL era. Titles, however was limited to Superbowls. So the Chicago Bears 9 titles don't count in this analysis, but instead they have 1 super bowl win.  
+The KFL data used for this analysis went back to 2007. Courtesy to Tan Ho for his ffverse package making the data quite accessible. All data prior to the ESPN era of the KFL has been lost to time so sadly, winning percentages and titles are now simply oral history and aren't included in this analysis. For the NFL data, I used data on pro football reference about each franchise. All time winning percentage, playoff appearances and division titles go back to the founding of each franchise which sometimes was pre-NFL era and sometimes post-NFL era. Titles, however was limited to Superbowls. So the Chicago Bears 9 titles don't count in this analysis, but instead they have 1 super bowl win.  
 
 The variables we used to calculate the similarity score are:
 1) All Time Winning Percentage
@@ -101,16 +101,16 @@ The variables we used to calculate the similarity score are:
 4) Playoff Winning Percentage
 5) Number of titles
 
-These variables are what we are using to determine which KFL franchise is most similar to which NFL franchise
+These variables are what we are using to determine which KFL franchise is most similar to their respective NFL franchise.
 
 ## Calculating a Similarity Score
 
 To help you understand the calculation of the similarity score, I will start with an intuitive, less math-y explanation and then follow with a more mathematical explanation of the process. 
 
-The way the similarity score is calculated is by taking each of the variables and finding the "distance" between the KFL team's variable and each of the NFL team's variables. For example, Scott's Titans have a 0.5198 winning percentage. The Cleveland Browns at a 0.5120 winning percentage are "more similar" to Scott's Titans than the Cincinnati Bengals at a 0.447 winning percentage because the distance to the Browns (0.5198-0.5120 = 0.0078) is closer than to the Bengals (0.5198-0.447 = 0.0728). We do this across all teams and all 5 variables used in the similarity score. I give a bit more value to winning titles and all time win percentage than the other variables. Once I compute the similarity to each NFL franchise, I subset to the 3 closest franchises which are the 3 franchises with the smallest similarity score compared to the KFL franchise we are looking at. 
+The way the similarity score is calculated is by taking each of the variables and finding the "distance" between the KFL team's variable value and each of the NFL team's value. For example, Scott's Titans have a 0.5198 winning percentage. The Cleveland Browns with a 0.5120 winning percentage are "more similar" to Scott's Titans than the Cincinnati Bengals at a 0.447 winning percentage because the distance to the Browns (0.5198-0.5120 = 0.0078) is closer than to the Bengals (0.5198-0.447 = 0.0728). We do this across all teams and all 5 variables used in the similarity score. I give a bit more value to winning titles and all time win percentage than the other variables. Once I compute the similarity to each NFL franchise, I subset to the 3 closest franchises which are the 3 franchises with the smallest similarity score compared to the KFL franchise we are looking at. Those are the franchises we consider "similar" to the KFL franchise.  
 
 
-The more technical explanation is that I used an euclidean distance calculation across the five variables after using a min-max normalization on all 5 variables to confine the distances between 0 and 1 and thus treat KFL titles, which is an integer variable, the same as winning percentage which maxes out at 1. Had I not done this, variables with larger values would drown out the other variables with smaller values. I used weights which were somewhat arbitarily selected to get better matching on the title variable. I wanted overall winning percentage, titles, and percentage of seasons in  the playoffs to outweigh the other two variables. Particularly overall winning percentage and titles seem the two best defining features of a franchise. It is what truly distinguishes the Green Bay Packers from the Arizona Cardinals. 
+The more technical explanation is that I used an euclidean distance calculation across the five variables after using a min-max normalization on all 5 variables to confine the distances between 0 and 1 and thus treat KFL titles, which is an integer variable, the same as winning percentage which maxes out at 1. Had I not done this, variables with larger values would drown out the other variables with smaller values. I used weights which were somewhat arbitrary to get better matching on the title variable. I wanted overall winning percentage, titles, and percentage of seasons in  the playoffs to outweigh the other two variables. Particularly overall winning percentage and titles seem the two best defining features of a franchise. It is what truly distinguishes the Green Bay Packers from the Arizona Cardinals. 
 
 
 ```{r pressure, echo=FALSE}

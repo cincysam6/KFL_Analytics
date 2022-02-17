@@ -1,7 +1,7 @@
 ---
 title: "KFL-NFL Franchise Similarity: Which NFL Franchise Are You?"
 author: "Sam Kirschner"
-date: 2021-02-20T13:09:13-06:00
+date: 2021-02-16T13:09:13-06:00
 output: html_document
 ---
 

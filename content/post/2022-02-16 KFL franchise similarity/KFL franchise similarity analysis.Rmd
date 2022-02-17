@@ -1,7 +1,7 @@
 ---
 title: "KFL-NFL Franchise Similarity: Which NFL Franchise Are You?"
 author: "Sam Kirschner"
-date: 2021-02-16T13:09:13-06:00
+date: 2022-02-16T13:09:13-06:00
 output: html_document
 ---
 
@@ -85,6 +85,10 @@ team_df <- readRDS(url("https://github.com/nflverse/nflfastR-data/raw/master/tea
 
 
 ```
+# Introduction
+Note: This analysis was conducted before the end of the 2021 KFL Season
+
+Have you ever wondered who was 
 
 # Methodology
 ## The Data
@@ -173,7 +177,7 @@ kfl_data%>%filter(franchise_id==1)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 fr1<-nfl_norm%>%arrange(fran_1)%>%select(fran_1,Team)%>%head(3)
 fr1_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
@@ -190,7 +194,7 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Joe Ruwe's Onionheads
 
@@ -203,7 +207,7 @@ kfl_data%>%filter(franchise_id==2)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
  fr2<-nfl_norm%>%arrange(fran_2)%>%select(fran_2,Team)%>%head(3)
@@ -221,7 +225,7 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Joe Sunderman's Sunday Winners
 
@@ -232,7 +236,7 @@ kfl_data%>%filter(franchise_id==3)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 fr3<-nfl_norm%>%arrange(fran_3)%>%select(fran_3,Team)%>%head(4)
 fr3<-fr3[c(2:4),]
@@ -254,7 +258,7 @@ fr3_tbl[c(2:4),]%>%mutate(fran_3=round(fran_3,3))%>%gt()%>%cols_move(columns=tea
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 
 
 ```
@@ -268,7 +272,7 @@ kfl_data%>%filter(franchise_id==4)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
  fr4<-nfl_norm%>%arrange(fran_4)%>%select(fran_4,Team)%>%head(3)
 fr4_nfl<-sqldf("SELECT A.*,B.Reg_Seas_W_L_PCT,B.SBwl,B.div_champ_pct,B.plyf_pct,B.Plyoff_W_L_PCT
@@ -286,7 +290,7 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Scott's Titans
 
@@ -327,7 +331,7 @@ kfl_data%>%filter(franchise_id==6)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
  fr6<-nfl_norm%>%arrange(fran_6)%>%select(fran_6,Team)%>%head(3)
@@ -345,7 +349,7 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Wills SWAB
 
@@ -357,7 +361,7 @@ kfl_data%>%filter(franchise_id==7)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
 
@@ -379,7 +383,7 @@ fr7_tbl[c(1:3),]%>%mutate(fran_7=round(fran_7,3))%>%gt()%>%cols_move(columns=tea
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Nick's Unlucky Ducks
 
@@ -390,7 +394,7 @@ kfl_data%>%filter(franchise_id==8)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
  fr8<-nfl_norm%>%arrange(fran_8)%>%select(fran_8,Team)%>%head(3)
@@ -408,7 +412,7 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 
 ## Alex Kraken
@@ -420,7 +424,7 @@ kfl_data%>%filter(franchise_id==9)%>%select(franchise_name,win_pct,championships
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
   fr9<-nfl_norm%>%arrange(fran_9)%>%select(fran_9,Team)%>%head(3)
@@ -439,7 +443,7 @@ kfl_data%>%filter(franchise_id==9)%>%select(franchise_name,win_pct,championships
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Elliot's Warriors
 
@@ -454,7 +458,7 @@ kfl_data%>%filter(franchise_id==10)%>%select(franchise_name,win_pct,championship
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
    el<-nfl_norm%>%arrange(fran_10)%>%select(fran_10,Team)
@@ -474,7 +478,7 @@ kfl_data%>%filter(franchise_id==10)%>%select(franchise_name,win_pct,championship
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 
 ## Michael's GMOS
@@ -488,7 +492,7 @@ kfl_data%>%filter(franchise_id==11)%>%select(franchise_name,win_pct,championship
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
   fr11<- nfl_norm%>%arrange(fran_11)%>%select(fran_11,Team)%>%head(3)
@@ -507,7 +511,7 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```
 ## Max's Supermarket Studs
 
@@ -520,7 +524,7 @@ kfl_data%>%filter(franchise_id==12)%>%select(franchise_name,win_pct,championship
                                             championships = "Titles",
                                             division_pct = "Division Championship Percentage",
                                             playoff_pct = "Percent of Seasons in Playoffs",
-                                            playoff_win_pct = "Playoff Winning Percentage",logo="")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
+                                            playoff_win_pct = "Playoff Winning Percentage",logo="Team Logo")%>%cols_move(columns=logo,after=franchise_name)%>%gt_img_rows(logo)
 
 
 fr12<-nfl_norm%>%arrange(fran_12)%>%select(fran_12,Team)%>%head(3)
@@ -539,5 +543,5 @@ sqldf("Select A.*,B.team_wordmark
                                               SBwl = "Titles",
                                               div_champ_pct="Division Championship Percentage",
                                               plyf_pct="Percent of Seasons in Playoffs",
-                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="")%>%gt_img_rows(team_wordmark)
+                                              Plyoff_W_L_PCT="Playoff Winning Percentage",team_wordmark="Team Logo")%>%gt_img_rows(team_wordmark)
 ```

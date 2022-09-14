@@ -1,7 +1,7 @@
 ---
-title: "Weekly Update Template"
+title: "Week 1 2022 Recap"
 author: "Samuel Kirschner"
-date: "10/7/2021"
+date: "9/12/2022"
 output: html_document
 ---
 
@@ -57,8 +57,11 @@ kfl_schedule<-dbReadTable(kfl_con,"kfl_schedule")
 kfl_franchises<-dbReadTable(kfl_con,"kfl_franchise")
 
 ```
+## Week 1 Recap
 
+Nothing like a first week bloodbath in toughest division in the KFL with the first and second highest scoring teams playing one another. A tough break for the Cincinnati Monarchs putting up above 100 points and taking the L. Sometimes we overthink things in this league, but in the KFL the quarterback still reigns and Patrick Mahomes 44 points would have handed the Tenderloins a loss all by themselves. 
 
+The Kraken get off to a hot start and look to be a force to be reckoned with yet again, but playing against an historical bad Tenderloin team made the 98 points a bit excessive. We had a couple of basement scraps with The Bluecats and Ducks scoring below 80 and still coming home with the dub, and Elliot's Last Good Tight End and Scott's Titans took the win in the Glum division.
 
 ```{r wins over expected model run, echo=FALSE}
 
@@ -203,7 +206,7 @@ wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob
 
 ## Expected Wins power rankings through week 1 2022
 
-
+The Monarchs had an 80% win probability with the points they put up, but came up unlucky facing a stiff opponent and start with -0.80 Wins over expected.  They look to be a tough opponent going forward. On the opposite end of the spectrum, The Tenderloins start out with a 0.01 Expected wins so there is only up to go from here. The Bluecats are looking to be the lucky team right now with 0.66 wins over expected.
 
 ```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo,franchise_abbrev)%>%group_by(franchise_id,franchise_name,franchise_abbrev,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = wins - expected_wins)%>%arrange(expected_wins)%>%na.omit()
@@ -282,7 +285,13 @@ standings_df
 graph_data = starters%>%mutate(lineup_slot = ifelse(lineup_slot == 'RB/WR',pos,lineup_slot))%>%filter(week==week_num)%>%select(franchise_name,lineup_slot,player_score)%>%group_by(franchise_name,lineup_slot)%>%mutate(position_scoring = sum(player_score))%>%select(-player_score)%>%distinct()
 ```
 
+## Studs and Duds
+
+A new feature this year will be the Stud and Dud of the week. I will highlight the players that disappointed the most or put up an unlikely performance and peformed well over expectation (according to ESPN projections). Other new features to come in following weeks, but I've been banging away at this laptop for too long. Enjoy.
+
 ## Stud of the Week
+
+I refuse to comment on this. 
 
 
 ```{r stud, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
@@ -323,7 +332,9 @@ stud_table
 ```
 ## Dud of the Week
 
-```{r stud, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+Dud of the week goes to Cowboys Quarterback Dak Prescott. We love to kick a guy while he is down and while this is partially due to his injury, Dak and the Cowboys office looked putrid. Those with stock in Cowboys players should be worried because they look like they may be one of the worst teams in the league. Dak gets the inaugural dud of the week and gets a nice long break as Cooper Rush takes his job after going for 300 yards and 4 touchdowns against the Bengals next week. 
+
+```{r dud, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 dud_table <- dud%>%select(franchise_name,player_name,logo,team,player_score,projected_score,proj_diff) %>%
   gt() %>%
   text_transform(

@@ -18,7 +18,7 @@ library(tidymodels)
 library(tidyr)
 library(DBI)
 library(ggimage)
-remotes::install_github("jthomasmock/espnscrapeR")
+#remotes::install_github("jthomasmock/espnscrapeR")
 library(espnscrapeR)
 
 
@@ -43,6 +43,7 @@ starters<-ff_starters(espn_conn_2022)
 
 
 kfl_franchises_2021<-ff_franchises(espn_conn_2022)
+kfl_franchises_2022<-ff_franchises(espn_conn_2022)
 #kfl_franchises_2021$logo[10]<-"https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg"
 kfl_franchises_2021$logo[3]<-"https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png"
 
@@ -280,10 +281,7 @@ standings_df<-joined_df%>%select(franchise_name,logo,division_name,Wins,Losses,o
 standings_df
 
 ```
-```{r bench depth, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 
-graph_data = starters%>%mutate(lineup_slot = ifelse(lineup_slot == 'RB/WR',pos,lineup_slot))%>%filter(week==week_num)%>%select(franchise_name,lineup_slot,player_score)%>%group_by(franchise_name,lineup_slot)%>%mutate(position_scoring = sum(player_score))%>%select(-player_score)%>%distinct()
-```
 
 ## Studs and Duds
 
@@ -358,4 +356,58 @@ dud_table <- dud%>%select(franchise_name,player_name,logo,team,player_score,proj
     )
 dud_table
 
+```
+
+## Optimal Lineup (Best Ball) Rankings
+
+Another new feature this year will be what I am calling the best ball rankings. Best Ball is an emerging popular format where your weekly score will be based on your best scores for each potential lineup slot without having to make lineup decisions. While the KFL doesn't believe in such a ridiculous format, it can be interesting to see how different results would be under this format. Specifically, it gives us insight on which teams have a deep bench as well as which teams are making good lineup decisions. Teams with a big difference between their actual score and best ball score are doing a poor job making roster decisions week to week (or simply suffering from the variance gods).
+
+We can see from this, for instance, that the Bluecats were not only lucky winning with only 76 points, but benefit from the Sunday Winner's poor lineup selection. 
+```{r bench depth, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+player_rankings<-starters %>%group_by(franchise_name,pos) %>% mutate(rank = dense_rank(desc(player_score)),pos_rank=paste0(pos,"_",rank))%>%arrange(franchise_name,pos,desc(player_score))
+
+
+optimal_starters<-player_rankings%>%filter(pos_rank=='DST_1'|pos_rank=='K_1'|pos_rank=='QB_1'|pos_rank=='RB_1'|pos_rank=='WR_1'|pos_rank=='WR_2'|pos_rank=='TE_1')
+
+flex_spot<-player_rankings%>%filter(pos_rank=='RB_2'|pos_rank=='WR_3')%>%group_by(franchise_name)%>%mutate(flex = ifelse(pos_rank))%>%arrange(franchise_name,desc(player_score))%>%filter(row_number()==1)
+
+best_ball_team <-optimal_starters%>%union_all(flex_spot)
+
+bb_team <-best_ball_team%>%select(franchise_id,franchise_name,pos_rank,player_score)%>%group_by(franchise_id,franchise_name,pos_rank,player_score)%>%distinct()
+
+bb_team<-bb_team%>%group_by(franchise_id,franchise_name)%>%mutate(player_n = n(),team_score = sum(player_score))%>%select(franchise_name,franchise_id,player_n,team_score)%>%distinct()
+
+actual_result<-ff_schedule(espn_conn_2022)%>%select(week,franchise_id,franchise_score)%>%filter(week==1)
+
+bb_team <-bb_team%>%inner_join(actual_result,by=c("franchise_id"="franchise_id"))%>%mutate(pts_below_optimal = franchise_score - team_score)%>%arrange(desc(pts_below_optimal))
+
+bb_team<-as.data.frame(bb_team%>%inner_join(kfl_franchises_2022,by=c("franchise_id"="franchise_id"))%>%select(franchise_name.x,logo,player_n,team_score,franchise_score,pts_below_optimal)%>%select(-franchise_id))
+
+bb_schedule<-ff_schedule(espn_conn_2022)%>%filter(week ==week_num)%>%inner_join(bb_team%>%dplyr::select(franchise_id,team_score),by=c("franchise_id"="franchise_id"))%>%inner_join(bb_team%>%dplyr::select(franchise_id,team_score),by=c("opponent_id"="franchise_id"))%>%rename(fran_bb_score = team_score.x, opp_bb_score = team_score.y)%>%mutate(bb_win = ifelse(fran_bb_score>opp_bb_score,1,0))
+
+bb_team<-bb_team%>%inner_join(bb_schedule%>%dplyr::select(franchise_id,bb_win),by=c("franchise_id"="franchise_id"))%>%mutate(bb_loss=week_num-bb_win)
+
+bb_table <- bb_team%>%gt()%>%
+  text_transform(
+      locations = cells_body(
+        vars(logo)
+      ),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      })%>%
+   cols_label(
+      franchise_name.x = "KFL Team",
+      logo = "",
+      player_n = "starter count",
+      team_score = "Optimal Best Ball Lineup",
+      franchise_score = "Actual Score",
+      pts_below_optimal = "Points under Optimal",
+      bb_win = "Best Ball Win",
+      bb_loss = "Best Ball Loss"
+    )
+
+bb_table
 ```

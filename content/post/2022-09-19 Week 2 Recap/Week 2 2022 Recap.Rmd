@@ -18,7 +18,7 @@ library(tidymodels)
 library(tidyr)
 library(DBI)
 library(ggimage)
-remotes::install_github("jthomasmock/espnscrapeR")
+#remotes::install_github("jthomasmock/espnscrapeR")
 library(espnscrapeR)
 
 

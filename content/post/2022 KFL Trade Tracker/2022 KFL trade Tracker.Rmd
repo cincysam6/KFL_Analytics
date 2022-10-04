@@ -148,7 +148,44 @@ p_html <- htmltools::attachDependencies(p_html, htmlwidgets::getDependency("spar
 print(p_html, browse = interactive())
 
 
-
+```
 
       
+```{r pressure2,echo=FALSE,warning=FALSE}
+trade_ids<-player_info$player_id
+weekly_game_data<-starters%>%mutate(player_id = as.character(player_id))%>%filter(player_id %in% trade_ids)%>%select(week,franchise_id,franchise_name,player_score,projected_score,player_id,player_name)%>%inner_join(kfl_franchises_2021,by=c('franchise_id'='franchise_id'))%>%inner_join(headshot,by=c('player_name'='full_name'))
+
+total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player_name,headshot_url)%>%group_by(franchise_name.x,logo,headshot_url,player_name)%>%mutate(total_points = sum(player_score))%>%select(-player_score)%>%distinct()
+
+
+
+gt_spark <- function(table_data, plot_col, data_col){
+  # save the data extract ahead of time 
+  # to be used in our anonymous function below
+  data_in = pluck(table_data, "_data", data_col)
+  
+  text_transform(
+    table_data,
+    # note the use of {{}} here - this is tidy eval
+    # that allows you to indicate specific columns
+    locations = cells_body(columns = vars({{plot_col}})),
+    fn = function(x){
+      sparkline_plot <- map(
+        data_in, 
+        ~spk_chr(values = .x, chartRangeMin = 0)
+        )
+      
+      map(sparkline_plot, gt::html)
+    }
+  )
+}
+
+
+
+
+
+```
+
+      
+    
     

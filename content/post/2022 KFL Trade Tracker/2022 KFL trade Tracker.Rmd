@@ -1,0 +1,154 @@
+---
+title: "2022 KFL Trade Tracker"
+author: "Samuel Kirschner"
+date: "2022-10-03T13:09:13-06:00"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ffscrapr)
+library(nflreadr)
+library(dplyr)
+library(ggplot2)
+library(gt)
+library(sqldf)
+library(gtExtras)
+library(tidymodels)
+library(tidyr)
+library(DBI)
+library(ggimage)
+#remotes::install_github("jthomasmock/espnscrapeR")
+library(espnscrapeR)
+library(lubridate)
+library(sparkline)
+
+
+
+#### INPUT WHAT WEEK IT IS HERE ####
+week_num<-4
+
+swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
+
+ESPN_S2<-"AECkrDCmS9dG4sssE55%2BNQRasW7jwjJVFyEUw6mR2wLFylIkvGy89sVJxc8GMvORMKJaBksVZfGnYB4BXKiM80pkw352zpsk%2BEbMg2ILadghIeMp2iz1Etpke3FMM2pyVdNg23edB2DoYIHMoUT72KS3Ho9bKNLPkkJ761JMh4o4ikTDTeL1uBJYNiahAMg1uvT4mHvszAP1UoDHQGLUPuOLchpl8Os8BsibtvBOTn778ksyx6gU513HRQGrpge7iQ9G04xOeWwYAjXfwcxa%2FCQr3Gx9kECPmidN9%2F7PrHImFQ%3D%3D"
+
+espn_conn_2022 <- espn_connect(
+  season = 2022,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)
+
+kfl_schedule_2021<-ff_schedule(espn_conn_2022)
+kfl_pscores<-ff_playerscores(espn_conn_2022)
+starters<-ff_starters(espn_conn_2022)
+kfl_transactions<-ff_transactions(espn_conn_2022)
+
+
+kfl_franchises_2021<-ff_franchises(espn_conn_2022)
+#kfl_franchises_2021$logo[10]<-"https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg"
+kfl_franchises_2021$logo[3]<-"https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png"
+
+kfl_db <-"kfl_ff_data" 
+host_db <- "localhost"
+db_port <- "5432"
+db_user <- "postgres"  
+db_password <- "Cincinnati1"
+kfl_con <- dbConnect(RPostgres::Postgres(), dbname = kfl_db, host=host_db, port=db_port, user=db_user, password=db_password)   
+
+kfl_schedule<-dbReadTable(kfl_con,"kfl_schedule")
+kfl_franchises<-dbReadTable(kfl_con,"kfl_franchise")
+
+
+### pull nflreadr player data
+nfl_rosters<-load_rosters(seasons=2022)
+
+```
+
+## KFL 2022 Trade Tracker
+
+The goal of this page is to help track trades as they occur during the 2022 season and see which franchises end up deriving the most value from their trades
+
+## WEEK 3 TRADE
+
+```{r transaction data,echo=FALSE,warning=FALSE}
+trades<-kfl_transactions%>%filter(type_desc=='traded_away')%>%mutate(player_id = as.character(player_id))
+headshot<-nfl_rosters%>%select(full_name,espn_id,headshot_url)
+player_info<-trades%>%inner_join(headshot,by=c('player_id'='espn_id'))%>%select(-type,-full_name,-bbid_spent)
+player_info<-player_info%>%inner_join(kfl_franchises_2021,by=c('trade_partner'='franchise_id'))%>%select(timestamp,franchise_id,franchise_name.x,player_id,player_name,pos,team,trade_partner,headshot_url,franchise_name.y,logo)
+
+table_data<-player_info%>%select(timestamp,franchise_name.x,player_name,headshot_url,pos,team,franchise_name.y,logo)%>%mutate(timestamp=as_date(timestamp))
+
+ table_data%>%gt() %>%
+  text_transform(
+      locations = cells_body(
+        vars(headshot_url,logo)
+      ),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      })%>%cols_label(
+      timestamp = "Transaction Date",
+      franchise_name.x = "Traded From",
+      player_name = "Player",
+      headshot_url = "",
+      pos = "Position",
+      team = "Team",
+      franchise_name.y = "Traded To",
+      logo=""
+    )
+
+```
+
+## Tracking Each Trade
+
+The table below will allow you to track each player's progress week to week to see how the trade evolves.
+
+```{r pressure,echo=FALSE,warning=FALSE}
+trade_ids<-player_info$player_id
+weekly_game_data<-starters%>%mutate(player_id = as.character(player_id))%>%filter(player_id %in% trade_ids)%>%select(week,franchise_id,franchise_name,player_score,projected_score,player_id,player_name)%>%inner_join(kfl_franchises_2021,by=c('franchise_id'='franchise_id'))%>%inner_join(headshot,by=c('player_name'='full_name'))
+
+total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player_name,headshot_url)%>%group_by(franchise_name.x,logo,headshot_url,player_name)%>%mutate(total_points = sum(player_score))%>%select(-player_score)%>%distinct()
+
+
+p<-weekly_game_data %>%
+    dplyr::group_by(player_name) %>%
+   summarise(
+    chart = spk_chr(
+      player_score,
+      type="line")
+  ) %>%inner_join(total_score,by=c('player_name'='player_name'))%>%
+  gt()%>%
+  text_transform(
+      locations = cells_body(
+        vars(headshot_url,logo)
+      ),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      })%>%
+  fmt_markdown(columns = vars(chart))%>%cols_label(
+      player_name = "Player",
+      headshot_url = "",
+      chart = "Weekly Scoring",
+      franchise_name.x = "KFL Team",
+      logo="",
+      total_points = "Total Points")
+
+
+p_html <- gt:::as.tags.gt_tbl(p)
+
+p_html <- htmltools::attachDependencies(p_html, htmlwidgets::getDependency("sparkline"))
+
+print(p_html, browse = interactive())
+
+
+
+
+      
+    

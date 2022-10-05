@@ -112,13 +112,13 @@ The table below will allow you to track each player's progress week to week to s
 trade_ids<-player_info$player_id
 weekly_game_data<-starters%>%mutate(player_id = as.character(player_id))%>%filter(player_id %in% trade_ids)%>%select(week,franchise_id,franchise_name,player_score,projected_score,player_id,player_name)%>%inner_join(kfl_franchises_2021,by=c('franchise_id'='franchise_id'))%>%inner_join(headshot,by=c('player_name'='full_name'))
 
-total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player_name,headshot_url)%>%group_by(franchise_name.x,logo,headshot_url,player_name)%>%mutate(total_points = sum(player_score))%>%select(-player_score)%>%distinct()
+total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player_name)%>%group_by(franchise_name.x,logo,player_name)%>%mutate(total_points = sum(player_score))%>%select(-player_score)%>%distinct()
 
 ## Create a total points table that has pre trade points and post trade points and total points by franchise
 
-total_points<-total_score%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-headshot_url,-player_name)%>%distinct()
-total_points_pre<-total_score[c(1:4),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-headshot_url,-player_name)%>%distinct()
-total_points_post<-total_score[c(5:8),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-headshot_url,-player_name)%>%distinct()
+total_points<-total_score%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-player_name)%>%distinct()
+total_points_pre<-total_score[c(1:4),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-player_name)%>%distinct()
+total_points_post<-total_score[c(5:8),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-player_name)%>%distinct()
 
 total_points$pre_trade_value<-total_points_pre$total_team_value
 total_points$post_trade_value<-total_points_post$total_team_value
@@ -145,85 +145,5 @@ total_points%>%gt()%>%
 
 
 
-```{r pressure,echo=FALSE,include=FALSE}
-trade_ids<-player_info$player_id
-weekly_game_data<-starters%>%mutate(player_id = as.character(player_id))%>%filter(player_id %in% trade_ids)%>%select(week,franchise_id,franchise_name,player_score,projected_score,player_id,player_name)%>%inner_join(kfl_franchises_2021,by=c('franchise_id'='franchise_id'))%>%inner_join(headshot,by=c('player_name'='full_name'))
-
-total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player_name,headshot_url)%>%group_by(franchise_name.x,logo,headshot_url,player_name)%>%mutate(total_points = sum(player_score))%>%select(-player_score)%>%distinct()
-
-
-p<-weekly_game_data %>%
-    dplyr::group_by(player_name) %>%
-   summarise(
-    chart = spk_chr(
-      player_score,
-      type="line")
-  ) %>%inner_join(total_score,by=c('player_name'='player_name'))%>%
-  gt()%>%
-  text_transform(
-      locations = cells_body(
-        vars(headshot_url,logo)
-      ),
-      fn = function(x) {
-        web_image(
-          url = x,
-          height = 25
-        )
-      })%>%
-  fmt_markdown(columns = vars(chart))%>%cols_label(
-      player_name = "Player",
-      headshot_url = "",
-      chart = "Weekly Scoring",
-      franchise_name.x = "KFL Team",
-      logo="",
-      total_points = "Total Points")
-
-
-p_html <- gt:::as.tags.gt_tbl(p)
-
-p_html <- htmltools::attachDependencies(p_html, htmlwidgets::getDependency("sparkline"))
-
-print(p_html, browse = interactive())
-
-
-```
 
       
-```{r pressure2,echo=FALSE,include=FALSE}
-trade_ids<-player_info$player_id
-weekly_game_data<-starters%>%mutate(player_id = as.character(player_id))%>%filter(player_id %in% trade_ids)%>%select(week,franchise_id,franchise_name,player_score,projected_score,player_id,player_name)%>%inner_join(kfl_franchises_2021,by=c('franchise_id'='franchise_id'))%>%inner_join(headshot,by=c('player_name'='full_name'))
-
-total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player_name,headshot_url)%>%group_by(franchise_name.x,logo,headshot_url,player_name)%>%mutate(total_points = sum(player_score))%>%select(-player_score)%>%distinct()
-
-
-
-gt_spark <- function(table_data, plot_col, data_col){
-  # save the data extract ahead of time 
-  # to be used in our anonymous function below
-  data_in = pluck(table_data, "_data", data_col)
-  
-  text_transform(
-    table_data,
-    # note the use of {{}} here - this is tidy eval
-    # that allows you to indicate specific columns
-    locations = cells_body(columns = vars({{plot_col}})),
-    fn = function(x){
-      sparkline_plot <- map(
-        data_in, 
-        ~spk_chr(values = .x, chartRangeMin = 0)
-        )
-      
-      map(sparkline_plot, gt::html)
-    }
-  )
-}
-
-
-
-
-
-```
-
-      
-    
-    

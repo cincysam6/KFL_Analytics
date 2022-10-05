@@ -118,7 +118,7 @@ total_score<-weekly_game_data%>%select(franchise_name.x,logo,player_score,player
 
 total_points<-total_score%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-player_name)%>%distinct()
 total_points_pre<-total_score[c(1:4),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%ungroup()%>%select(-total_points,-player_name)%>%distinct()
-total_points_post<-as.data.frame(total_score[c(5:8),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%ungroup()%>%mutate(total_team_value = sum(total_points))%>%select(-total_points,-player_name)%>%distinct())
+total_points_post<-as.data.frame(total_score[c(5:8),]%>%select(franchise_name.x,logo,total_points)%>%group_by(franchise_name.x,logo)%>%mutate(total_team_value = sum(total_points))%>%select(-total_points,-player_name)%>%distinct())
 
 total_points$pre_trade_value<-total_points_pre$total_team_value
 total_points$post_trade_value<-total_points_post$total_team_value

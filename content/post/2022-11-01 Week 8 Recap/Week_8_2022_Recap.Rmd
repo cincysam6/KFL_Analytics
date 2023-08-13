@@ -378,7 +378,6 @@ exclude_pos <-c('BE','DST')
 stud<-starters%>%filter(!lineup_slot %in% exclude_pos & week==week_num)%>%mutate(proj_diff=player_score-projected_score)%>%slice_max(proj_diff)%>%select(franchise_name,player_name,team,player_score,projected_score,proj_diff)
 dud<-starters%>%filter(!lineup_slot %in% exclude_pos & week==week_num)%>%mutate(proj_diff=player_score-projected_score)%>%slice_min(proj_diff)%>%select(franchise_name,player_name,team,player_score,projected_score,proj_diff)
 
-stud$team<-"SF"
 
 dud<-dud%>%inner_join(team_df,by=c('team'='team'))
 stud<-stud%>%inner_join(team_df,by=c('team'='team'))

@@ -209,7 +209,7 @@ wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob
 ## Expected Wins power rankings through week 9 2022
 
 
-```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE,error=TRUE,fig.path='/post/2022-11-08 Week 9 Recap/Week_9_2022_Recap_files/'}
 kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo,franchise_abbrev)%>%group_by(franchise_id,franchise_name,franchise_abbrev,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = wins - expected_wins)%>%arrange(expected_wins)%>%na.omit()
 
 # get rid of diamond dog logo
@@ -227,7 +227,10 @@ asp_ratio <- 1.618
 week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,expected_wins),y=expected_wins))+geom_bar(stat="identity")+geom_image(aes(x=franchise_abbrev,y=expected_wins,image=logo), size = 0.05, by = "width", asp = asp_ratio
 )+coord_flip()+ggtitle(paste0("Expected Wins through Week ",week_num)) + xlab("franchise") + ylab("expected wins")+theme(axis.title.x = element_text(size=14),axis.title.y=element_text(size=14),axis.text = element_text(size = 12),plot.title = element_text(size = 18))
 
-week4_exp_wins
+print(week4_exp_wins)
+
+```
+```{r expwintable, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 
 ################### UPDATE TABLE TITLE ##############################
 week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt()%>%gt_img_rows(logo) %>%tab_header(title =paste0("Expected Wins through Week ",week_num))%>%
@@ -243,12 +246,11 @@ week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt
 #  height = 20, width = 20 * asp_ratio, dpi = "retina"
 #)
 
-
-
-
-
-
 ```
+
+
+
+
 ## Standings through Week 9
 
 ```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}

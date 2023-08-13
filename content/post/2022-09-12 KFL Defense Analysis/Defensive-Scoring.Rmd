@@ -1,0 +1,71 @@
+---
+title: "Defense Analysis"
+author: "Sam Kirschner"
+date: "2022-09-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ffscrapr)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+library(nflreadr)
+library(gt)
+library(gtExtras)
+
+```
+
+## Defensive scoring
+
+Testing to make sure this still works.
+
+```{r cars}
+swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
+
+ESPN_S2<-"AECkrDCmS9dG4sssE55%2BNQRasW7jwjJVFyEUw6mR2wLFylIkvGy89sVJxc8GMvORMKJaBksVZfGnYB4BXKiM80pkw352zpsk%2BEbMg2ILadghIeMp2iz1Etpke3FMM2pyVdNg23edB2DoYIHMoUT72KS3Ho9bKNLPkkJ761JMh4o4ikTDTeL1uBJYNiahAMg1uvT4mHvszAP1UoDHQGLUPuOLchpl8Os8BsibtvBOTn778ksyx6gU513HRQGrpge7iQ9G04xOeWwYAjXfwcxa%2FCQr3Gx9kECPmidN9%2F7PrHImFQ%3D%3D"
+
+espn_conn_2022 <- espn_connect(
+  season = 2022,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)
+
+kfl_schedule_2022<-ff_schedule(espn_conn_2022)
+
+```
+
+## Including Plots
+
+
+```{r pressure, echo=FALSE}
+years = c(2022,2021,2020,2019,2018,2017,2016,2015)
+defenses = data.frame()
+def_scores = data.frame()
+
+for (i in years){
+espn_conn <- espn_connect(
+  season = i,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)  
+
+rosters<-ff_rosters(espn_conn)
+rosters<-rosters%>%filter(pos=='DST')
+rosters$season <-i
+defenses = rbind(rosters,defenses)
+scoring<-ff_playerscores(espn_conn,season=i,week=1)
+def_scores <-rbind(scoring,def_scores)
+}
+
+```
+
+```{r nflreadR data load, echo=FALSE}
+nflrR_schedules <-nflreadr::load_schedules(2010:2021)
+nflrR_schedules%>%head()
+nflrR_player_stats<-nflreadr::load_player_stats(2010:2021)
+nflrR_player_stats%>%head()
+```

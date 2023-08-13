@@ -229,6 +229,8 @@ week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,exp
 
 print(week4_exp_wins)
 
+ggsave("expected_wins-1.png", plot = week4_exp_wins)
+
 ```
 ```{r expwintable, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 

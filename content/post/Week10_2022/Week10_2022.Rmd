@@ -1,5 +1,5 @@
 ---
-title: "Week 9 2022 Recap"
+title: "Week 10 2022 Recap"
 author: "Samuel Kirschner"
 date: "2022-11-08T13:09:13-06:00"
 output: html_document
@@ -25,7 +25,7 @@ library(magick)
 
 
 #### INPUT WHAT WEEK IT IS HERE ####
-week_num<-9
+week_num<-10
 
 swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
 
@@ -123,7 +123,7 @@ kfl_2021_weekly_data<-sqldf("SELECT A.*,B.franchise_name,B.franchise_abbrev,B.lo
       LEFT OUTER JOIN kfl_franchises_2021 C
       on a.opponent_id = c.franchise_id")
 ```
-## Week 9 Recap
+## Week 10 Recap
 
 
 ```{r wk4 review, echo=FALSE,warning=FALSE,,message=FALSE}
@@ -136,7 +136,7 @@ wk4_matchups<-sqldf("select A.*,B.win_prob as opp_win_prob
                     FROM wk4_matchups A
                     LEFT OUTER JOIN kfl_2021_weekly_data B
                     ON A.opponent_id=B.franchise_id
-                    WHERE B.week = 9")
+                    WHERE B.week = 10")
 
 wk4_matchups<-wk4_matchups%>%select(franchise_name,logo,win_prob,score_for,opponent_score,opp_win_prob,opponent_logo,opponent_franchise)
 
@@ -210,7 +210,7 @@ wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob
 
 ```
 
-## Expected Wins power rankings through week 9 2022
+## Expected Wins power rankings through week 10 2022
 
 
 ```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE, error=TRUE}
@@ -260,7 +260,7 @@ week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt
 
 
 
-## Standings through Week 9
+## Standings through Week 10
 
 ```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 
@@ -299,7 +299,7 @@ standings_df
 
 ```
 
-### Best Ball Week 9 Update
+### Best Ball Week 10 Update
 
 ```{r bench depth, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 

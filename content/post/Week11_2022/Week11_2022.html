@@ -1,0 +1,2848 @@
+---
+title: "Week 11 2022 Recap"
+author: "Samuel Kirschner"
+date: "2022-11-22T13:09:13-06:00"
+output: html_document
+---
+
+
+
+<div id="week-11-recap" class="section level2">
+<h2>Week 11 Recap</h2>
+<div id="hdjzrvonvp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#hdjzrvonvp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hdjzrvonvp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hdjzrvonvp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hdjzrvonvp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hdjzrvonvp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hdjzrvonvp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hdjzrvonvp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hdjzrvonvp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hdjzrvonvp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hdjzrvonvp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hdjzrvonvp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hdjzrvonvp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hdjzrvonvp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjzrvonvp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hdjzrvonvp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hdjzrvonvp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjzrvonvp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hdjzrvonvp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjzrvonvp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hdjzrvonvp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjzrvonvp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjzrvonvp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjzrvonvp .gt_left {
+  text-align: left;
+}
+
+#hdjzrvonvp .gt_center {
+  text-align: center;
+}
+
+#hdjzrvonvp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hdjzrvonvp .gt_font_normal {
+  font-weight: normal;
+}
+
+#hdjzrvonvp .gt_font_bold {
+  font-weight: bold;
+}
+
+#hdjzrvonvp .gt_font_italic {
+  font-style: italic;
+}
+
+#hdjzrvonvp .gt_super {
+  font-size: 65%;
+}
+
+#hdjzrvonvp .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#hdjzrvonvp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hdjzrvonvp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hdjzrvonvp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hdjzrvonvp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hdjzrvonvp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hdjzrvonvp .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Week 11 2022 matchups</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col">Winning Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col">Win Probability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col">Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col">Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col">Win Probability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col">Losing Team</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td class="gt_row gt_left"><img src="https://cdn.drawception.com/images/panels/2017/12-24/7qQt2CDEfp-2.png" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #68C0AB; color: #000000;">0.84</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">105</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">95</td>
+<td class="gt_row gt_right" style="background-color: #EF5350; color: #000000;">0.70</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_left">Ruwes Onionheads</td></tr>
+    <tr><td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #7BC8AB; color: #000000;">0.79</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">101</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">80</td>
+<td class="gt_row gt_right" style="background-color: #ED9190; color: #000000;">0.41</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_left">Kurt's The Tenderloins</td></tr>
+    <tr><td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #9DD8AD; color: #000000;">0.68</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">94</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">68</td>
+<td class="gt_row gt_right" style="background-color: #FFCBD0; color: #000000;">0.21</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_left">Scott's TITANS</td></tr>
+    <tr><td class="gt_row gt_left">Michael's GMOs</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #7BC8AB; color: #000000;">0.79</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">101</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">67</td>
+<td class="gt_row gt_right" style="background-color: #FFCED3; color: #000000;">0.20</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_left">Alex's Kraken</td></tr>
+    <tr><td class="gt_row gt_left">Unlucky  Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">0.06</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">50</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">43</td>
+<td class="gt_row gt_right" style="background-color: #FFEBEE; color: #000000;">0.04</td>
+<td class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:30px;"></td>
+<td class="gt_row gt_left">Elliot's Last Good Tight End</td></tr>
+    <tr><td class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:30px;"></td>
+<td class="gt_row gt_right" style="background-color: #35B0AB; color: #000000;">0.94</td>
+<td class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">119</td>
+<td class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">63</td>
+<td class="gt_row gt_right" style="background-color: #FFD7DB; color: #000000;">0.15</td>
+<td class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:30px;"></td>
+<td class="gt_row gt_left">Diamond Dogs</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="expected-wins-power-rankings-through-week-11-2022" class="section level2">
+<h2>Expected Wins power rankings through week 11 2022</h2>
+<p><img src="/post/Week11_2022/Week11_2022_files/figure-html/expected_wins-1.png" width="960" /><img src="/post/Week11_2022/Week11_2022_files/figure-html/expected_wins-2.png" width="960" /></p>
+<div id="htepztktzp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#htepztktzp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#htepztktzp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#htepztktzp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#htepztktzp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#htepztktzp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#htepztktzp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#htepztktzp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#htepztktzp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#htepztktzp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#htepztktzp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#htepztktzp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#htepztktzp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#htepztktzp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#htepztktzp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#htepztktzp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#htepztktzp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#htepztktzp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#htepztktzp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#htepztktzp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#htepztktzp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#htepztktzp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#htepztktzp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#htepztktzp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#htepztktzp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#htepztktzp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#htepztktzp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#htepztktzp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#htepztktzp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#htepztktzp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#htepztktzp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#htepztktzp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#htepztktzp .gt_left {
+  text-align: left;
+}
+
+#htepztktzp .gt_center {
+  text-align: center;
+}
+
+#htepztktzp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#htepztktzp .gt_font_normal {
+  font-weight: normal;
+}
+
+#htepztktzp .gt_font_bold {
+  font-weight: bold;
+}
+
+#htepztktzp .gt_font_italic {
+  font-style: italic;
+}
+
+#htepztktzp .gt_super {
+  font-size: 65%;
+}
+
+#htepztktzp .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#htepztktzp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#htepztktzp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#htepztktzp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#htepztktzp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#htepztktzp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#htepztktzp .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Expected Wins through Week 11</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Team Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Expected Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Wins Over Expected</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">6.35</td>
+<td class="gt_row gt_right">-1.35</td></tr>
+    <tr><td class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td class="gt_row gt_left"><img src="https://cdn.drawception.com/images/panels/2017/12-24/7qQt2CDEfp-2.png" style="height:30px;"></td>
+<td class="gt_row gt_right">6.31</td>
+<td class="gt_row gt_right">3.69</td></tr>
+    <tr><td class="gt_row gt_left">Ruwes Onionheads</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_right">6.01</td>
+<td class="gt_row gt_right">-0.01</td></tr>
+    <tr><td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">5.54</td>
+<td class="gt_row gt_right">1.46</td></tr>
+    <tr><td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_right">5.51</td>
+<td class="gt_row gt_right">-0.51</td></tr>
+    <tr><td class="gt_row gt_left">Alex's Kraken</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">5.48</td>
+<td class="gt_row gt_right">2.52</td></tr>
+    <tr><td class="gt_row gt_left">Scott's TITANS</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_right">5.29</td>
+<td class="gt_row gt_right">-1.29</td></tr>
+    <tr><td class="gt_row gt_left">Elliot's Last Good Tight End</td>
+<td class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">4.66</td>
+<td class="gt_row gt_right">-0.66</td></tr>
+    <tr><td class="gt_row gt_left">Unlucky  Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">4.31</td>
+<td class="gt_row gt_right">2.69</td></tr>
+    <tr><td class="gt_row gt_left">Diamond Dogs</td>
+<td class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:30px;"></td>
+<td class="gt_row gt_right">4.01</td>
+<td class="gt_row gt_right">-1.01</td></tr>
+    <tr><td class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">3.42</td>
+<td class="gt_row gt_right">0.58</td></tr>
+    <tr><td class="gt_row gt_left">Michael's GMOs</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">2.85</td>
+<td class="gt_row gt_right">0.15</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="standings-through-week-11" class="section level2">
+<h2>Standings through Week 11</h2>
+<div id="qplwfhuqxd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#qplwfhuqxd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qplwfhuqxd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qplwfhuqxd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qplwfhuqxd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qplwfhuqxd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qplwfhuqxd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qplwfhuqxd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qplwfhuqxd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qplwfhuqxd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qplwfhuqxd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qplwfhuqxd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qplwfhuqxd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qplwfhuqxd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qplwfhuqxd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qplwfhuqxd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qplwfhuqxd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qplwfhuqxd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qplwfhuqxd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qplwfhuqxd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qplwfhuqxd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qplwfhuqxd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qplwfhuqxd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qplwfhuqxd .gt_left {
+  text-align: left;
+}
+
+#qplwfhuqxd .gt_center {
+  text-align: center;
+}
+
+#qplwfhuqxd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qplwfhuqxd .gt_font_normal {
+  font-weight: normal;
+}
+
+#qplwfhuqxd .gt_font_bold {
+  font-weight: bold;
+}
+
+#qplwfhuqxd .gt_font_italic {
+  font-style: italic;
+}
+
+#qplwfhuqxd .gt_super {
+  font-size: 65%;
+}
+
+#qplwfhuqxd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#qplwfhuqxd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qplwfhuqxd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qplwfhuqxd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qplwfhuqxd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qplwfhuqxd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qplwfhuqxd .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Standings Through Week 11</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Losses</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col">Win-Loss Streak</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Indiana</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td class="gt_row gt_left"><img src="https://cdn.drawception.com/images/panels/2017/12-24/7qQt2CDEfp-2.png" style="height:30px;"></td>
+<td class="gt_row gt_right">10</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='22.35' y1='1.89' x2='22.35' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='25.46' y1='1.89' x2='25.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='28.56' y1='1.89' x2='28.56' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='31.67' y1='1.89' x2='31.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.77' y1='1.89' x2='34.77' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Alex's Kraken</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">8</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='22.35' y1='8.91' x2='22.35' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='25.46' y1='1.89' x2='25.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='28.56' y1='1.89' x2='28.56' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='31.67' y1='1.89' x2='31.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.77' y1='8.91' x2='34.77' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='22.35' y1='1.89' x2='22.35' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='25.46' y1='1.89' x2='25.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='28.56' y1='1.89' x2='28.56' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='31.67' y1='8.91' x2='31.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.77' y1='8.91' x2='34.77' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Diamond Dogs</td>
+<td class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">8</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='22.35' y1='8.91' x2='22.35' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='25.46' y1='8.91' x2='25.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='28.56' y1='8.91' x2='28.56' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='31.67' y1='1.89' x2='31.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.77' y1='8.91' x2='34.77' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Ohio</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='22.35' y1='1.89' x2='22.35' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='25.46' y1='8.91' x2='25.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='28.56' y1='1.89' x2='28.56' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='31.67' y1='1.89' x2='31.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.77' y1='1.89' x2='34.77' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Unlucky  Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='22.35' y1='8.91' x2='22.35' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='25.46' y1='1.89' x2='25.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='28.56' y1='8.91' x2='28.56' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='31.67' y1='1.89' x2='31.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.77' y1='1.89' x2='34.77' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:30px;"></td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='22.35' y1='8.91' x2='22.35' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='25.46' y1='1.89' x2='25.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='28.56' y1='1.89' x2='28.56' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='31.67' y1='8.91' x2='31.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.77' y1='1.89' x2='34.77' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='22.35' y1='1.89' x2='22.35' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='25.46' y1='1.89' x2='25.46' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='28.56' y1='8.91' x2='28.56' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='31.67' y1='1.89' x2='31.67' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='34.77' y1='1.89' x2='34.77' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Glum</td>
+    </tr>
+    <tr class="gt_row_group_first"><td class="gt_row gt_left">Ruwes Onionheads</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='22.35' y1='1.89' x2='22.35' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='25.46' y1='8.91' x2='25.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='28.56' y1='8.91' x2='28.56' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='31.67' y1='8.91' x2='31.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.77' y1='8.91' x2='34.77' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Elliot's Last Good Tight End</td>
+<td class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='22.35' y1='8.91' x2='22.35' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='25.46' y1='8.91' x2='25.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='28.56' y1='8.91' x2='28.56' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='31.67' y1='8.91' x2='31.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.77' y1='8.91' x2='34.77' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Scott's TITANS</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='22.35' y1='1.89' x2='22.35' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='25.46' y1='8.91' x2='25.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='28.56' y1='1.89' x2='28.56' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='31.67' y1='8.91' x2='31.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.77' y1='8.91' x2='34.77' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td class="gt_row gt_left">Michael's GMOs</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:30px;"></td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">8</td>
+<td class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='22.35' y1='8.91' x2='22.35' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='25.46' y1='8.91' x2='25.46' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='28.56' y1='8.91' x2='28.56' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='31.67' y1='8.91' x2='31.67' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='34.77' y1='1.89' x2='34.77' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="best-ball-week-11-update" class="section level3">
+<h3>Best Ball Week 11 Update</h3>
+<div id="jkzbtohejr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#jkzbtohejr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jkzbtohejr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jkzbtohejr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jkzbtohejr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jkzbtohejr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jkzbtohejr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jkzbtohejr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jkzbtohejr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jkzbtohejr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jkzbtohejr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jkzbtohejr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jkzbtohejr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jkzbtohejr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkzbtohejr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jkzbtohejr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jkzbtohejr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkzbtohejr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jkzbtohejr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkzbtohejr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jkzbtohejr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkzbtohejr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jkzbtohejr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jkzbtohejr .gt_left {
+  text-align: left;
+}
+
+#jkzbtohejr .gt_center {
+  text-align: center;
+}
+
+#jkzbtohejr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jkzbtohejr .gt_font_normal {
+  font-weight: normal;
+}
+
+#jkzbtohejr .gt_font_bold {
+  font-weight: bold;
+}
+
+#jkzbtohejr .gt_font_italic {
+  font-style: italic;
+}
+
+#jkzbtohejr .gt_super {
+  font-size: 65%;
+}
+
+#jkzbtohejr .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#jkzbtohejr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jkzbtohejr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jkzbtohejr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jkzbtohejr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jkzbtohejr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jkzbtohejr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">franchise_id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">KFL Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">logo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Points under Optimal</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Total Score - Optimal Lineup</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Actual Total Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Best Ball Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Best Ball Loss</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">2</td>
+<td class="gt_row gt_left">Ruwes Onionheads</td>
+<td class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:25px;"></td>
+<td class="gt_row gt_right">-68</td>
+<td class="gt_row gt_right">1051</td>
+<td class="gt_row gt_right">983</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">1</td>
+<td class="gt_row gt_left">Jeffs Slugs</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:25px;"></td>
+<td class="gt_row gt_right">-71</td>
+<td class="gt_row gt_right">1011</td>
+<td class="gt_row gt_right">940</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">6</td>
+<td class="gt_row gt_left">Unlucky  Bluecats</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:25px;"></td>
+<td class="gt_row gt_right">-76</td>
+<td class="gt_row gt_right">922</td>
+<td class="gt_row gt_right">846</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">8</td></tr>
+    <tr><td class="gt_row gt_right">7</td>
+<td class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:25px;"></td>
+<td class="gt_row gt_right">-124</td>
+<td class="gt_row gt_right">1127</td>
+<td class="gt_row gt_right">1003</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">7</td></tr>
+    <tr><td class="gt_row gt_right">11</td>
+<td class="gt_row gt_left">Michael's GMOs</td>
+<td class="gt_row gt_left"><img src="https://c8.alamy.com/comp/T1D61D/cute-scary-broccoli-character-as-a-funny-vegetable-or-genetically-modified-organism-as-a-gmo-or-hybrid-concept-with-3d-illustration-elements-T1D61D.jpg" style="height:25px;"></td>
+<td class="gt_row gt_right">-126</td>
+<td class="gt_row gt_right">871</td>
+<td class="gt_row gt_right">745</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">7</td></tr>
+    <tr><td class="gt_row gt_right">12</td>
+<td class="gt_row gt_left">Diamond Dogs</td>
+<td class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:25px;"></td>
+<td class="gt_row gt_right">-134</td>
+<td class="gt_row gt_right">961</td>
+<td class="gt_row gt_right">827</td>
+<td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">9</td></tr>
+    <tr><td class="gt_row gt_right">10</td>
+<td class="gt_row gt_left">Elliot's Last Good Tight End</td>
+<td class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:25px;"></td>
+<td class="gt_row gt_right">-147</td>
+<td class="gt_row gt_right">1018</td>
+<td class="gt_row gt_right">871</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">5</td></tr>
+    <tr><td class="gt_row gt_right">9</td>
+<td class="gt_row gt_left">Alex's Kraken</td>
+<td class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:25px;"></td>
+<td class="gt_row gt_right">-172</td>
+<td class="gt_row gt_right">1114</td>
+<td class="gt_row gt_right">942</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">5</td>
+<td class="gt_row gt_left">Scott's TITANS</td>
+<td class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:25px;"></td>
+<td class="gt_row gt_right">-183</td>
+<td class="gt_row gt_right">1111</td>
+<td class="gt_row gt_right">928</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">8</td>
+<td class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td class="gt_row gt_left"><img src="https://cdn.drawception.com/images/panels/2017/12-24/7qQt2CDEfp-2.png" style="height:25px;"></td>
+<td class="gt_row gt_right">-210</td>
+<td class="gt_row gt_right">1204</td>
+<td class="gt_row gt_right">994</td>
+<td class="gt_row gt_right">10</td>
+<td class="gt_row gt_right">1</td></tr>
+    <tr><td class="gt_row gt_right">3</td>
+<td class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:25px;"></td>
+<td class="gt_row gt_right">-218</td>
+<td class="gt_row gt_right">1151</td>
+<td class="gt_row gt_right">933</td>
+<td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">4</td></tr>
+    <tr><td class="gt_row gt_right">4</td>
+<td class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:25px;"></td>
+<td class="gt_row gt_right">-227</td>
+<td class="gt_row gt_right">1002</td>
+<td class="gt_row gt_right">775</td>
+<td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">6</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<div id="stud-of-the-week" class="section level2">
+<h2>Stud of the Week</h2>
+<div id="zaiewglonz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#zaiewglonz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zaiewglonz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zaiewglonz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zaiewglonz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zaiewglonz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zaiewglonz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zaiewglonz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zaiewglonz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zaiewglonz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zaiewglonz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zaiewglonz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zaiewglonz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zaiewglonz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaiewglonz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zaiewglonz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zaiewglonz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaiewglonz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zaiewglonz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaiewglonz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zaiewglonz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaiewglonz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zaiewglonz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zaiewglonz .gt_left {
+  text-align: left;
+}
+
+#zaiewglonz .gt_center {
+  text-align: center;
+}
+
+#zaiewglonz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zaiewglonz .gt_font_normal {
+  font-weight: normal;
+}
+
+#zaiewglonz .gt_font_bold {
+  font-weight: bold;
+}
+
+#zaiewglonz .gt_font_italic {
+  font-style: italic;
+}
+
+#zaiewglonz .gt_super {
+  font-size: 65%;
+}
+
+#zaiewglonz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#zaiewglonz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zaiewglonz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zaiewglonz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zaiewglonz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zaiewglonz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zaiewglonz .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">KFL Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">player</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">actual score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">projection</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">difference</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body"></tbody>
+  
+  
+</table>
+</div>
+<div id="ppejknjbam" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ppejknjbam .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ppejknjbam .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ppejknjbam .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ppejknjbam .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ppejknjbam .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ppejknjbam .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ppejknjbam .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ppejknjbam .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ppejknjbam .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ppejknjbam .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ppejknjbam .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ppejknjbam .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ppejknjbam .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppejknjbam .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ppejknjbam .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ppejknjbam .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppejknjbam .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ppejknjbam .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppejknjbam .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ppejknjbam .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppejknjbam .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ppejknjbam .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ppejknjbam .gt_left {
+  text-align: left;
+}
+
+#ppejknjbam .gt_center {
+  text-align: center;
+}
+
+#ppejknjbam .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ppejknjbam .gt_font_normal {
+  font-weight: normal;
+}
+
+#ppejknjbam .gt_font_bold {
+  font-weight: bold;
+}
+
+#ppejknjbam .gt_font_italic {
+  font-style: italic;
+}
+
+#ppejknjbam .gt_super {
+  font-size: 65%;
+}
+
+#ppejknjbam .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#ppejknjbam .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ppejknjbam .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ppejknjbam .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ppejknjbam .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ppejknjbam .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ppejknjbam .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">KFL Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">player</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">actual score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">projection</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">difference</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Unlucky  Bluecats</td>
+<td class="gt_row gt_left">Saquon Barkley</td>
+<td class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" style="height:25px;"></td>
+<td class="gt_row gt_left">NYG</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">20.3</td>
+<td class="gt_row gt_right">-17.3</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>

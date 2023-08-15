@@ -1,0 +1,57 @@
+
+
+<div id="defensive-scoring" class="section level2">
+<h2>Defensive scoring</h2>
+<p>Testing to make sure this still works.</p>
+<pre class="r"><code>swid&lt;-&quot;{FB82F2B3-89EB-4E1A-9677-B1333054B883}&quot;
+
+ESPN_S2&lt;-&quot;AECkrDCmS9dG4sssE55%2BNQRasW7jwjJVFyEUw6mR2wLFylIkvGy89sVJxc8GMvORMKJaBksVZfGnYB4BXKiM80pkw352zpsk%2BEbMg2ILadghIeMp2iz1Etpke3FMM2pyVdNg23edB2DoYIHMoUT72KS3Ho9bKNLPkkJ761JMh4o4ikTDTeL1uBJYNiahAMg1uvT4mHvszAP1UoDHQGLUPuOLchpl8Os8BsibtvBOTn778ksyx6gU513HRQGrpge7iQ9G04xOeWwYAjXfwcxa%2FCQr3Gx9kECPmidN9%2F7PrHImFQ%3D%3D&quot;
+
+espn_conn_2022 &lt;- espn_connect(
+  season = 2022,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)
+
+kfl_schedule_2022&lt;-ff_schedule(espn_conn_2022)</code></pre>
+</div>
+<div id="including-plots" class="section level2">
+<h2>Including Plots</h2>
+<pre><code>## ── nflverse games and schedules ────────────────────────────────────────────────</code></pre>
+<pre><code>## ℹ Data updated: 2023-08-13 00:02:42 EDT</code></pre>
+<pre><code>## # A tibble: 6 × 45
+##   game_id   season game_…¹  week gameday weekday gamet…² away_…³ away_…⁴ home_…⁵
+##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;  
+## 1 2010_01_…   2010 REG         1 2010-0… Thursd… 20:30   MIN           9 NO     
+## 2 2010_01_…   2010 REG         1 2010-0… Sunday  13:00   MIA          15 BUF    
+## 3 2010_01_…   2010 REG         1 2010-0… Sunday  13:00   DET          14 CHI    
+## 4 2010_01_…   2010 REG         1 2010-0… Sunday  13:00   IND          24 HOU    
+## 5 2010_01_…   2010 REG         1 2010-0… Sunday  13:00   DEN          17 JAX    
+## 6 2010_01_…   2010 REG         1 2010-0… Sunday  13:00   CIN          24 NE     
+## # … with 35 more variables: home_score &lt;int&gt;, location &lt;chr&gt;, result &lt;int&gt;,
+## #   total &lt;int&gt;, overtime &lt;int&gt;, old_game_id &lt;chr&gt;, gsis &lt;int&gt;,
+## #   nfl_detail_id &lt;chr&gt;, pfr &lt;chr&gt;, pff &lt;int&gt;, espn &lt;chr&gt;, away_rest &lt;int&gt;,
+## #   home_rest &lt;int&gt;, away_moneyline &lt;int&gt;, home_moneyline &lt;int&gt;,
+## #   spread_line &lt;dbl&gt;, away_spread_odds &lt;int&gt;, home_spread_odds &lt;int&gt;,
+## #   total_line &lt;dbl&gt;, under_odds &lt;int&gt;, over_odds &lt;int&gt;, div_game &lt;int&gt;,
+## #   roof &lt;chr&gt;, surface &lt;chr&gt;, temp &lt;int&gt;, wind &lt;int&gt;, away_qb_id &lt;chr&gt;, …</code></pre>
+<pre><code>## ── nflverse player stats: offense ──────────────────────────────────────────────</code></pre>
+<pre><code>## ℹ Data updated: 2023-02-28 04:26:47 EST</code></pre>
+<pre><code>## # A tibble: 6 × 52
+##   player_id playe…¹ playe…² posit…³ posit…⁴ heads…⁵ recen…⁶ season  week seaso…⁷
+##   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
+## 1 00-00008… &lt;NA&gt;    Charli… QB      QB      &lt;NA&gt;    PIT       2010     2 REG    
+## 2 00-00008… &lt;NA&gt;    Charli… QB      QB      &lt;NA&gt;    PIT       2010     3 REG    
+## 3 00-00008… &lt;NA&gt;    Charli… QB      QB      &lt;NA&gt;    PIT       2010     4 REG    
+## 4 00-00012… &lt;NA&gt;    Josh B… P       SPEC    &lt;NA&gt;    WAS       2010     1 REG    
+## 5 00-00015… &lt;NA&gt;    Todd B… QB      QB      &lt;NA&gt;    JAX       2010     7 REG    
+## 6 00-00021… &lt;NA&gt;    Mark B… QB      QB      &lt;NA&gt;    NYJ       2010     4 REG    
+## # … with 42 more variables: completions &lt;int&gt;, attempts &lt;int&gt;,
+## #   passing_yards &lt;dbl&gt;, passing_tds &lt;int&gt;, interceptions &lt;dbl&gt;, sacks &lt;dbl&gt;,
+## #   sack_yards &lt;dbl&gt;, sack_fumbles &lt;int&gt;, sack_fumbles_lost &lt;int&gt;,
+## #   passing_air_yards &lt;dbl&gt;, passing_yards_after_catch &lt;dbl&gt;,
+## #   passing_first_downs &lt;dbl&gt;, passing_epa &lt;dbl&gt;,
+## #   passing_2pt_conversions &lt;int&gt;, pacr &lt;dbl&gt;, dakota &lt;dbl&gt;, carries &lt;int&gt;,
+## #   rushing_yards &lt;dbl&gt;, rushing_tds &lt;int&gt;, rushing_fumbles &lt;dbl&gt;, …</code></pre>
+</div>

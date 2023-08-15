@@ -1,7 +1,7 @@
 ---
-title: "Week 10 2022 Recap"
+title: "Week 14 2022 Recap"
 author: "Samuel Kirschner"
-date: "2022-11-15T13:09:13-06:00"
+date: "2022-12-11T13:09:13-06:00"
 output: html_document
 ---
 
@@ -25,7 +25,7 @@ library(magick)
 
 
 #### INPUT WHAT WEEK IT IS HERE ####
-week_num<-10
+week_num<-14
 
 swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
 
@@ -47,8 +47,7 @@ kfl_franchises_2021<-ff_franchises(espn_conn_2022)
 #kfl_franchises_2021$logo[10]<-"https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg"
 kfl_franchises_2021$logo[3]<-"https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png"
 
-kfl_franchises_2021<-kfl_franchises_2021%>% mutate( logo = ifelse(franchise_id==12,"https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638",logo))
-
+kfl_franchises_2021<-kfl_franchises_2021%>% mutate(logo = ifelse(franchise_id==12,"https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg",logo))
 
 kfl_db <-"kfl_ff_data" 
 host_db <- "localhost"
@@ -123,7 +122,7 @@ kfl_2021_weekly_data<-sqldf("SELECT A.*,B.franchise_name,B.franchise_abbrev,B.lo
       LEFT OUTER JOIN kfl_franchises_2021 C
       on a.opponent_id = c.franchise_id")
 ```
-## Week 10 Recap
+## Week 14 Recap
 
 
 ```{r wk4 review, echo=FALSE,warning=FALSE,,message=FALSE}
@@ -136,7 +135,7 @@ wk4_matchups<-sqldf("select A.*,B.win_prob as opp_win_prob
                     FROM wk4_matchups A
                     LEFT OUTER JOIN kfl_2021_weekly_data B
                     ON A.opponent_id=B.franchise_id
-                    WHERE B.week = 10")
+                    WHERE B.week = 14")
 
 wk4_matchups<-wk4_matchups%>%select(franchise_name,logo,win_prob,score_for,opponent_score,opp_win_prob,opponent_logo,opponent_franchise)
 
@@ -210,10 +209,10 @@ wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob
 
 ```
 
-## Expected Wins power rankings through week 10 2022
+## Expected Wins power rankings through week 14 2022
 
 
-```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE, error=TRUE}
+```{r expected_wins, echo=FALSE,warning=FALSE,message=FALSE, error=TRUE,cache=TRUE}
 kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo,franchise_abbrev)%>%group_by(franchise_id,franchise_name,franchise_abbrev,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = wins - expected_wins)%>%arrange(expected_wins)%>%na.omit()
 
 # get rid of diamond dog logo
@@ -231,15 +230,13 @@ asp_ratio <- 1.618
 week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,expected_wins),y=expected_wins))+geom_bar(stat="identity")+geom_image(aes(x=franchise_abbrev,y=expected_wins,image=logo), size = 0.05, by = "width", asp = asp_ratio
 )+coord_flip()+ggtitle(paste0("Expected Wins through Week ",week_num)) + xlab("franchise") + ylab("expected wins")+theme(axis.title.x = element_text(size=14),axis.title.y=element_text(size=14),axis.text = element_text(size = 12),plot.title = element_text(size = 18))
 
-
+#plot(week4_exp_wins)
 
 ggsave("expected_wins-1.png", plot = week4_exp_wins)
 
-img <- magick::image_read('/post/2022-11-08 Week 9 Recap/expected_wins-1.png')
+img <- magick::image_read('C:/Users/cincy/OneDrive/Documents/Sam R Work/KFL_Analytics/content/post/Week14_2022/expected_wins-1.png')
 plot(img)
 
-```
-```{r expwintable, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 
 ################### UPDATE TABLE TITLE ##############################
 week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt()%>%gt_img_rows(logo) %>%tab_header(title =paste0("Expected Wins through Week ",week_num))%>%
@@ -255,14 +252,17 @@ week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt
 #  height = 20, width = 20 * asp_ratio, dpi = "retina"
 #)
 
+
 ```
 
 
 
 
-## Standings through Week 10
 
-```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+
+## Standings through Week 14
+
+```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE,cache=TRUE}
 
 kfl_standings_wk4<-kfl_2021_weekly_data%>%filter(week<=week_num)
 
@@ -299,7 +299,7 @@ standings_df
 
 ```
 
-### Best Ball Week 10 Update
+### Best Ball Week 14 Update
 
 ```{r bench depth, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
 

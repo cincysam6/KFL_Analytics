@@ -235,8 +235,8 @@ week4_exp_wins
 
 ggsave("expected_wins-1.png", plot = week4_exp_wins)
 
-img <- magick::image_read('/post/2022-11-08 Week 9 Recap/expected_wins-1.png')
-plot(img)
+#img <- magick::image_read('/post/2022-11-08 Week 9 Recap/expected_wins-1.png')
+#plot(img)
 
 ```
 

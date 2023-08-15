@@ -232,11 +232,12 @@ week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,exp
 )+coord_flip()+ggtitle(paste0("Expected Wins through Week ",week_num)) + xlab("franchise") + ylab("expected wins")+theme(axis.title.x = element_text(size=14),axis.title.y=element_text(size=14),axis.text = element_text(size = 12),plot.title = element_text(size = 18))
 
 
+week4_exp_wins
 
 ggsave("expected_wins-1.png", plot = week4_exp_wins)
 
-img <- magick::image_read('/post/2022-11-08 Week 9 Recap/expected_wins-1.png')
-plot(img)
+#img <- magick::image_read('/post/2022-11-08 Week 9 Recap/expected_wins-1.png')
+#plot(img)
 
 ```
 ```{r expwintable, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}

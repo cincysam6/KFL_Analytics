@@ -1,0 +1,438 @@
+---
+title: "Week 5 2023 Recap"
+author: "Samuel Kirschner"
+date: "2023-10-10T13:09:13-06:00"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ffscrapr)
+library(dplyr)
+library(ggplot2)
+library(gt)
+library(sqldf)
+library(gtExtras)
+library(tidymodels)
+library(tidyr)
+library(DBI)
+library(ggimage)
+#remotes::install_github("jthomasmock/espnscrapeR")
+library(espnscrapeR)
+library(magick)
+
+
+
+#### INPUT WHAT WEEK IT IS HERE ####
+week_num<-5
+
+swid<-"{FB82F2B3-89EB-4E1A-9677-B1333054B883}"
+
+ESPN_S2<-"AECkrDCmS9dG4sssE55%2BNQRasW7jwjJVFyEUw6mR2wLFylIkvGy89sVJxc8GMvORMKJaBksVZfGnYB4BXKiM80pkw352zpsk%2BEbMg2ILadghIeMp2iz1Etpke3FMM2pyVdNg23edB2DoYIHMoUT72KS3Ho9bKNLPkkJ761JMh4o4ikTDTeL1uBJYNiahAMg1uvT4mHvszAP1UoDHQGLUPuOLchpl8Os8BsibtvBOTn778ksyx6gU513HRQGrpge7iQ9G04xOeWwYAjXfwcxa%2FCQr3Gx9kECPmidN9%2F7PrHImFQ%3D%3D"
+
+espn_conn_2022 <- espn_connect(
+  season = 2023,
+  league_id = 214888,
+  espn_s2 = ESPN_S2,
+  swid = swid
+)
+
+kfl_schedule_2021<-ff_schedule(espn_conn_2022)
+kfl_pscores<-ff_playerscores(espn_conn_2022)
+starters<-ff_starters(espn_conn_2022)
+
+
+kfl_franchises_2021<-ff_franchises(espn_conn_2022)
+#kfl_franchises_2021$logo[10]<-"https://image.shutterstock.com/image-vector/lightning-warrior-logo-template-design-260nw-1019248687.jpg"
+kfl_franchises_2021$logo[3]<-"https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png"
+
+kfl_franchises_2021<-kfl_franchises_2021%>% mutate( logo = ifelse(franchise_id==12,"https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638",logo))
+
+
+kfl_db <-"kfl_ff_data" 
+host_db <- "localhost"
+db_port <- "5432"
+db_user <- "postgres"  
+db_password <- "Cincinnati1"
+kfl_con <- dbConnect(RPostgres::Postgres(), dbname = kfl_db, host=host_db, port=db_port, user=db_user, password=db_password)   
+
+kfl_schedule<-dbReadTable(kfl_con,"kfl_schedule")
+kfl_franchises<-dbReadTable(kfl_con,"kfl_franchise")
+
+```
+
+
+
+```{r wins over expected model run, echo=FALSE}
+
+
+
+score_distribution_data<-sqldf(
+"select a.franchise_id,b.user_name,a.Years,a.week,franchise_score as score_for, opponent_score as score_against
+ from kfl_schedule a
+ left outer join kfl_franchises b 
+ on a.franchise_id = b.franchise_id and a.Years = b.Years
+ where week < 15"
+)
+
+score_distribution_data<-score_distribution_data%>%unite(YR_WK, c("Years","week"),remove = FALSE)
+
+score_distribution_data<-score_distribution_data%>%group_by(YR_WK)%>%mutate(avg_weekly_score=mean(score_for),win = case_when(score_for > score_against ~ 1,score_for < score_against ~ 0))
+
+score_distribution_data$win<-as.factor(score_distribution_data$win)
+
+fitted_logistic_model<- logistic_reg() %>%
+        # Set the engine
+        set_engine("glm") %>%
+        # Set the mode
+        set_mode("classification") %>%
+        # Fit the model
+        fit(win~score_for, data = score_distribution_data)
+
+```
+
+```{r wins over expected model, echo=FALSE,warning=FALSE}
+## 2021 win probs
+
+kfl_2021_win_prob_data<-kfl_schedule_2021%>%rename( score_for = franchise_score)%>%filter(week<=week_num)
+
+pred_prob_2021 <- predict(fitted_logistic_model,
+                          new_data = kfl_2021_win_prob_data,
+                          type = "prob")
+
+colnames(pred_prob_2021)<-c("loss_prob", "win_prob")
+
+kfl_2021_win_prob_data<-cbind(kfl_2021_win_prob_data,pred_prob_2021)
+
+kfl_2021_win_prob_data<-kfl_2021_win_prob_data%>%mutate(win = case_when(score_for > opponent_score ~ 1,score_for < opponent_score ~ 0))
+
+#kfl_2021_win_prob_data[37,9]<-1
+#kfl_2021_win_prob_data[40,9]<-0
+kfl_2021_win_prob_data[56,9]<-1
+kfl_2021_win_prob_data[49,9]<-0
+kfl_2021_win_prob_data[41,9]<-0
+kfl_2021_win_prob_data[45,9]<-1
+
+
+
+kfl_2021_weekly_data<-sqldf("SELECT A.*,B.franchise_name,B.franchise_abbrev,B.logo,C.franchise_name as opponent_franchise,C.franchise_abbrev as opponent_abbrev,C.logo as opponent_logo
+      FROM kfl_2021_win_prob_data A
+      LEFT OUTER JOIN kfl_franchises_2021 B
+      on a.franchise_id = b.franchise_id
+      LEFT OUTER JOIN kfl_franchises_2021 C
+      on a.opponent_id = c.franchise_id")
+```
+## Week 3 Recap
+
+
+```{r wk4 review, echo=FALSE,warning=FALSE,,message=FALSE}
+
+wk4_matchups<-kfl_2021_weekly_data%>%filter(week==week_num &win==1)
+
+
+############################## UPDATE THE WEEK #####################################################
+wk4_matchups<-sqldf("select A.*,B.win_prob as opp_win_prob
+                    FROM wk4_matchups A
+                    LEFT OUTER JOIN kfl_2021_weekly_data B
+                    ON A.opponent_id=B.franchise_id
+                    WHERE B.week = 5")
+
+wk4_matchups<-wk4_matchups%>%select(franchise_name,logo,win_prob,score_for,opponent_score,opp_win_prob,opponent_logo,opponent_franchise)
+
+
+########################## UPDATE THE TITLE OF THE TAB HEADER #######################################
+wk4_matchups%>%mutate(win_prob=round(win_prob,2),opp_win_prob=round(opp_win_prob,2))%>%gt()%>%gt_img_rows(logo)%>%gt_img_rows(opponent_logo)%>%
+  tab_header(title = paste0("Week ",week_num," 2022 matchups"))%>%
+  cols_label(franchise_name="Winning Team",logo="",win_prob= "Win Probability",score_for="Score",opponent_score="Score",opp_win_prob="Win Probability",opponent_logo="",opponent_franchise="Losing Team")%>%
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "left",
+        color = "black",
+        weight = px(3)
+      )
+    ),
+    locations = list(
+      cells_body(
+        columns = vars(opponent_score)
+      )
+    )
+  ) %>%
+  # We use tab_style() to change style of cells
+  # cell_borders() provides the formatting
+  # locations tells it where
+  # Add black borders to the bottom of all the column labels
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "bottom",
+        color = "black",
+        weight = px(3)
+      )
+    ),
+    locations = list(
+      cells_column_labels(
+        columns = gt::everything()
+      )
+    )
+  )%>%
+   data_color(
+    columns = vars(score_for),
+    colors = scales::col_numeric(
+      palette = c("#c9ecb4"),
+      domain = NULL
+    ))%>%
+   data_color(
+    columns = vars(win_prob),
+    colors = scales::col_numeric(
+      palette = c("#ffffff", "#f2fbd2", "#c9ecb4", "#93d3ab", "#35b0ab"),
+      domain = NULL
+    ))%>%
+   data_color(
+    columns = vars(opponent_score),
+    colors = scales::col_numeric(
+      palette = c("#EF9A9AFF"),
+      domain = NULL
+    ))%>%
+   data_color(
+    columns = vars(opp_win_prob),
+    colors = scales::col_numeric(
+      # Using a function from paletteer to generate a vector of colors
+      # Note that you need to wrap paletteer_d outputs in as.character()
+      palette = as.character(paletteer::paletteer_d("ggsci::red_material", n = 5)),
+      # Domain is from scales::col_numeric
+      # Domain = The possible values that can be mapped
+      # We don't HAVE to set a range for this since
+      # we're using it inside data_color()
+      domain = NULL
+    ))
+
+```
+
+## Expected Wins power rankings through week 3 2023
+
+
+```{r expected_wins, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE, error=TRUE}
+kfl_wins_over_expected<-kfl_2021_weekly_data%>%select(win_prob,win,franchise_id,franchise_name,logo,franchise_abbrev)%>%group_by(franchise_id,franchise_name,franchise_abbrev,logo)%>%summarise(expected_wins = sum(win_prob),wins = sum(win))%>%mutate(wins_over_expected = wins - expected_wins)%>%arrange(expected_wins)%>%na.omit()
+
+# get rid of diamond dog logo
+kfl_wins_over_expected<-kfl_wins_over_expected%>%
+  mutate( logo = ifelse(franchise_id==12,"https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638",logo))
+
+week_4_table<-kfl_wins_over_expected%>%select(franchise_id,franchise_name,franchise_abbrev,logo,wins,expected_wins,wins_over_expected)%>%mutate(expected_wins = round(expected_wins,2), wins_over_expected = round(wins_over_expected,2))%>%arrange(desc(expected_wins))
+
+week_4_table<-as.data.frame(week_4_table[,c(2:7)])%>%na.omit()
+
+asp_ratio <- 1.618 
+
+
+################### UPDATE PLOT TITLE ##############################
+week4_exp_wins<-ggplot(kfl_wins_over_expected,aes(x=reorder(franchise_abbrev,expected_wins),y=expected_wins))+geom_bar(stat="identity")+geom_image(aes(x=franchise_abbrev,y=expected_wins,image=logo), size = 0.05, by = "width", asp = asp_ratio
+)+coord_flip()+ggtitle(paste0("Expected Wins through Week ",week_num)) + xlab("franchise") + ylab("expected wins")+theme(axis.title.x = element_text(size=14),axis.title.y=element_text(size=14),axis.text = element_text(size = 12),plot.title = element_text(size = 18))
+
+
+week4_exp_wins
+
+ggsave("expected_wins-1.png", plot = week4_exp_wins)
+
+#img <- magick::image_read('/post/2022-11-08 Week 9 Recap/expected_wins-1.png')
+#plot(img)
+
+```
+
+```{r expwintable, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+
+################### UPDATE TABLE TITLE ##############################
+week_4_table%>%select(franchise_name,logo,expected_wins,wins_over_expected)%>%gt()%>%gt_img_rows(logo) %>%tab_header(title =paste0("Expected Wins through Week ",week_num))%>%
+  cols_label(franchise_name="Team Name",logo="",expected_wins="Expected Wins",wins_over_expected="Wins Over Expected")
+
+
+#theme(aspect.ratio = 1/asp_ratio)
+
+# include aspect ratio in ggsave
+#ggsave(
+#  "week4_exp_wins.png", week4_exp_wins, 
+#  # make the width equivalent to the aspect.ratio
+#  height = 20, width = 20 * asp_ratio, dpi = "retina"
+#)
+
+```
+
+
+
+
+## Standings through Week 3
+
+```{r divison records, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+
+kfl_standings_wk4<-kfl_2021_weekly_data%>%filter(week<=week_num)
+
+
+
+franchise_id<-1:12
+division_name<-c("Ohio","Glum","Ohio","Indiana","Glum","Ohio","Ohio","Indiana","Indiana","Glum","Glum","Indiana")
+kfl_division<-as.data.frame(cbind(franchise_id,division_name))
+kfl_division$franchise_id<-as.numeric(kfl_division$franchise_id)
+
+
+kfl_division_data<- sqldf("Select A.*,B.division_name
+      from kfl_standings_wk4 A
+      left outer join kfl_division B
+      on A.Franchise_ID = B.Franchise_ID
+      ")
+
+team_df<-kfl_division_data%>%filter(week == 1)%>%select(franchise_id,franchise_name,logo,division_name)
+
+joined_df<-kfl_division_data%>%select(franchise_id,franchise_name,logo,division_name,win)%>%group_by(franchise_name,franchise_id)%>%summarise(
+         Wins = length(win[win==1]),
+         Losses = length(win[win==0]),
+         outcomes = list(win), .groups = "drop") %>% 
+     left_join(team_df, by = c("franchise_id" = "franchise_id","franchise_name"="franchise_name")) %>% 
+     select(logo,franchise_name, division_name, Wins:outcomes)
+ 
+
+###################### NEED TO UPDATE THE TITLE HEADER FOR WEEK  ##########################
+standings_df<-joined_df%>%select(franchise_name,logo,division_name,Wins,Losses,outcomes)%>%arrange(desc(Wins))%>%gt(groupname_col="division_name")%>%gt_plt_winloss(outcomes,max_wins = 14)%>%gt_img_rows(logo)%>%tab_header(title =paste0("Standings Through Week ",week_num ))%>%cols_label(franchise_name="Team",logo="",outcomes="Win-Loss Streak")
+
+standings_df
+
+```
+
+### Best Ball Week 3 Update
+
+```{r bench depth, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+
+bb_results<-data.frame()
+for (i in 1:week_num){
+ player_rankings<-starters %>%filter(week==i)%>%group_by(franchise_name,pos) %>% mutate(rank = rank(desc(player_score),ties.method="random"),pos_rank=paste0(pos,"_",rank))%>%arrange(franchise_name,pos,desc(player_score))
+
+ 
+optimal_starters<-player_rankings%>%filter(pos_rank=='DST_1'|pos_rank=='K_1'|pos_rank=='QB_1'|pos_rank=='RB_1'|pos_rank=='WR_1'|pos_rank=='WR_2'|pos_rank=='TE_1')
+
+flex_spot<-player_rankings%>%filter(pos_rank=='RB_2'|pos_rank=='WR_3')%>%group_by(franchise_name)%>%mutate(flex = ifelse(pos_rank))%>%arrange(franchise_name,desc(player_score))%>%filter(row_number()==1)%>%select(-flex)
+
+best_ball_team <-optimal_starters%>%union_all(flex_spot)
+
+bb_team <-best_ball_team%>%select(franchise_id,franchise_name,pos_rank,player_score)%>%group_by(franchise_id,franchise_name,pos_rank,player_score)%>%distinct()
+
+bb_team<-bb_team%>%group_by(franchise_id,franchise_name)%>%mutate(player_n = n(),team_score = sum(player_score))%>%select(franchise_name,franchise_id,player_n,team_score)%>%distinct()
+
+actual_result<-ff_schedule(espn_conn_2022)%>%select(week,franchise_id,franchise_score)%>%filter(week==i)
+
+bb_team <-bb_team%>%inner_join(actual_result,by=c("franchise_id"="franchise_id"))%>%mutate(pts_below_optimal = franchise_score - team_score)%>%arrange(desc(pts_below_optimal))
+
+bb_team<-as.data.frame(bb_team%>%inner_join(kfl_franchises_2021,by=c("franchise_id"="franchise_id"))%>%select(franchise_name.x,week,logo,player_n,team_score,franchise_score,pts_below_optimal)%>%select(-franchise_id))
+
+bb_schedule<-ff_schedule(espn_conn_2022)%>%filter(week ==i)%>%inner_join(bb_team%>%dplyr::select(franchise_id,team_score),by=c("franchise_id"="franchise_id"))%>%inner_join(bb_team%>%dplyr::select(franchise_id,team_score),by=c("opponent_id"="franchise_id"))%>%rename(fran_bb_score = team_score.x, opp_bb_score = team_score.y)%>%mutate(bb_win = ifelse(fran_bb_score>opp_bb_score,1,0))
+
+bb_team<-bb_team%>%inner_join(bb_schedule%>%dplyr::select(franchise_id,bb_win),by=c("franchise_id"="franchise_id"))%>%mutate(bb_loss=1-bb_win)
+
+
+bb_results<-rbind(bb_results,bb_team)
+}
+
+bb_team<-bb_results%>%
+  select(-week,-player_n)%>%
+group_by(franchise_id,franchise_name.x,logo)%>%
+  mutate(total_bb_score =sum(team_score),
+         total_actual_score=sum(franchise_score),
+         pts_below_optimal=sum(pts_below_optimal),
+         bb_wins = sum(bb_win),
+         bb_losses = sum(bb_loss))%>%select(-franchise_id,-bb_win,-bb_loss,-franchise_score,-team_score)%>%distinct()%>%arrange(desc(pts_below_optimal))
+
+bb_team<-as.data.frame(bb_team)
+```
+
+
+```{r bench, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+
+bb_table <- bb_team%>%gt()%>%
+  text_transform(
+      locations = cells_body(
+        vars(logo)
+      ),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      })%>%
+   cols_label(
+      franchise_name.x = "KFL Team",
+      logo = "logo",
+      total_bb_score = "Total Score - Optimal Lineup",
+      total_actual_score = "Actual Total Score",
+      pts_below_optimal = "Points under Optimal",
+      bb_wins = "Best Ball Wins",
+      bb_losses = "Best Ball Loss"
+    )
+
+bb_table
+```
+
+## Stud of the Week
+```{r stud, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+team_df <- espnscrapeR::get_nfl_teams() %>% 
+  select(team = team_abb, logo)
+
+exclude_pos <-c('BE','DST')
+
+stud<-starters%>%filter(!lineup_slot %in% exclude_pos & week==week_num)%>%mutate(proj_diff=player_score-projected_score)%>%slice_max(proj_diff)%>%select(franchise_name,player_name,team,player_score,projected_score,proj_diff)
+dud<-starters%>%filter(!lineup_slot %in% exclude_pos & week==week_num)%>%mutate(proj_diff=player_score-projected_score)%>%slice_min(proj_diff)%>%select(franchise_name,player_name,team,player_score,projected_score,proj_diff)
+
+
+dud<-dud%>%inner_join(team_df,by=c('team'='team'))
+stud<-stud%>%inner_join(team_df,by=c('team'='team'))
+
+stud_table <- stud%>%select(franchise_name,player_name,logo,team,player_score,projected_score,proj_diff) %>%
+  gt() %>%
+  text_transform(
+      locations = cells_body(
+        vars(logo)
+      ),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      })%>%
+   cols_label(
+      franchise_name = "KFL Team",
+      player_name = "player",
+      logo = "",
+      team = "Team",
+      player_score = "actual score",
+      projected_score = "projection",
+      proj_diff = "difference"
+    )
+stud_table
+
+```
+
+
+```{r dud, echo=FALSE,warning=FALSE,fig.width = 10,fig.height=8,message=FALSE}
+dud_table <- dud%>%select(franchise_name,player_name,logo,team,player_score,projected_score,proj_diff) %>%
+  gt() %>%
+  text_transform(
+      locations = cells_body(
+        vars(logo)
+      ),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      })%>%
+   cols_label(
+      franchise_name = "KFL Team",
+      player_name = "player",
+      logo = "",
+      team = "Team",
+      player_score = "actual score",
+      projected_score = "projection",
+      proj_diff = "difference"
+    )
+dud_table
+
+```

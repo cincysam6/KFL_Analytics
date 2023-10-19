@@ -1,0 +1,3060 @@
+---
+title: "Week 6 2023 Recap"
+author: "Samuel Kirschner"
+date: "2023-10-17T13:09:13-06:00"
+output: html_document
+---
+
+
+
+<div id="week-6-recap" class="section level2">
+<h2>Week 6 Recap</h2>
+<div id="ucwekrhpps" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ucwekrhpps table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ucwekrhpps thead, #ucwekrhpps tbody, #ucwekrhpps tfoot, #ucwekrhpps tr, #ucwekrhpps td, #ucwekrhpps th {
+  border-style: none;
+}
+
+#ucwekrhpps p {
+  margin: 0;
+  padding: 0;
+}
+
+#ucwekrhpps .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ucwekrhpps .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ucwekrhpps .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ucwekrhpps .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ucwekrhpps .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ucwekrhpps .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ucwekrhpps .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ucwekrhpps .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ucwekrhpps .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ucwekrhpps .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ucwekrhpps .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ucwekrhpps .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ucwekrhpps .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ucwekrhpps .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ucwekrhpps .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ucwekrhpps .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ucwekrhpps .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ucwekrhpps .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ucwekrhpps .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ucwekrhpps .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ucwekrhpps .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ucwekrhpps .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ucwekrhpps .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ucwekrhpps .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ucwekrhpps .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ucwekrhpps .gt_left {
+  text-align: left;
+}
+
+#ucwekrhpps .gt_center {
+  text-align: center;
+}
+
+#ucwekrhpps .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ucwekrhpps .gt_font_normal {
+  font-weight: normal;
+}
+
+#ucwekrhpps .gt_font_bold {
+  font-weight: bold;
+}
+
+#ucwekrhpps .gt_font_italic {
+  font-style: italic;
+}
+
+#ucwekrhpps .gt_super {
+  font-size: 65%;
+}
+
+#ucwekrhpps .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ucwekrhpps .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ucwekrhpps .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ucwekrhpps .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ucwekrhpps .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ucwekrhpps .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ucwekrhpps .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Week 6 2022 matchups</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Winning Team">Winning Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Win Probability">Win Probability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Score">Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Score">Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Win Probability">Win Probability</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: black;" scope="col" id="Losing Team">Losing Team</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="franchise_name" class="gt_row gt_left">Jeffs Slugs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td headers="win_prob" class="gt_row gt_right" style="background-color: #A6DBAE; color: #000000;">0.66</td>
+<td headers="score_for" class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">93</td>
+<td headers="opponent_score" class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">82</td>
+<td headers="opp_win_prob" class="gt_row gt_right" style="background-color: #EF5350; color: #FFFFFF;">0.45</td>
+<td headers="opponent_logo" class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td headers="opponent_franchise" class="gt_row gt_left">Ruwes Onionheads</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Scott's TITANS</td>
+<td headers="logo" class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td headers="win_prob" class="gt_row gt_right" style="background-color: #F6FCE0; color: #000000;">0.29</td>
+<td headers="score_for" class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">73</td>
+<td headers="opponent_score" class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">55</td>
+<td headers="opp_win_prob" class="gt_row gt_right" style="background-color: #FFE2E5; color: #000000;">0.09</td>
+<td headers="opponent_logo" class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td headers="opponent_franchise" class="gt_row gt_left">Kurt's The Tenderloins</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Diamond Dogs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:30px;"></td>
+<td headers="win_prob" class="gt_row gt_right" style="background-color: #35B0AB; color: #FFFFFF;">0.91</td>
+<td headers="score_for" class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">114</td>
+<td headers="opponent_score" class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">73</td>
+<td headers="opp_win_prob" class="gt_row gt_right" style="background-color: #EC8C8C; color: #000000;">0.29</td>
+<td headers="opponent_logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td headers="opponent_franchise" class="gt_row gt_left">Unlucky  Bluecats</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://i.pinimg.com/1200x/eb/b6/b9/ebb6b95a5cc4d248b17e0371e1ac2a64.jpg" style="height:30px;"></td>
+<td headers="win_prob" class="gt_row gt_right" style="background-color: #6EC3AB; color: #000000;">0.81</td>
+<td headers="score_for" class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">103</td>
+<td headers="opponent_score" class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">49</td>
+<td headers="opp_win_prob" class="gt_row gt_right" style="background-color: #FFEBEE; color: #000000;">0.06</td>
+<td headers="opponent_logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:30px;"></td>
+<td headers="opponent_franchise" class="gt_row gt_left">Cincinnati Mountainmen</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Alex's Kraken</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td headers="win_prob" class="gt_row gt_right" style="background-color: #FFFFFF; color: #000000;">0.16</td>
+<td headers="score_for" class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">64</td>
+<td headers="opponent_score" class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">60</td>
+<td headers="opp_win_prob" class="gt_row gt_right" style="background-color: #FFD9DD; color: #000000;">0.12</td>
+<td headers="opponent_logo" class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:30px;"></td>
+<td headers="opponent_franchise" class="gt_row gt_left">Elliot's Last Good Tight End</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td headers="win_prob" class="gt_row gt_right" style="background-color: #CFEEB8; color: #000000;">0.51</td>
+<td headers="score_for" class="gt_row gt_right" style="background-color: #C9ECB4; color: #000000;">85</td>
+<td headers="opponent_score" class="gt_row gt_right" style="border-left-width: 3px; border-left-style: solid; border-left-color: black; background-color: #EF9A9A; color: #000000;">67</td>
+<td headers="opp_win_prob" class="gt_row gt_right" style="background-color: #F9B7B9; color: #000000;">0.20</td>
+<td headers="opponent_logo" class="gt_row gt_left"><img src="https://previews.123rf.com/images/mihtiander/mihtiander1311/mihtiander131100042/23508720-head-of-funny-cow-looking-to-a-camera-with-alps-and-green-meadow-on-the-background.jpg" style="height:30px;"></td>
+<td headers="opponent_franchise" class="gt_row gt_left">Michael's GMOs</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="expected-wins-power-rankings-through-week-6-2023" class="section level2">
+<h2>Expected Wins power rankings through week 6 2023</h2>
+<p><img src="/post/Week6_2023/Week6_2023_files/figure-html/expected_wins-1.png" width="960" /></p>
+<div id="mihjodrwyi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mihjodrwyi table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mihjodrwyi thead, #mihjodrwyi tbody, #mihjodrwyi tfoot, #mihjodrwyi tr, #mihjodrwyi td, #mihjodrwyi th {
+  border-style: none;
+}
+
+#mihjodrwyi p {
+  margin: 0;
+  padding: 0;
+}
+
+#mihjodrwyi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mihjodrwyi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mihjodrwyi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mihjodrwyi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mihjodrwyi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mihjodrwyi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mihjodrwyi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mihjodrwyi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mihjodrwyi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mihjodrwyi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mihjodrwyi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mihjodrwyi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mihjodrwyi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mihjodrwyi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mihjodrwyi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mihjodrwyi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mihjodrwyi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mihjodrwyi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mihjodrwyi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mihjodrwyi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mihjodrwyi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mihjodrwyi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mihjodrwyi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mihjodrwyi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mihjodrwyi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mihjodrwyi .gt_left {
+  text-align: left;
+}
+
+#mihjodrwyi .gt_center {
+  text-align: center;
+}
+
+#mihjodrwyi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mihjodrwyi .gt_font_normal {
+  font-weight: normal;
+}
+
+#mihjodrwyi .gt_font_bold {
+  font-weight: bold;
+}
+
+#mihjodrwyi .gt_font_italic {
+  font-style: italic;
+}
+
+#mihjodrwyi .gt_super {
+  font-size: 65%;
+}
+
+#mihjodrwyi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mihjodrwyi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mihjodrwyi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mihjodrwyi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mihjodrwyi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mihjodrwyi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mihjodrwyi .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Expected Wins through Week 6</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Team Name">Team Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Expected Wins">Expected Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Wins Over Expected">Wins Over Expected</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="franchise_name" class="gt_row gt_left">Jeffs Slugs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">3.39</td>
+<td headers="wins_over_expected" class="gt_row gt_right">-0.39</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">3.23</td>
+<td headers="wins_over_expected" class="gt_row gt_right">1.77</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Diamond Dogs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">3.14</td>
+<td headers="wins_over_expected" class="gt_row gt_right">-0.14</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Scott's TITANS</td>
+<td headers="logo" class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">3.12</td>
+<td headers="wins_over_expected" class="gt_row gt_right">0.88</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Unlucky  Bluecats</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">2.93</td>
+<td headers="wins_over_expected" class="gt_row gt_right">-0.93</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Michael's GMOs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://previews.123rf.com/images/mihtiander/mihtiander1311/mihtiander131100042/23508720-head-of-funny-cow-looking-to-a-camera-with-alps-and-green-meadow-on-the-background.jpg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">2.87</td>
+<td headers="wins_over_expected" class="gt_row gt_right">0.13</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Ruwes Onionheads</td>
+<td headers="logo" class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">2.61</td>
+<td headers="wins_over_expected" class="gt_row gt_right">-1.61</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://i.pinimg.com/1200x/eb/b6/b9/ebb6b95a5cc4d248b17e0371e1ac2a64.jpg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">2.60</td>
+<td headers="wins_over_expected" class="gt_row gt_right">2.40</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">2.24</td>
+<td headers="wins_over_expected" class="gt_row gt_right">0.76</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Elliot's Last Good Tight End</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">2.01</td>
+<td headers="wins_over_expected" class="gt_row gt_right">-1.01</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">1.43</td>
+<td headers="wins_over_expected" class="gt_row gt_right">-0.43</td></tr>
+    <tr><td headers="franchise_name" class="gt_row gt_left">Alex's Kraken</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td headers="expected_wins" class="gt_row gt_right">1.29</td>
+<td headers="wins_over_expected" class="gt_row gt_right">3.71</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="standings-through-week-6" class="section level2">
+<h2>Standings through Week 6</h2>
+<div id="mvtunlyhuh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mvtunlyhuh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mvtunlyhuh thead, #mvtunlyhuh tbody, #mvtunlyhuh tfoot, #mvtunlyhuh tr, #mvtunlyhuh td, #mvtunlyhuh th {
+  border-style: none;
+}
+
+#mvtunlyhuh p {
+  margin: 0;
+  padding: 0;
+}
+
+#mvtunlyhuh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mvtunlyhuh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mvtunlyhuh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mvtunlyhuh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mvtunlyhuh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mvtunlyhuh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mvtunlyhuh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mvtunlyhuh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mvtunlyhuh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mvtunlyhuh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mvtunlyhuh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mvtunlyhuh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mvtunlyhuh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mvtunlyhuh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mvtunlyhuh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvtunlyhuh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mvtunlyhuh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mvtunlyhuh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mvtunlyhuh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvtunlyhuh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mvtunlyhuh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvtunlyhuh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mvtunlyhuh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvtunlyhuh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mvtunlyhuh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mvtunlyhuh .gt_left {
+  text-align: left;
+}
+
+#mvtunlyhuh .gt_center {
+  text-align: center;
+}
+
+#mvtunlyhuh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mvtunlyhuh .gt_font_normal {
+  font-weight: normal;
+}
+
+#mvtunlyhuh .gt_font_bold {
+  font-weight: bold;
+}
+
+#mvtunlyhuh .gt_font_italic {
+  font-style: italic;
+}
+
+#mvtunlyhuh .gt_super {
+  font-size: 65%;
+}
+
+#mvtunlyhuh .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mvtunlyhuh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mvtunlyhuh .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mvtunlyhuh .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mvtunlyhuh .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mvtunlyhuh .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mvtunlyhuh .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Standings Through Week 6</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Team">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Wins">Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Losses">Losses</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Win-Loss Streak">Win-Loss Streak</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="Indiana">Indiana</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Indiana  franchise_name" class="gt_row gt_left">Alex's Kraken</td>
+<td headers="Indiana  logo" class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:30px;"></td>
+<td headers="Indiana  Wins" class="gt_row gt_right">5</td>
+<td headers="Indiana  Losses" class="gt_row gt_right">1</td>
+<td headers="Indiana  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td headers="Indiana  franchise_name" class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td headers="Indiana  logo" class="gt_row gt_left"><img src="https://i.pinimg.com/1200x/eb/b6/b9/ebb6b95a5cc4d248b17e0371e1ac2a64.jpg" style="height:30px;"></td>
+<td headers="Indiana  Wins" class="gt_row gt_right">5</td>
+<td headers="Indiana  Losses" class="gt_row gt_right">1</td>
+<td headers="Indiana  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td headers="Indiana  franchise_name" class="gt_row gt_left">Diamond Dogs</td>
+<td headers="Indiana  logo" class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:30px;"></td>
+<td headers="Indiana  Wins" class="gt_row gt_right">3</td>
+<td headers="Indiana  Losses" class="gt_row gt_right">3</td>
+<td headers="Indiana  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td headers="Indiana  franchise_name" class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td headers="Indiana  logo" class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:30px;"></td>
+<td headers="Indiana  Wins" class="gt_row gt_right">3</td>
+<td headers="Indiana  Losses" class="gt_row gt_right">3</td>
+<td headers="Indiana  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="Ohio">Ohio</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Ohio  franchise_name" class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td headers="Ohio  logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:30px;"></td>
+<td headers="Ohio  Wins" class="gt_row gt_right">5</td>
+<td headers="Ohio  Losses" class="gt_row gt_right">1</td>
+<td headers="Ohio  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td headers="Ohio  franchise_name" class="gt_row gt_left">Jeffs Slugs</td>
+<td headers="Ohio  logo" class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:30px;"></td>
+<td headers="Ohio  Wins" class="gt_row gt_right">3</td>
+<td headers="Ohio  Losses" class="gt_row gt_right">3</td>
+<td headers="Ohio  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td headers="Ohio  franchise_name" class="gt_row gt_left">Unlucky  Bluecats</td>
+<td headers="Ohio  logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:30px;"></td>
+<td headers="Ohio  Wins" class="gt_row gt_right">2</td>
+<td headers="Ohio  Losses" class="gt_row gt_right">4</td>
+<td headers="Ohio  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td headers="Ohio  franchise_name" class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td headers="Ohio  logo" class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:30px;"></td>
+<td headers="Ohio  Wins" class="gt_row gt_right">1</td>
+<td headers="Ohio  Losses" class="gt_row gt_right">5</td>
+<td headers="Ohio  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr class="gt_group_heading_row">
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="Glum">Glum</th>
+    </tr>
+    <tr class="gt_row_group_first"><td headers="Glum  franchise_name" class="gt_row gt_left">Scott's TITANS</td>
+<td headers="Glum  logo" class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:30px;"></td>
+<td headers="Glum  Wins" class="gt_row gt_right">4</td>
+<td headers="Glum  Losses" class="gt_row gt_right">2</td>
+<td headers="Glum  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='1.89' x2='16.14' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='19.25' y1='1.89' x2='19.25' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /></g></svg></td></tr>
+    <tr><td headers="Glum  franchise_name" class="gt_row gt_left">Michael's GMOs</td>
+<td headers="Glum  logo" class="gt_row gt_left"><img src="https://previews.123rf.com/images/mihtiander/mihtiander1311/mihtiander131100042/23508720-head-of-funny-cow-looking-to-a-camera-with-alps-and-green-meadow-on-the-background.jpg" style="height:30px;"></td>
+<td headers="Glum  Wins" class="gt_row gt_right">3</td>
+<td headers="Glum  Losses" class="gt_row gt_right">3</td>
+<td headers="Glum  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='1.89' x2='6.83' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='9.94' y1='1.89' x2='9.94' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td headers="Glum  franchise_name" class="gt_row gt_left">Elliot's Last Good Tight End</td>
+<td headers="Glum  logo" class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:30px;"></td>
+<td headers="Glum  Wins" class="gt_row gt_right">1</td>
+<td headers="Glum  Losses" class="gt_row gt_right">5</td>
+<td headers="Glum  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='8.91' x2='3.73' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='1.89' x2='13.04' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+    <tr><td headers="Glum  franchise_name" class="gt_row gt_left">Ruwes Onionheads</td>
+<td headers="Glum  logo" class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:30px;"></td>
+<td headers="Glum  Wins" class="gt_row gt_right">1</td>
+<td headers="Glum  Losses" class="gt_row gt_right">5</td>
+<td headers="Glum  outcomes" class="gt_row gt_center"><?xml version='1.0' encoding='UTF-8' ?><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='47.81pt' height='10.80pt' viewBox='0 0 47.81 10.80'><defs>  <style type='text/css'><![CDATA[    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  ]]></style></defs><rect width='100%' height='100%' style='stroke: none; fill: none;'/><defs>  <clipPath id='cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw'>    <rect x='0.00' y='0.00' width='47.81' height='10.80' />  </clipPath></defs><g clip-path='url(#cpMC4wMHw0Ny44MXwwLjAwfDEwLjgw)'><line x1='3.73' y1='1.89' x2='3.73' y2='6.10' style='stroke-width: 2.13; stroke: #013369;' /><line x1='6.83' y1='8.91' x2='6.83' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='9.94' y1='8.91' x2='9.94' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='13.04' y1='8.91' x2='13.04' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='16.14' y1='8.91' x2='16.14' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /><line x1='19.25' y1='8.91' x2='19.25' y2='4.70' style='stroke-width: 2.13; stroke: #D50A0A;' /></g></svg></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="best-ball-week-6-update" class="section level3">
+<h3>Best Ball Week 6 Update</h3>
+<div id="decxqhfxkp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#decxqhfxkp table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#decxqhfxkp thead, #decxqhfxkp tbody, #decxqhfxkp tfoot, #decxqhfxkp tr, #decxqhfxkp td, #decxqhfxkp th {
+  border-style: none;
+}
+
+#decxqhfxkp p {
+  margin: 0;
+  padding: 0;
+}
+
+#decxqhfxkp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#decxqhfxkp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#decxqhfxkp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#decxqhfxkp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#decxqhfxkp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#decxqhfxkp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#decxqhfxkp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#decxqhfxkp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#decxqhfxkp .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#decxqhfxkp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#decxqhfxkp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#decxqhfxkp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#decxqhfxkp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#decxqhfxkp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#decxqhfxkp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#decxqhfxkp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#decxqhfxkp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#decxqhfxkp .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#decxqhfxkp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#decxqhfxkp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#decxqhfxkp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#decxqhfxkp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#decxqhfxkp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#decxqhfxkp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#decxqhfxkp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#decxqhfxkp .gt_left {
+  text-align: left;
+}
+
+#decxqhfxkp .gt_center {
+  text-align: center;
+}
+
+#decxqhfxkp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#decxqhfxkp .gt_font_normal {
+  font-weight: normal;
+}
+
+#decxqhfxkp .gt_font_bold {
+  font-weight: bold;
+}
+
+#decxqhfxkp .gt_font_italic {
+  font-style: italic;
+}
+
+#decxqhfxkp .gt_super {
+  font-size: 65%;
+}
+
+#decxqhfxkp .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#decxqhfxkp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#decxqhfxkp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#decxqhfxkp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#decxqhfxkp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#decxqhfxkp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#decxqhfxkp .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="franchise_id">franchise_id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="KFL Team">KFL Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="logo">logo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Points under Optimal">Points under Optimal</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Total Score - Optimal Lineup">Total Score - Optimal Lineup</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Actual Total Score">Actual Total Score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Best Ball Wins">Best Ball Wins</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Best Ball Loss">Best Ball Loss</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="franchise_id" class="gt_row gt_right">5</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Scott's TITANS</td>
+<td headers="logo" class="gt_row gt_left"><img src="http://i232.photobucket.com/albums/ee229/ChrisMarkPearce/titans.png" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-34</td>
+<td headers="total_bb_score" class="gt_row gt_right">540</td>
+<td headers="total_actual_score" class="gt_row gt_right">506</td>
+<td headers="bb_wins" class="gt_row gt_right">4</td>
+<td headers="bb_losses" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">7</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/ffl/OldeTymeFootball-AndrewJanik/Warriors_02.svg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-58</td>
+<td headers="total_bb_score" class="gt_row gt_right">598</td>
+<td headers="total_actual_score" class="gt_row gt_right">540</td>
+<td headers="bb_wins" class="gt_row gt_right">3</td>
+<td headers="bb_losses" class="gt_row gt_right">3</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">6</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Unlucky  Bluecats</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-10.svg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-59</td>
+<td headers="total_bb_score" class="gt_row gt_right">548</td>
+<td headers="total_actual_score" class="gt_row gt_right">489</td>
+<td headers="bb_wins" class="gt_row gt_right">2</td>
+<td headers="bb_losses" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">4</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Kurt's The Tenderloins</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_800/v1/clients/bloomington/Nick_s_8__dee40be3-de1a-4c24-a35d-368dab5540af.jpg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-68</td>
+<td headers="total_bb_score" class="gt_row gt_right">536</td>
+<td headers="total_actual_score" class="gt_row gt_right">468</td>
+<td headers="bb_wins" class="gt_row gt_right">3</td>
+<td headers="bb_losses" class="gt_row gt_right">3</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">1</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Jeffs Slugs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://g.espncdn.com/s/ffllm/logos/SmackTalk-LeoEspinosa/Boom-10.svg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-79</td>
+<td headers="total_bb_score" class="gt_row gt_right">609</td>
+<td headers="total_actual_score" class="gt_row gt_right">530</td>
+<td headers="bb_wins" class="gt_row gt_right">4</td>
+<td headers="bb_losses" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">11</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Michael's GMOs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://previews.123rf.com/images/mihtiander/mihtiander1311/mihtiander131100042/23508720-head-of-funny-cow-looking-to-a-camera-with-alps-and-green-meadow-on-the-background.jpg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-80</td>
+<td headers="total_bb_score" class="gt_row gt_right">587</td>
+<td headers="total_actual_score" class="gt_row gt_right">507</td>
+<td headers="bb_wins" class="gt_row gt_right">4</td>
+<td headers="bb_losses" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">8</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://i.pinimg.com/1200x/eb/b6/b9/ebb6b95a5cc4d248b17e0371e1ac2a64.jpg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-81</td>
+<td headers="total_bb_score" class="gt_row gt_right">559</td>
+<td headers="total_actual_score" class="gt_row gt_right">478</td>
+<td headers="bb_wins" class="gt_row gt_right">3</td>
+<td headers="bb_losses" class="gt_row gt_right">3</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">10</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Elliot's Last Good Tight End</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://i.postimg.cc/0jMWkWkb/F4-BCD394-78-A4-4-B5-B-91-C9-E596723-A4-F82.jpg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-89</td>
+<td headers="total_bb_score" class="gt_row gt_right">533</td>
+<td headers="total_actual_score" class="gt_row gt_right">444</td>
+<td headers="bb_wins" class="gt_row gt_right">2</td>
+<td headers="bb_losses" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">12</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Diamond Dogs</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://static.wikia.nocookie.net/metalgear/images/e/e7/Diamond_Dogs.svg/revision/latest?cb=20150121151638" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-126</td>
+<td headers="total_bb_score" class="gt_row gt_right">648</td>
+<td headers="total_actual_score" class="gt_row gt_right">522</td>
+<td headers="bb_wins" class="gt_row gt_right">3</td>
+<td headers="bb_losses" class="gt_row gt_right">3</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">2</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Ruwes Onionheads</td>
+<td headers="logo" class="gt_row gt_left"><img src="http://i218.photobucket.com/albums/cc85/ThePurpleRabbit/Onion.png" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-134</td>
+<td headers="total_bb_score" class="gt_row gt_right">616</td>
+<td headers="total_actual_score" class="gt_row gt_right">482</td>
+<td headers="bb_wins" class="gt_row gt_right">2</td>
+<td headers="bb_losses" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">3</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Joe Sunderman's Sunday Winners</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://www.pngkit.com/png/detail/269-2691865_winners-logo-winners.png" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-135</td>
+<td headers="total_bb_score" class="gt_row gt_right">533</td>
+<td headers="total_actual_score" class="gt_row gt_right">398</td>
+<td headers="bb_wins" class="gt_row gt_right">1</td>
+<td headers="bb_losses" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="franchise_id" class="gt_row gt_right">9</td>
+<td headers="franchise_name.x" class="gt_row gt_left">Alex's Kraken</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://eng.uber.com/wp-content/uploads/2019/03/Facebook-Kraken.jpg" style="height:25px;"></td>
+<td headers="pts_below_optimal" class="gt_row gt_right">-138</td>
+<td headers="total_bb_score" class="gt_row gt_right">525</td>
+<td headers="total_actual_score" class="gt_row gt_right">387</td>
+<td headers="bb_wins" class="gt_row gt_right">5</td>
+<td headers="bb_losses" class="gt_row gt_right">1</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<div id="stud-of-the-week" class="section level2">
+<h2>Stud of the Week</h2>
+<div id="taxzluugev" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#taxzluugev table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#taxzluugev thead, #taxzluugev tbody, #taxzluugev tfoot, #taxzluugev tr, #taxzluugev td, #taxzluugev th {
+  border-style: none;
+}
+
+#taxzluugev p {
+  margin: 0;
+  padding: 0;
+}
+
+#taxzluugev .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#taxzluugev .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#taxzluugev .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#taxzluugev .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#taxzluugev .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#taxzluugev .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#taxzluugev .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#taxzluugev .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#taxzluugev .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#taxzluugev .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#taxzluugev .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#taxzluugev .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#taxzluugev .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#taxzluugev .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#taxzluugev .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#taxzluugev .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#taxzluugev .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#taxzluugev .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#taxzluugev .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#taxzluugev .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#taxzluugev .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#taxzluugev .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#taxzluugev .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#taxzluugev .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#taxzluugev .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#taxzluugev .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#taxzluugev .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#taxzluugev .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#taxzluugev .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#taxzluugev .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#taxzluugev .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#taxzluugev .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#taxzluugev .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#taxzluugev .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#taxzluugev .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#taxzluugev .gt_left {
+  text-align: left;
+}
+
+#taxzluugev .gt_center {
+  text-align: center;
+}
+
+#taxzluugev .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#taxzluugev .gt_font_normal {
+  font-weight: normal;
+}
+
+#taxzluugev .gt_font_bold {
+  font-weight: bold;
+}
+
+#taxzluugev .gt_font_italic {
+  font-style: italic;
+}
+
+#taxzluugev .gt_super {
+  font-size: 65%;
+}
+
+#taxzluugev .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#taxzluugev .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#taxzluugev .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#taxzluugev .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#taxzluugev .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#taxzluugev .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#taxzluugev .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="KFL Team">KFL Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="player">player</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Team">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="actual score">actual score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="projection">projection</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="difference">difference</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="franchise_name" class="gt_row gt_left">Nick's Unlucky Ducks</td>
+<td headers="player_name" class="gt_row gt_left">Raheem Mostert</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/mia.png" style="height:25px;"></td>
+<td headers="team" class="gt_row gt_left">MIA</td>
+<td headers="player_score" class="gt_row gt_right">30</td>
+<td headers="projected_score" class="gt_row gt_right">14.3</td>
+<td headers="proj_diff" class="gt_row gt_right">15.7</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="mrfjdgpnhj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mrfjdgpnhj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mrfjdgpnhj thead, #mrfjdgpnhj tbody, #mrfjdgpnhj tfoot, #mrfjdgpnhj tr, #mrfjdgpnhj td, #mrfjdgpnhj th {
+  border-style: none;
+}
+
+#mrfjdgpnhj p {
+  margin: 0;
+  padding: 0;
+}
+
+#mrfjdgpnhj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mrfjdgpnhj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mrfjdgpnhj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mrfjdgpnhj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mrfjdgpnhj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mrfjdgpnhj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mrfjdgpnhj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mrfjdgpnhj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mrfjdgpnhj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mrfjdgpnhj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mrfjdgpnhj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mrfjdgpnhj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mrfjdgpnhj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mrfjdgpnhj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mrfjdgpnhj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrfjdgpnhj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mrfjdgpnhj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mrfjdgpnhj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mrfjdgpnhj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrfjdgpnhj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mrfjdgpnhj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrfjdgpnhj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mrfjdgpnhj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrfjdgpnhj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mrfjdgpnhj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrfjdgpnhj .gt_left {
+  text-align: left;
+}
+
+#mrfjdgpnhj .gt_center {
+  text-align: center;
+}
+
+#mrfjdgpnhj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mrfjdgpnhj .gt_font_normal {
+  font-weight: normal;
+}
+
+#mrfjdgpnhj .gt_font_bold {
+  font-weight: bold;
+}
+
+#mrfjdgpnhj .gt_font_italic {
+  font-style: italic;
+}
+
+#mrfjdgpnhj .gt_super {
+  font-size: 65%;
+}
+
+#mrfjdgpnhj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mrfjdgpnhj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mrfjdgpnhj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mrfjdgpnhj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mrfjdgpnhj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mrfjdgpnhj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mrfjdgpnhj .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="KFL Team">KFL Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="player">player</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Team">Team</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="actual score">actual score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="projection">projection</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="difference">difference</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="franchise_name" class="gt_row gt_left">Cincinnati Mountainmen</td>
+<td headers="player_name" class="gt_row gt_left">Justin Fields</td>
+<td headers="logo" class="gt_row gt_left"><img src="https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" style="height:25px;"></td>
+<td headers="team" class="gt_row gt_left">CHI</td>
+<td headers="player_score" class="gt_row gt_right">4</td>
+<td headers="projected_score" class="gt_row gt_right">22.5</td>
+<td headers="proj_diff" class="gt_row gt_right">-18.5</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
